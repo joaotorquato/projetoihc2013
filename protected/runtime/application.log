@@ -1,0 +1,22 @@
+2013/10/13 03:43:52 [error] [php] Use of undefined constant Yii - assumed 'Yii' (C:\xampp\htdocs\projetoihc2013\protected\controllers\SiteController.php:32)
+Stack trace:
+#0 C:\xampp\htdocs\yii_1.4\web\CController.php(286): SiteController->runAction()
+#1 C:\xampp\htdocs\yii_1.4\web\CController.php(265): SiteController->runActionWithFilters()
+#2 C:\xampp\htdocs\yii_1.4\web\CWebApplication.php(282): SiteController->run()
+#3 C:\xampp\htdocs\yii_1.4\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\htdocs\yii_1.4\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\projetoihc2013\index.php(13): CWebApplication->run()
+REQUEST_URI=/projetoihc2013/index.php?r=site/index
+in C:\xampp\htdocs\projetoihc2013\protected\controllers\SiteController.php (32)
+in C:\xampp\htdocs\projetoihc2013\index.php (13)
+2013/10/13 03:44:00 [error] [php] Use of undefined constant Yii - assumed 'Yii' (C:\xampp\htdocs\projetoihc2013\protected\controllers\SiteController.php:32)
+Stack trace:
+#0 C:\xampp\htdocs\yii_1.4\web\CController.php(286): SiteController->runAction()
+#1 C:\xampp\htdocs\yii_1.4\web\CController.php(265): SiteController->runActionWithFilters()
+#2 C:\xampp\htdocs\yii_1.4\web\CWebApplication.php(282): SiteController->run()
+#3 C:\xampp\htdocs\yii_1.4\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\htdocs\yii_1.4\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\projetoihc2013\index.php(13): CWebApplication->run()
+REQUEST_URI=/projetoihc2013/index.php?r=site/index
+in C:\xampp\htdocs\projetoihc2013\protected\controllers\SiteController.php (32)
+in C:\xampp\htdocs\projetoihc2013\index.php (13)
