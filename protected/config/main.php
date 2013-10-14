@@ -1,4 +1,4 @@
-<?php
+    <?php
 
 // uncomment the following to define a path alias
 // Yii::setPathOfAlias('local','path/to/local-folder');
@@ -17,14 +17,14 @@ return array(
     'theme' => 'hebo',
     'modules' => array(
     // uncomment the following to enable the Gii tool
-    /*
+    
       'gii'=>array(
       'class'=>'system.gii.GiiModule',
-      'password'=>'Enter Your Password Here',
+      'password'=>'134679',
       // If removed, Gii defaults to localhost only. Edit carefully to taste.
       'ipFilters'=>array('127.0.0.1','::1'),
       ),
-     */
+     
     ),
     // application components
     'components' => array(
