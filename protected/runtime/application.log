@@ -380,3 +380,22 @@ Stack trace:
 REQUEST_URI=/projetoihc2013/index.php?r=site/page&view=ofertas&cidade=osasco
 in C:\xampp\htdocs\projetoihc2013\themes\hebo\views\site\pages\ofertas.php (91)
 in C:\xampp\htdocs\projetoihc2013\index.php (13)
+2013/10/14 07:23:35 [error] [php] Function eregi_replace() is deprecated (C:\xampp\htdocs\projetoihc2013\themes\hebo\views\site\pages\ofertas.php:273)
+Stack trace:
+#0 C:\xampp\htdocs\yii_1.4\web\CBaseController.php(126): require()
+#1 C:\xampp\htdocs\yii_1.4\web\CBaseController.php(95): SiteController->renderInternal()
+#2 C:\xampp\htdocs\yii_1.4\web\CController.php(869): SiteController->renderFile()
+#3 C:\xampp\htdocs\yii_1.4\web\CController.php(782): SiteController->renderPartial()
+#4 C:\xampp\htdocs\yii_1.4\web\actions\CViewAction.php(140): SiteController->render()
+#5 C:\xampp\htdocs\yii_1.4\web\actions\CAction.php(76): CViewAction->run()
+#6 C:\xampp\htdocs\yii_1.4\web\CController.php(308): CViewAction->runWithParams()
+#7 C:\xampp\htdocs\yii_1.4\web\CController.php(286): SiteController->runAction()
+#8 C:\xampp\htdocs\yii_1.4\web\CController.php(265): SiteController->runActionWithFilters()
+#9 C:\xampp\htdocs\yii_1.4\web\CWebApplication.php(282): SiteController->run()
+#10 C:\xampp\htdocs\yii_1.4\web\CWebApplication.php(141): CWebApplication->runController()
+#11 C:\xampp\htdocs\yii_1.4\base\CApplication.php(180): CWebApplication->processRequest()
+#12 C:\xampp\htdocs\projetoihc2013\index.php(13): CWebApplication->run()
+REQUEST_URI=/projetoihc2013/index.php?r=site/page&view=ofertas&cidade=osasco
+in C:\xampp\htdocs\projetoihc2013\themes\hebo\views\site\pages\ofertas.php (273)
+in C:\xampp\htdocs\projetoihc2013\themes\hebo\views\site\pages\ofertas.php (105)
+in C:\xampp\htdocs\projetoihc2013\index.php (13)
