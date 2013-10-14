@@ -28,6 +28,8 @@ $empresas[] = array(
     'plano' => true,
     'comentarios' => array('Almir Kazunari' => 'Achei muito bom o serviço, nota dez!', 'Fernando Villas Boas' => 'Atendimento bom, pede o lanche e já chega, demais!'),
     'produtos' => array('lanche' => 'Lanches', 'marmita' => 'Marmitas', 'refrigerante' => 'Refrigerantes', 'suco' => 'sucos', 'porcao' => 'Porcões', 'sobremesa' => 'Sobremesas'),
+    'concorrentes' => array('1', '5'),
+    'concorrentes_lanche' => array('Dogão' => '5,90'),
 );
 
 $empresas[] = array(
@@ -43,6 +45,7 @@ $empresas[] = array(
     'plano' => false,
     'comentarios' => array('Felipe Brina' => 'Como la direto, melhor que tem!', 'Vinícius Campos' => 'Sempre como com meu brother lá, é top!'),
     'produtos' => array('lanche' => 'Lanches', 'beirute' => 'Beirutes', 'refrigerante' => 'Refrigerantes', 'suco' => 'Sucos', 'porcao' => 'Porções'),
+    'concorrentes' => array('0', '5'),
 );
 
 $empresas[] = array(
@@ -57,6 +60,7 @@ $empresas[] = array(
     'plano' => false,
     'comentarios' => array('Arthur Mazer' => 'Melhor pizzaria de Sorocaba! Peço sempre lá', 'Creuza da Silva' => 'A pizza de gorgonzola é show! Recomendo!!!'),
     'produtos' => array('pizza' => 'Pizzas', 'pizza doce' => 'Pizzas doces', 'refrigerante' => 'Refrigerantes', 'cerveja' => 'Cervejas', 'vinho' => 'Vinhos'),
+    'concorrentes' => array('3'),
 );
 
 $empresas[] = array(
@@ -69,6 +73,7 @@ $empresas[] = array(
     'plano' => false,
     'comentarios' => array('Bruno Gianelli' => 'Melhor pizzaria de Sorocaba! Peço sempre lá', 'Daniel Castilho' => 'A pizza de gorgonzola é show! Recomendo!!!'),
     'produtos' => array('pizza' => 'Pizzas', 'pizza doce' => 'Pizzas doces', 'refrigerante' => 'Refrigerantes', 'massa' => 'Massas', 'batata' => 'Batatas'),
+    'concorrentes' => array('2'),
 );
 
 $empresas[] = array(
@@ -78,8 +83,10 @@ $empresas[] = array(
     'feedback_nota' => 3,
     'forma_pagamento' => '<img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/83_mini.jpg" title="Dinheiro">',
     'comentarios_total' => 27,
+    'plano' => true,
     'comentarios' => array('Fellipe Leão' => 'Peço sempre nesse lugar, muito boa a marmita!', 'Marcel Popolim' => 'A marmita de sexta é sucesso! Recomendo!!!'),
     'produtos' => array('lanche' => 'Lanches', 'marmita' => 'Marmitas', 'refrigerante' => 'Refrigerantes', 'suco' => 'Sucos'),
+    'concorrentes' => array('5'),
 );
 
 $empresas[] = array(
@@ -92,7 +99,7 @@ $empresas[] = array(
     'plano' => true,
     'comentarios' => array('Jacinto Pereira' => 'A marmita chega quentinha e na hora que a gente pede!', 'Clodoaldo de Souza' => 'Melhor dia é de sexta, pode pedir que boa!'),
     'produtos' => array('marmita' => 'Marmitas', 'refrigerante' => 'Refrigerantes', 'suco' => 'Sucos', 'sobremesa' => 'Sobremesas'),
-    'comparacao' => array('4'),
+    'concorrentes' => array('4'),
 );
 
 $tipo_produto = array('' => 'Todos');
@@ -101,17 +108,9 @@ foreach ($empresas as $empresa) {
 }
 ?>
 
-<?php $resultado = '
-<div class="row-fluid" style="background-color:white;opacity:1 !important;">
-    <h3 class="header" style="color:grey">Veja seu principal concorrente nesta categoria
-        <span class="header-line"></span> 
-    </h3>
-</div>';
-?>
-
 <div class="shout-box">
     <div class="shout-text">
-        <h1>Veja nossos parceiros em <?php echo $label_cidade; ?>!</h1>
+        <h1>Veja os restaurantes em <?php echo $label_cidade; ?>!</h1>
     </div>
 </div> 
 
@@ -146,10 +145,30 @@ foreach ($empresas as $empresa) {
                     </tr>
                     <tr>
                         <td>Produtos</td>
+                        <?php
+                        $resultado = '
+                                <div class="row-fluid" style="width:400px;height:200px;background-color:white;border: 1px solid black;opacity:1 !important;">
+                                    <h3 style="color:black;">Principais concorrentes:</h3>
+                                    <span class="header-line"></span>' .
+                                '<img src=' . $empresas[$empresa['concorrentes'][0]]['img'] . ' />' .
+                                '</div>';
+                        ?>
                         <td>
                             <?php foreach ($empresa['produtos'] as $produto) { ?>
                                 <strong class='produto' title='<?php echo $resultado; ?>' style='cursor: pointer'><?php echo ucfirst(strtolower($produto)); ?></strong>
-                            <?php } ?>
+    <?php } ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Possui plano de entrega?</td>
+                        <td>
+                            <?php
+                            if ($empresa['plano']) {
+                                echo 'Sim <a href="">clique aqui para visualizar</a>';
+                            } else {
+                                echo 'Não';
+                            }
+                            ?>
                         </td>
                     </tr>
                     <tr>
@@ -164,7 +183,7 @@ foreach ($empresas as $empresa) {
                             <?php } ?>
                             <?php for ($i = 0; $i < (5 - $empresa['feedback_nota']); $i++) { ?>
                                 <img src='http://www.gourmex.com/images/icons/estrelavazia.png' />
-                            <?php } ?>
+    <?php } ?>
                         </td>
                     </tr>
                     <tr>
@@ -172,21 +191,21 @@ foreach ($empresas as $empresa) {
                         <td class='comentario_container'>
                             <?php foreach ($empresa['comentarios'] as $usuario => $comentario) { ?>
                                 <div class='comentario' style="display:none"><i>"<?php echo $comentario; ?></i>"<br><div style='float:right'> - <?php echo $usuario; ?> </div></div>
-                            <?php } ?>
+    <?php } ?>
                         </td>
                     </tr>
                     <tr>
-                        <td style='text-align:center;' colspan="2"><?php echo CHtml::button("Pedir neste restaurante", array('title' => "Pedir", 'style' => 'margin:auto', 'onclick' => 'js:verificaCep();', 'class' => 'btn')); ?></td>
+                        <td style='text-align:center;' colspan="2"><?php echo CHtml::button("Visualizar promoções", array('title' => "Visualizar promoções", 'style' => 'margin:auto', 'onclick' => 'js:verificaCep();', 'class' => 'btn')); ?></td>
                     </tr>
                 </tbody>
             </table>
             <div class='produto_hidden'>
                 <?php foreach ($empresa['produtos'] as $key_produto => $produto) { ?>
                     <input type='hidden' value='<?php echo $key_produto; ?>' />
-                <?php } ?>
+    <?php } ?>
             </div>
         </div>
-        <?php if ($key % 2 != 0) { ?>
+    <?php if ($key % 2 != 0) { ?>
         </div>
     <?php } ?>
 <?php } ?>
@@ -201,13 +220,13 @@ foreach ($empresas as $empresa) {
 <div class="row-fluid">
     <div class="span9 comentario_container">
         <?php foreach ($empresas as $key => $empresa) { ?>
-            <?php foreach ($empresa['comentarios'] as $usuario => $comentario) { ?>
+    <?php foreach ($empresa['comentarios'] as $usuario => $comentario) { ?>
                 <blockquote class='comentario' style='display:none;'>
                     <h2 ><?php echo $comentario; ?></h2>
                     <small><?php echo $usuario; ?></small>
                 </blockquote>
             <?php } ?>
-        <?php } ?>
+<?php } ?>
     </div>
 </div>
 
@@ -250,14 +269,57 @@ foreach ($empresas as $empresa) {
         if (procura != '') {
             $.each($('.nome_hidden'), function(i, val) {
                 var cont = 0;
-                if ($(val).val().match('/'+procura+'.*/')) {
+                if ($(val).val().indexOf(caracteres_especias(procura)) >= 0) {
                     cont++;
                 }
                 if (cont == 0)
                     $(val).parent().hide();
             });
         }
+        var procura = $("#produto_busca").val();
+        if ($("#produto_busca").val() != '') {
+            $.each($('.produto_hidden'), function(i, val) {
+                var cont = 0;
+                $.each($(val).find('input:hidden'), function(i, el) {
+                    if ($(el).val() == procura) {
+                        cont++;
+                    }
+                });
+                if (cont == 0)
+                    $(val).parent().hide();
+            });
+        }
     }
+
+    $('#buscar_nome').keyup(function(event) {
+        if (event.keyCode == '13') {
+            buscarNome();
+        }
+        return false;
+    });
+
+    function caracteres_especias(string) {
+        for (i = 0; i < string.length; i++) {
+            string = string.replace('/[`~!@#$%^&*()_|+\-=?;:",.<>\{\}\[\]\\\/]', '');
+            string = string.replace(' ', '_');
+        }
+        return removeAcento(string.toLowerCase());
+    }
+
+    function removeAcento(strToReplace) {
+        str_acento = "áàãâäéèêëíìîïóòõôöúùûüçÁÀÃÂÄÉÈÊËÍÌÎÏÓÒÕÖÔÚÙÛÜÇ";
+        str_sem_acento = "aaaaaeeeeiiiiooooouuuucAAAAAEEEEIIIIOOOOOUUUUC";
+        var nova = "";
+        for (var i = 0; i < strToReplace.length; i++) {
+            if (str_acento.indexOf(strToReplace.charAt(i)) != -1) {
+                nova += str_sem_acento.substr(str_acento.search(strToReplace.substr(i, 1)), 1);
+            } else {
+                nova += strToReplace.substr(i, 1);
+            }
+        }
+        return nova;
+    }
+
 </script>
 
 <?php

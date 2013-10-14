@@ -136,9 +136,9 @@ $cidades = array(
     <div class="span3">
         <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/customers/tokio.jpg" alt="Tokio" />
     </div>
-<!--    <div class="span3">
-        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/customers/photodune.png" alt="Photodune" />
-    </div>-->
+    <!--    <div class="span3">
+            <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/customers/photodune.png" alt="Photodune" />
+        </div>-->
 
 </div><!--/row-fluid-->
 
@@ -185,6 +185,13 @@ $cidades = array(
             }
         }
     }
+
+    $('#cep').keyup(function(event) {
+        if (event.keyCode == '13') {
+            verificaCep();
+        }
+        return false;
+    });
 
     function caracteres_especias(string) {
         for (i = 0; i < string.length; i++) {
