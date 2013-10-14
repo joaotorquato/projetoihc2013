@@ -1,3 +1,16 @@
+<?php
+$cidades = array(
+    'sorocaba' => 'Sorocaba',
+    'osasco' => 'Osasco',
+    'riberao_preto' => 'Riberão Preto',
+    'sao_paulo' => 'São Paulo',
+    'sao_carlos' => 'São Carlos',
+    'jundiai' => 'Jundiaí',
+    'campinas' => 'Campinas',
+    'guaira' => 'Guaíra',
+    'amparo' => 'Amparo',
+);
+?>
 
 <div class="shout-box">
     <div class="shout-text">
@@ -14,8 +27,33 @@
             <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/slider/flickr/s17.jpg" data-thumb="<?php echo Yii::app()->theme->baseUrl; ?>/img/slider/flickr/s11.jpg" alt="" title="" />
         </div>
     </div>
-
 </div> <!-- /slider -->
+
+<h2 class="header">Procure por seu cep!
+    <span class="header-line"></span> 
+</h2>
+
+<img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/loading.gif" id='loading' style='display:none;' />
+<div id="procurar_cep">
+    <h4>Informe seu CEP e veja todas as novidades de sua cidade!</h4>
+    <?php echo CHtml::textField('cep', '', array('id' => 'cep')); ?>
+    <?php echo CHtml::button("Procurar CEP", array('title' => "Procurar CEP", 'style' => 'margin-left:10px;margin-top:-8px;', 'onclick' => 'js:verificaCep();', 'class' => 'btn')); ?>
+</div>
+
+<div id="result_cep" style='display:none'><h2>Infelizemente não encontramos a sua cidade. Será que você digitou certo? Se sim, selecione abaixo uma de nossas cidades.</h2></div>
+
+<h3 class="header">Cidades em que atuamos
+    <span class="header-line"></span> 
+</h3>
+
+<div style="margin: auto;width: 100%;">
+    <?php
+    foreach ($cidades as $key => $cidade) {
+        echo '<a href="' . Yii::app()->homeUrl . '?r=site/page&view=ofertas&cidade=' . $key . '" style="float:left;min-width:190px;text-align:center;"><h3><strong>' . $cidade . '</strong></h3></a>';
+    }
+    ?>
+</div>
+<div style="clear:both;"></div>
 
 <h2 class="header">Veja como é fácil pedir!
     <span class="header-line"></span> 
@@ -90,17 +128,17 @@
 </h3>
 <div class="row-fluid center customers">
     <div class="span3 ">
-        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/customers/themeforest.png" alt="Themeforest" />
+        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/customers/fogao_maneiro.png" alt="Fogão mineiro" />
     </div>
     <div class="span3">
-        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/customers/codecanyon.png" alt="Codecanyon" />
+        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/customers/nerizao.png" alt="Neri lanches" />
     </div>
     <div class="span3">
-        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/customers/graphicriver.png" alt="Graphicriver" />
+        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/customers/tokio.jpg" alt="Tokio" />
     </div>
-    <div class="span3">
+<!--    <div class="span3">
         <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/customers/photodune.png" alt="Photodune" />
-    </div>
+    </div>-->
 
 </div><!--/row-fluid-->
 
@@ -113,7 +151,63 @@
             manualAdvance: false,
             controlNav: false
         });
+        $("#cep").mask("99999-999");
     });
+    function verificaCep() {
+        var cidade = '';
+        if ($('#cep').val() != '') {
+            $("#result_cep").hide();
+            $("#procurar_cep").hide();
+            $("#loading").show();
+            $.getScript('http://cep.republicavirtual.com.br/web_cep.php?formato=javascript&cep=' + $('#cep').val(), function() {
+                if (resultadoCEP['resultado']) {
+                    cidade = unescape(resultadoCEP['cidade']);
+                    $("#loading").hide();
+                    if (cidade != '') {
+                        $("#result_cep").show();
+                        $("#result_cep").html('<h2><div class="loading" style="float:left;"></div>Encontramos sua cidade! Aguarde enquanto é redirecionado.</h2>');
+                        window.location = '<?php echo Yii::app()->homeUrl . '?r=site/page&view=ofertas&cidade='; ?>' + caracteres_especias(cidade);
+                    } else {
+                        $("#procurar_cep").show();
+                        $("#result_cep").show();
+                    }
+                }
+            });
+        }
+
+    }
+
+    function sleep(milliseconds) {
+        var start = new Date().getTime();
+        for (var i = 0; i < 1e7; i++) {
+            if ((new Date().getTime() - start) > milliseconds) {
+                break;
+            }
+        }
+    }
+
+    function caracteres_especias(string) {
+        for (i = 0; i < string.length; i++) {
+            string = string.replace('/[`~!@#$%^&*()_|+\-=?;:",.<>\{\}\[\]\\\/]', '');
+            string = string.replace(' ', '_');
+        }
+        return removeAcento(string.toLowerCase());
+    }
+
+    function removeAcento(strToReplace) {
+        str_acento = "áàãâäéèêëíìîïóòõôöúùûüçÁÀÃÂÄÉÈÊËÍÌÎÏÓÒÕÖÔÚÙÛÜÇ";
+        str_sem_acento = "aaaaaeeeeiiiiooooouuuucAAAAAEEEEIIIIOOOOOUUUUC";
+        var nova = "";
+        for (var i = 0; i < strToReplace.length; i++) {
+            if (str_acento.indexOf(strToReplace.charAt(i)) != -1) {
+                nova += str_sem_acento.substr(str_acento.search(strToReplace.substr(i, 1)), 1);
+            } else {
+                nova += strToReplace.substr(i, 1);
+            }
+        }
+        return nova;
+    }
+
 </script> <!--<script type="text/javascript">
 $(document).ready(function() {
    $('#slider-nivo2').nivoSlider();

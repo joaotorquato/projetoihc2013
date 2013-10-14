@@ -2,10 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Hebo! - Responsive HTML5 Theme</title>
+    <title>Marmitao!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <meta name="author" content="Simpson Moyo - Webapplicationthemes.com">
+    <meta name="author" content="UFSCar Sorocaba">
 	
 	<?php
 	  $baseUrl = Yii::app()->theme->baseUrl; 
@@ -32,6 +32,7 @@
 	<script type="text/javascript" src="<?php echo $baseUrl;?>/js/lightbox/js/lightbox.js"></script>
     <!-- style switcher -->
     <script type="text/javascript" src="<?php echo $baseUrl;?>/js/styleswitcher.js"></script>
+    <script type="text/javascript" src="<?php echo $baseUrl;?>/js/jquery.maskedinput.min.js"></script>
     
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -41,7 +42,7 @@
     
 
     <!-- The fav and touch icons -->
-    <link rel="shortcut icon" href="<?php echo $baseUrl;?>/img/ico/favicon.ico">
+    <link rel="shortcut icon" href="<?php echo $baseUrl;?>/img/ico/favicon.png">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo $baseUrl;?>/img/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo $baseUrl;?>/img/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo $baseUrl;?>/img/ico/apple-touch-icon-72-precomposed.png">
