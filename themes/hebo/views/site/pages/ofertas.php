@@ -29,7 +29,23 @@ $empresas[] = array(
     'comentarios' => array('Almir Kazunari' => 'Achei muito bom o serviço, nota dez!', 'Fernando Villas Boas' => 'Atendimento bom, pede o lanche e já chega, demais!'),
     'produtos' => array('lanche' => 'Lanches', 'marmita' => 'Marmitas', 'refrigerante' => 'Refrigerantes', 'suco' => 'sucos', 'porcao' => 'Porcões', 'sobremesa' => 'Sobremesas'),
     'concorrentes' => array('1', '5'),
-    'concorrentes_lanche' => array('Dogão' => '5,90'),
+    'comparacao' => array(
+        'lanche' => array(
+            'produto' => 'Bauru',
+            'casa_preco' => 'R$12,50',
+            'concorrente' => 'R$13,50',
+        ),
+        'lanche' => array(
+            'produto' => 'x-egg',
+            'casa_preco' => 'R$10,50',
+            'concorrente' => 'R$8,50',
+        ),
+        'suco' => array(
+            'produto' => 'Vitamina',
+            'casa_preco' => 'R$7,00',
+            'concorrente' => 'R$7,20',
+        ),
+    )
 );
 
 $empresas[] = array(
@@ -100,6 +116,18 @@ $empresas[] = array(
     'comentarios' => array('Jacinto Pereira' => 'A marmita chega quentinha e na hora que a gente pede!', 'Clodoaldo de Souza' => 'Melhor dia é de sexta, pode pedir que boa!'),
     'produtos' => array('marmita' => 'Marmitas', 'refrigerante' => 'Refrigerantes', 'suco' => 'Sucos', 'sobremesa' => 'Sobremesas'),
     'concorrentes' => array('4'),
+    'comparacao' => array(
+        'lanche' => array(
+            'produto' => 'Bauru',
+            'casa_preco' => 'R$12,50',
+            'concorrente' => 'R$13,50',
+        ),
+        'lanche' => array(
+            'produto' => 'x-egg',
+            'casa_preco' => 'R$10,50',
+            'concorrente' => 'R$8,50',
+        ),
+    )
 );
 
 $tipo_produto = array('' => 'Todos');
@@ -143,20 +171,45 @@ foreach ($empresas as $empresa) {
                         <td><img src='http://www.gourmex.com/images/icons/horarioatendimento.png' />Horário de funcionamento</td>
                         <td><?php echo $empresa['horario_funcionamento']; ?></td>
                     </tr>
-                    <tr>
+                    <tr id="produto_tr<?php echo $key; ?>">
                         <td>Produtos</td>
-                        <?php
-                        $resultado = '
-                                <div class="row-fluid" style="width:400px;height:200px;background-color:white;border: 1px solid black;opacity:1 !important;">
-                                    <h3 style="color:black;">Principais concorrentes:</h3>
-                                    <span class="header-line"></span>' .
-                                '<img src=' . $empresas[$empresa['concorrentes'][0]]['img'] . ' />' .
-                                '</div>';
-                        ?>
                         <td>
                             <?php foreach ($empresa['produtos'] as $produto) { ?>
-                                <strong class='produto' title='<?php echo $resultado; ?>' style='cursor: pointer'><?php echo ucfirst(strtolower($produto)); ?></strong>
-    <?php } ?>
+                                <strong class='produto' onclick="exibir_concorrente('<?php echo $produto; ?>',<?php echo $key; ?>);" title='Clique para comparar com a concorrência' style='cursor: pointer'><?php echo ucfirst(strtolower($produto)); ?></strong>
+                            <?php } ?>
+                        </td>
+                    </tr>
+                    <tr class="concorrencia_tr<?php echo $key; ?>" style='display:none;'>
+                        <td colspan="2" style='width:100%;'>
+                            <label style='float:left;' id='produto_title<?php echo $key; ?>'></label>
+                            <div style='float: right'><a href="javascript:fechar_concorrencia(<?php echo $key; ?>)">fechar</a></div>
+                            <div style='clear:both'></div>
+                            <div>
+                                <h5 class="header"><?php echo $empresas[$empresa['concorrentes'][0]]['nome']; ?>
+                                    <img height="30" src="<?php echo $empresas[$empresa['concorrentes'][0]]['img']; ?>" alt="<?php echo $empresas[$empresa['concorrentes'][0]]['nome']; ?>" style='float:right' width="100" height="67"/> 
+                                    <span class="header-line"></span> 
+                                </h5>
+                            </div>
+                            <?php if (isset($empresa['comparacao'])) { ?>
+                                <table class="table table-striped table-bordered table-hover" >
+                                    <thead>
+                                        <tr>
+                                            <th style='background-color: #0088CC'>Produto</th>
+                                            <th style='background-color: #0088CC'>Casa</th>
+                                            <th style='background-color: #0088CC'>Concorrente</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach ($empresa['comparacao'] as $key_p => $produto) { ?>
+                                            <tr class='<?php echo $key_p; ?> lista' style=''>
+                                                <td><?php echo $produto['produto']; ?></td>
+                                                <td><?php echo $produto['casa_preco']; ?></td>
+                                                <td><?php echo $produto['concorrente']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
+                            <?php } ?>
                         </td>
                     </tr>
                     <tr>
@@ -183,7 +236,7 @@ foreach ($empresas as $empresa) {
                             <?php } ?>
                             <?php for ($i = 0; $i < (5 - $empresa['feedback_nota']); $i++) { ?>
                                 <img src='http://www.gourmex.com/images/icons/estrelavazia.png' />
-    <?php } ?>
+                            <?php } ?>
                         </td>
                     </tr>
                     <tr>
@@ -191,7 +244,7 @@ foreach ($empresas as $empresa) {
                         <td class='comentario_container'>
                             <?php foreach ($empresa['comentarios'] as $usuario => $comentario) { ?>
                                 <div class='comentario' style="display:none"><i>"<?php echo $comentario; ?></i>"<br><div style='float:right'> - <?php echo $usuario; ?> </div></div>
-    <?php } ?>
+                            <?php } ?>
                         </td>
                     </tr>
                     <tr>
@@ -202,10 +255,10 @@ foreach ($empresas as $empresa) {
             <div class='produto_hidden'>
                 <?php foreach ($empresa['produtos'] as $key_produto => $produto) { ?>
                     <input type='hidden' value='<?php echo $key_produto; ?>' />
-    <?php } ?>
+                <?php } ?>
             </div>
         </div>
-    <?php if ($key % 2 != 0) { ?>
+        <?php if ($key % 2 != 0) { ?>
         </div>
     <?php } ?>
 <?php } ?>
@@ -220,13 +273,13 @@ foreach ($empresas as $empresa) {
 <div class="row-fluid">
     <div class="span9 comentario_container">
         <?php foreach ($empresas as $key => $empresa) { ?>
-    <?php foreach ($empresa['comentarios'] as $usuario => $comentario) { ?>
+            <?php foreach ($empresa['comentarios'] as $usuario => $comentario) { ?>
                 <blockquote class='comentario' style='display:none;'>
                     <h2 ><?php echo $comentario; ?></h2>
-                    <small><?php echo $usuario; ?></small>
+                    <small><?php echo $usuario; ?> sobre <strong><?php echo $empresa['nome']; ?></strong></small>
                 </blockquote>
             <?php } ?>
-<?php } ?>
+        <?php } ?>
     </div>
 </div>
 
@@ -262,6 +315,15 @@ foreach ($empresas as $empresa) {
         });
         $('.produto').tooltip();
     });
+
+    function exibir_concorrente(produto, id) {
+        $(".concorrencia_tr" + id).show();
+        $("#produto_title" + id).html("Principal concorrente em " + produto + ":");
+    }
+
+    function fechar_concorrencia(id) {
+        $(".concorrencia_tr" + id).hide();
+    }
 
     function buscarNome() {
         $('.produto_hidden').parent().show();
