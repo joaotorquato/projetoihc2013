@@ -1,4 +1,4 @@
-   
+
 <div class="page-header">
     <h1>Nossos planos <small> escolha a melhor opção para você.</small></h1>
 </div>
@@ -14,7 +14,7 @@
         <dd>Entrega a partir do <strong>meio dia</strong></dd>
         <dd>Valor para tamanho <strong>médio</strong></dd>
         <dd>Não acompanha <strong>sobremesa</strong></dd>
-        <dd><a class="btn btn-success" href="#"><i class="icon-ok icon-white"></i>  Visualizar restaurantes</a></dd>
+        <dd><a class="btn btn-success" href="<?php echo Yii::app()->homeUrl . '?r=site/page&view=planoDiario'; ?>"><i class="icon-ok icon-white"></i>  Visualizar restaurantes</a></dd>
     </dl>    
     <dl class="plan most-popular">
         <dt>Semanal</dt>
@@ -26,7 +26,7 @@
         <dd>Entrega a partir do <strong>meio dia</strong></dd>
         <dd>Valor para tamanho <strong>médio</strong></dd>
         <dd>Não acompanha <strong>sobremesa</strong></dd>
-        <dd><a class="btn btn-warning" href="#"><i class="icon-ok icon-white"></i>  Visualizar restaurantes</a></dd>
+        <dd><a class="btn btn-warning" href="<?php echo Yii::app()->homeUrl . '?r=site/page&view=planoSemanal'; ?>"><i class="icon-ok icon-white"></i>  Visualizar restaurantes</a></dd>
     </dl>
     <dl class="plan">
         <dt>Mensal</dt>
@@ -38,7 +38,7 @@
         <dd>Entrega no <strong>horário definido</strong></dd>
         <dd>Valor para tamanho <strong>médio</strong></dd>
         <dd>Acompanha <strong>sobremesa</strong></dd>
-        <dd><a class="btn btn-info" href="#"><i class="icon-ok icon-white"></i>  Visualizar restaurantes</a></dd>
+        <dd><a class="btn btn-info" href="<?php echo Yii::app()->homeUrl . '?r=site/page&view=planoMensal'; ?>"><i class="icon-ok icon-white"></i>  Visualizar restaurantes</a></dd>
         <?php // echo CHtml::button("Assinar", array('title' => "Assinar", 'style' => 'margin-left:10px;margin-top:-8px;', 'onclick' => 'js:assinarPlano();', 'class' => 'btn btn-info')); ?>
     </dl>
 </div>
