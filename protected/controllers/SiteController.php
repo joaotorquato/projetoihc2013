@@ -104,4 +104,19 @@ class SiteController extends Controller {
         $this->renderPartial('index', array('data' => 'Ur-data'), false, true);
     }
 
+    public function actionSession() {
+        $plano = $_POST['plano'];
+        $nome = $_POST['nome'];
+        $valor = $_POST['valor'];
+        $tipo = $_POST['tipo'];
+        
+        $descricao = 'Plano ' . $tipo . ' (tamanho ' . ucfirst($plano) . '): ' . $nome;
+        
+        Yii::app()->session['descricao'] = $descricao;
+        Yii::app()->session['valor_total'] = $valor;
+        
+        echo true;
+//        $this->renderPartial('index');
+        exit;
+    }
 }

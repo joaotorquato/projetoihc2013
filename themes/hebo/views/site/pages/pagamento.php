@@ -98,109 +98,21 @@ foreach ($empresas as $empresa) {
 }
 ?>
 
-<div class="shout-box">
-    <div class="shout-text">
-        <h1>Plano Semanal - Veja os restaurantes em <?php echo $label_cidade; ?>!</h1>
-    </div>
-</div> 
-
-<div style='height: 10px;'></div>
-<div id="container_busca" style='text-align:center;'>
-    <?php echo CHtml::textField('buscar_nome', '', array('id' => 'buscar_nome', 'style' => 'width:50%')); ?>
-    
-    <?php echo CHtml::button("Buscar", array('title' => "Buscar", 'style' => 'margin-left:10px;margin-top:-8px;', 'onclick' => 'js:buscarNome();', 'class' => 'btn')); ?>
-</div>
-
-<?php foreach ($empresas as $key => $empresa) { ?>
-    <?php if ($key % 2 == 0) { ?>
-        <div class="row-fluid">
-        <?php } ?>
-        <div class="span6">
-            <input type='hidden' class='nome_hidden' value="<?php echo limpar_nome($empresa['nome']); ?>" />
-            <h2 class="header"> <?php echo $empresa['nome']; ?>
-                <img src="<?php echo $empresa['img']; ?>" alt="<?php echo $empresa['nome']; ?>" style='float:right' width="100" height="67"/> 
+    <div class="row-fluid">
+        <div class="span8">
+            <h2 class="header"> Descrição
                 <span class="header-line"></span> 
             </h2>
-            <table class="table table-striped table-bordered table-hover" style='height: 320px;'>
-                <thead>
-                    <tr>
-                        <th>Informações</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><img src='http://www.gourmex.com/images/icons/horarioatendimento.png' />Horário de funcionamento</td>
-                        <td><?php echo $empresa['horario_funcionamento']; ?></td>
-                    </tr>
-                    <tr>
-                        <td>Formas de pagamento</td>
-                        <td><?php echo $empresa['forma_pagamento']; ?></td>
-                    </tr>
-                    <tr>
-                        <td>Nota dos usuários</td>
-                        <td>
-                            <?php for ($i = 0; $i < $empresa['feedback_nota']; $i++) { ?>
-                                <img src='http://www.gourmex.com/images/icons/estrela.png' />
-                            <?php } ?>
-                            <?php for ($i = 0; $i < (5 - $empresa['feedback_nota']); $i++) { ?>
-                                <img src='http://www.gourmex.com/images/icons/estrelavazia.png' />
-                            <?php } ?>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Comentários de usuários(<?php echo $empresa['comentarios_total']; ?>)</td>
-                        <td class='comentario_container'>
-                            <?php foreach ($empresa['comentarios'] as $usuario => $comentario) { ?>
-                                <div class='comentario' style="display:none"><i>"<?php echo $comentario; ?></i>"<br><div style='float:right'> - <?php echo $usuario; ?> </div></div>
-                            <?php } ?>
-                        </td>
-                    </tr>
-                    <tr id="produto_tr<?php echo $key; ?>">
-                        <td>Plano x tamanho da marmita</td>
-                        <td>
-                            <?php $count = 0; ?>
-                            <?php foreach ($empresa['tamanho_marmita'] as $kt => $tamanho) { ?>
-                                <input type="radio" name="tamanho_<?php echo $key;?>" value="<?php echo $kt; ?>" <?php if($count == 0){ ?>checked="checked"<?php } ?>/><strong class='produto'><?php echo ucfirst($tamanho); ?></strong><br/>
-                            <?php $count++; ?>
-                            <?php } ?>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style='text-align:center;' colspan="2"><?php echo CHtml::button("Contratar Plano", array('title' => "Contratar Plano", 'style' => 'margin:auto;', 'onclick' => 'js:confirmar(' . $key . ', "' . $empresa['nome'] . '", "' . $empresa['tamanho_valor'][$kt] . '");', 'class' => 'btn btn-success')); ?></td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class='produto_hidden'>
-                <?php foreach ($empresa['produtos'] as $key_produto => $produto) { ?>
-                    <input type='hidden' value='<?php echo $key_produto; ?>' />
-                <?php } ?>
-            </div>
         </div>
-        <?php if ($key % 2 != 0) { ?>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span2">
+            <h2 class="header"> Valor Total
+                <span class="header-line"></span> 
+            </h2>
         </div>
-    <?php } ?>
-<?php } ?>
-<?php if (count($empresas) % 2 != 0) { ?>
     </div>
-<?php } ?>
-
-<h3 class="header">Últimas opiniões
-    <span class="header-line"></span>  
-</h3>
-
-<div class="row-fluid">
-    <div class="span9 comentario_container">
-        <?php foreach ($empresas as $key => $empresa) { ?>
-            <?php foreach ($empresa['comentarios'] as $usuario => $comentario) { ?>
-                <blockquote class='comentario' style='display:none;'>
-                    <h2 ><?php echo $comentario; ?></h2>
-                    <small><?php echo $usuario; ?> sobre <strong><?php echo $empresa['nome']; ?></strong></small>
-                </blockquote>
-            <?php } ?>
-        <?php } ?>
-    </div>
-</div>
 
 <script type="text/javascript">
     $(document).ready(function() {
@@ -287,49 +199,9 @@ foreach ($empresas as $empresa) {
         }
         return nova;
     }
-    
-    function confirmar(id, nome, valor){
-        var plano = $('input[name="tamanho_'+id+'"]:checked').val();
-        
-        $.ajax({
-            url: '<?php echo Yii::app()->homeUrl . '?r=site/session'; ?>',
-            type: 'post',
-            data: {
-                nome: nome,
-                valor: valor,
-                plano: plano,
-                tipo: 'Semanal'
-            },
-            success: function(data) {
-                if(data)
-                    window.location = '<?php echo Yii::app()->homeUrl . '?r=site/page&view=pagamento'; ?>';
-                else
-                    alert('Ocorreu algum erro na escolha do plano, por favor tente novamente.');
-            }
-	});
-    }
 
 </script>
 
 <?php
 
-function limpar_nome($realname, $strip_spaces = true, $tolower = true) {
-    $bad_chars = array("'", "\\", ' ', '/', ':', '*', '?', '"', '<', '>', '|');
-    $realname = preg_replace('/[àáâãåäæ]/iu', 'a', $realname);
-    $realname = preg_replace('/[èéêë]/iu', 'e', $realname);
-    $realname = preg_replace('/[ìíîï]/iu', 'i', $realname);
-    $realname = preg_replace('/[òóôõöø]/iu', 'o', $realname);
-    $realname = preg_replace('/[ùúûü]/iu', 'u', $realname);
-    $realname = preg_replace('/[ç]/iu', 'c', $realname);
-    $realname = rawurlencode(str_replace($bad_chars, '_', $realname));
-    $realname = preg_replace("/%(\w{2})/", '_', $realname);
-    while (strpos($realname, '__') !== false) {
-        $realname = str_replace("__", "_", $realname);
-    }
-    if ($strip_spaces === false) {
-        $realname = str_replace('_', ' ', $realname);
-    }
-
-    return ($tolower === true) ? strtolower($realname) : $realname;
-}
 ?>

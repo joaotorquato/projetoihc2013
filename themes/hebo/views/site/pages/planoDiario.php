@@ -29,6 +29,7 @@ $empresas[] = array(
     'comentarios' => array('Almir Kazunari' => 'Achei muito bom o serviço, nota dez!', 'Fernando Villas Boas' => 'Atendimento bom, pede o lanche e já chega, demais!'),
     'produtos' => array('lanche' => 'Lanches', 'marmita' => 'Marmitas', 'refrigerante' => 'Refrigerantes', 'suco' => 'sucos', 'porcao' => 'Porcões', 'sobremesa' => 'Sobremesas'),
     'tamanho_marmita' => array('m' => 'Média - R$ 10,00', 'g' => 'Grande - R$ 11,50'),
+    'tamanho_valor' => array('m' => '10,00', 'g' => '11,50'),
     'concorrentes' => array('1', '5'),
     'comparacao' => array(
         'lanche' => array(
@@ -60,6 +61,7 @@ $empresas[] = array(
     'comentarios' => array('Fellipe Leão' => 'Peço sempre nesse lugar, muito boa a marmita!', 'Marcel Popolim' => 'A marmita de sexta é sucesso! Recomendo!!!'),
     'produtos' => array('lanche' => 'Lanches', 'marmita' => 'Marmitas', 'refrigerante' => 'Refrigerantes', 'suco' => 'Sucos'),
     'tamanho_marmita' => array('m' => 'Média - R$ 11,00'),
+    'tamanho_valor' => array('m' => '11,00'),
     'concorrentes' => array('5'),
 );
 
@@ -74,6 +76,7 @@ $empresas[] = array(
     'comentarios' => array('Jacinto Pereira' => 'A marmita chega quentinha e na hora que a gente pede!', 'Clodoaldo de Souza' => 'Melhor dia é de sexta, pode pedir que boa!'),
     'produtos' => array('marmita' => 'Marmitas', 'refrigerante' => 'Refrigerantes', 'suco' => 'Sucos', 'sobremesa' => 'Sobremesas'),
     'tamanho_marmita' => array('m' => 'Média - R$ 12,50', 'g' => 'Grande - R$ 13,50'),
+    'tamanho_valor' => array('m' => '12,50', 'g' => '13,50'),
     'concorrentes' => array('4'),
     'comparacao' => array(
         'lanche' => array(
@@ -157,14 +160,14 @@ foreach ($empresas as $empresa) {
                         <td>Plano x tamanho da marmita</td>
                         <td>
                             <?php $count = 0; ?>
-                            <?php foreach ($empresa['tamanho_marmita'] as $tamanho) { ?>
-                                <input type="radio" name="tamanho_<?php echo $key?>" <?php if($count == 0){ ?>checked="checked"<?php } ?>/><strong class='produto'><?php echo ucfirst($tamanho); ?></strong><br/>
+                            <?php foreach ($empresa['tamanho_marmita'] as $kt => $tamanho) { ?>
+                                <input type="radio" name="tamanho_<?php echo $key;?>" value="<?php echo $kt; ?>" <?php if($count == 0){ ?>checked="checked"<?php } ?>/><strong class='produto'><?php echo ucfirst($tamanho); ?></strong><br/>
                             <?php $count++; ?>
                             <?php } ?>
                         </td>
                     </tr>
                     <tr>
-                        <td style='text-align:center;' colspan="2"><?php echo CHtml::button("Contratar Plano", array('title' => "Contratar Plano", 'style' => 'margin:auto;', 'onclick' => 'js:verificaCep();', 'class' => 'btn btn-success')); ?></td>
+                        <td style='text-align:center;' colspan="2"><?php echo CHtml::button("Contratar Plano", array('title' => "Contratar Plano", 'style' => 'margin:auto;', 'onclick' => 'js:confirmar(' . $key . ', "' . $empresa['nome'] . '", "' . $empresa['tamanho_valor'][$kt] . '");', 'class' => 'btn btn-success')); ?></td>
                     </tr>
                 </tbody>
             </table>
@@ -296,6 +299,27 @@ foreach ($empresas as $empresa) {
             }
         }
         return nova;
+    }
+    
+    function confirmar(id, nome, valor){
+        var plano = $('input[name="tamanho_'+id+'"]:checked').val();
+        
+        $.ajax({
+            url: '<?php echo Yii::app()->homeUrl . '?r=site/session'; ?>',
+            type: 'post',
+            data: {
+                nome: nome,
+                valor: valor,
+                plano: plano,
+                tipo: 'Diário'
+            },
+            success: function(data) {
+                if(data)
+                    window.location = '<?php echo Yii::app()->homeUrl . '?r=site/page&view=pagamento'; ?>';
+                else
+                    alert('Ocorreu algum erro na escolha do plano, por favor tente novamente.');
+            }
+	});
     }
 
 </script>
