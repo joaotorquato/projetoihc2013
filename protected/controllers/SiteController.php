@@ -105,21 +105,18 @@ class SiteController extends Controller {
     }
 
     public function actionSession() {
-        echo "Eitcha lele";
+        $plano = $_POST['plano'];
+        $nome = $_POST['nome'];
+        $valor = $_POST['valor'];
+        $tipo = $_POST['tipo'];
+        
+        $descricao = 'Plano ' . $tipo . ' (tamanho ' . ucfirst($plano) . '): ' . $nome;
+        
+        Yii::app()->session['descricao'] = $descricao;
+        Yii::app()->session['valor_total'] = $valor;
+        
+        echo true;
 //        $this->renderPartial('index');
         exit;
     }
-
-    public function accessRules() {
-        return array(
-            array('allow',
-                'actions' => array('index', 'view', 'session'),
-                'users' => array('*'),
-            ),
-            array('deny',
-                'users' => array('*'),
-            ),
-        );
-    }
-
 }

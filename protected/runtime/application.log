@@ -959,3 +959,77 @@ Stack trace:
 REQUEST_URI=/projetoihc2013/index.php?r=site/page&view=restaurante&id=0
 in /var/www/projetoihc2013/themes/hebo/views/site/pages/restaurante.php (182)
 in /var/www/projetoihc2013/index.php (13)
+2013/11/11 03:12:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "nomeaction".' in C:\xampp\htdocs\yii_1.4\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\yii_1.4\web\CController.php(270): CController->missingAction('nomeaction')
+#1 C:\xampp\htdocs\yii_1.4\web\CWebApplication.php(282): CController->run('nomeaction')
+#2 C:\xampp\htdocs\yii_1.4\web\CWebApplication.php(141): CWebApplication->runController('site/nomeaction')
+#3 C:\xampp\htdocs\yii_1.4\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\projetoihc2013\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/projetoihc2013/index.php?r=site/nomeaction
+---
+2013/11/11 03:23:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "nomeaction".' in C:\xampp\htdocs\yii_1.4\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\yii_1.4\web\CController.php(270): CController->missingAction('nomeaction')
+#1 C:\xampp\htdocs\yii_1.4\web\CWebApplication.php(282): CController->run('nomeaction')
+#2 C:\xampp\htdocs\yii_1.4\web\CWebApplication.php(141): CWebApplication->runController('site/nomeaction')
+#3 C:\xampp\htdocs\yii_1.4\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\projetoihc2013\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/projetoihc2013/index.php?r=site/nomeaction
+---
+2013/11/11 03:24:30 [error] [php] Undefined variable: empresas (C:\xampp\htdocs\projetoihc2013\themes\hebo\views\site\pages\restaurante.php:182)
+Stack trace:
+#0 C:\xampp\htdocs\yii_1.4\web\CController.php(869): SiteController->renderFile()
+#1 C:\xampp\htdocs\yii_1.4\web\CController.php(782): SiteController->renderPartial()
+#2 C:\xampp\htdocs\yii_1.4\web\actions\CViewAction.php(140): SiteController->render()
+#3 C:\xampp\htdocs\yii_1.4\web\actions\CAction.php(76): CViewAction->run()
+#4 C:\xampp\htdocs\yii_1.4\web\CController.php(308): CViewAction->runWithParams()
+#5 C:\xampp\htdocs\yii_1.4\web\CController.php(286): SiteController->runAction()
+#6 C:\xampp\htdocs\yii_1.4\web\CController.php(265): SiteController->runActionWithFilters()
+#7 C:\xampp\htdocs\yii_1.4\web\CWebApplication.php(282): SiteController->run()
+#8 C:\xampp\htdocs\yii_1.4\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\yii_1.4\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\projetoihc2013\index.php(13): CWebApplication->run()
+REQUEST_URI=/projetoihc2013/index.php?r=site/page&view=restaurante&id=0
+in C:\xampp\htdocs\projetoihc2013\themes\hebo\views\site\pages\restaurante.php (182)
+in C:\xampp\htdocs\projetoihc2013\index.php (13)
+2013/11/11 04:26:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "actionSession".' in C:\xampp\htdocs\yii_1.4\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\yii_1.4\web\CController.php(270): CController->missingAction('actionSession')
+#1 C:\xampp\htdocs\yii_1.4\web\CWebApplication.php(282): CController->run('actionSession')
+#2 C:\xampp\htdocs\yii_1.4\web\CWebApplication.php(141): CWebApplication->runController('site/actionSess...')
+#3 C:\xampp\htdocs\yii_1.4\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\projetoihc2013\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/projetoihc2013/index.php?r=site/actionSession
+HTTP_REFERER=http://localhost/projetoihc2013/index.php?r=site/page&view=planoSemanal
+---
+2013/11/11 04:40:16 [error] [php] Undefined index: plano (C:\xampp\htdocs\projetoihc2013\protected\controllers\SiteController.php:108)
+Stack trace:
+#0 C:\xampp\htdocs\yii_1.4\web\CController.php(286): SiteController->runAction()
+#1 C:\xampp\htdocs\yii_1.4\web\CController.php(265): SiteController->runActionWithFilters()
+#2 C:\xampp\htdocs\yii_1.4\web\CWebApplication.php(282): SiteController->run()
+#3 C:\xampp\htdocs\yii_1.4\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\htdocs\yii_1.4\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\projetoihc2013\index.php(13): CWebApplication->run()
+REQUEST_URI=/projetoihc2013/index.php?r=site/session&nome=Neri+Lanches&valor=0&plano=m&tipo=Semanal
+in C:\xampp\htdocs\projetoihc2013\protected\controllers\SiteController.php (108)
+in C:\xampp\htdocs\projetoihc2013\index.php (13)
+2013/11/11 04:56:52 [error] [php] Undefined index: g (C:\xampp\htdocs\projetoihc2013\themes\hebo\views\site\pages\planoSemanal.php:170)
+Stack trace:
+#0 C:\xampp\htdocs\yii_1.4\web\CController.php(869): SiteController->renderFile()
+#1 C:\xampp\htdocs\yii_1.4\web\CController.php(782): SiteController->renderPartial()
+#2 C:\xampp\htdocs\yii_1.4\web\actions\CViewAction.php(140): SiteController->render()
+#3 C:\xampp\htdocs\yii_1.4\web\actions\CAction.php(76): CViewAction->run()
+#4 C:\xampp\htdocs\yii_1.4\web\CController.php(308): CViewAction->runWithParams()
+#5 C:\xampp\htdocs\yii_1.4\web\CController.php(286): SiteController->runAction()
+#6 C:\xampp\htdocs\yii_1.4\web\CController.php(265): SiteController->runActionWithFilters()
+#7 C:\xampp\htdocs\yii_1.4\web\CWebApplication.php(282): SiteController->run()
+#8 C:\xampp\htdocs\yii_1.4\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\yii_1.4\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\projetoihc2013\index.php(13): CWebApplication->run()
+REQUEST_URI=/projetoihc2013/index.php?r=site/page&view=planoSemanal
+in C:\xampp\htdocs\projetoihc2013\themes\hebo\views\site\pages\planoSemanal.php (170)
+in C:\xampp\htdocs\projetoihc2013\index.php (13)
