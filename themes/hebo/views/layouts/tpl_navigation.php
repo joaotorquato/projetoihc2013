@@ -50,7 +50,39 @@
 //                            array('label' => 'Sair', 'url' => array('/site/logout'), 'visible' => !Yii::app()->user->isGuest, 'linkOptions' => array("data-description" => "Bem vindo,  ". Yii::app()->user->name)),
                         ),
                     ));
+                    
+                    $carrinho[] = array(
+                        'nome' => '04 - X BURGUER CATU E OVO',
+                        'total' => 10.90,
+                        'empresa' => 'Neri Lanches',
+                    );
+                    Yii::app()->session['carrinho'] = $carrinho;
                     ?>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <?php if (isset(Yii::app()->session['carrinho']) && count(Yii::app()->session['empresas']) > 0) { ?>
+                    <div class="info_carrinho container" style="text-align: center;">
+                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/cart.png">Você possui <?php count(Yii::app()->session['empresas']) > 0 ?> item no seu carrinho. <a href="javascript:visualizar_carrinho()">Clique aqui</a> para visualizar.
+                    </div>
+                <?php } ?>
+                <div class="carrinho_container" style="margin:auto;border: 0.5px solid #0088CC;width: 50%;">
+<!--                    <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/cart32.png" /><strong>Carrinho</strong>-->
+                    <table class="table table-striped table-bordered table-hover" >
+                        <thead>
+                            <tr>
+                                <th style='background-color: #0088CC'><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/cart32.png" />Carrinho</th>
+                                <th style='background-color: #0088CC'><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/money.png" />Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <?php foreach(Yii::app()->session['carrinho'] as $item){ ?>
+                                <td colspan="2"></td>
+                                <?php } ?>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

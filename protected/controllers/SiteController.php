@@ -104,4 +104,22 @@ class SiteController extends Controller {
         $this->renderPartial('index', array('data' => 'Ur-data'), false, true);
     }
 
+    public function actionSession() {
+        echo "Eitcha lele";
+//        $this->renderPartial('index');
+        exit;
+    }
+
+    public function accessRules() {
+        return array(
+            array('allow',
+                'actions' => array('index', 'view', 'session'),
+                'users' => array('*'),
+            ),
+            array('deny',
+                'users' => array('*'),
+            ),
+        );
+    }
+
 }

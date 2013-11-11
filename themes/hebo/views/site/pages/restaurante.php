@@ -6,69 +6,82 @@ $menu = array(
     'Lanches' => array(
         '01 - X BURGUER' => array(
             'descricao' => 'Hamburguer, presunto, mussarela, tomate e maionese.',
-            'preco' => 'R$ 7,50'
+            'preco' => 7.50
         ),
         '02 - X BURGUER C/ CATU' => array(
             'descricao' => 'Hamburguer, presunto, mussarela, catupiri, tomate e maionese.',
-            'preco' => 'R$ 9,50'
+            'preco' => 9.50
         ),
         '03 - X SUGESTÃO' => array(
             'descricao' => 'Hamburguer, presunto, mussarela, catupiri, tomate e maionese.',
-            'preco' => 'R$ 12,00'
+            'preco' => 12.00
         ),
         '04 - X BURGUER CATU E OVO' => array(
             'descricao' => 'Hambúrguer, presunto, mussarela, catupiri, ovo, tomate e maionese.',
-            'preco' => 'R$ 10,50'
+            'preco' => 10.50
         ),
     ),
     'Marmitas' => array(
         'SEGUNDA FEIRA' => array(
             'descricao' => '1ª OPÇÃO: ARROZ, FEIJÃO, MACARRÃO A BOLONHESA, ALMONDEGAS<br> 2ª OPÇÃO: ARROZ, FEIJÃO, BATATAS CORADAS, BIFE ACEBOLADO<br> SALADA: ALFACE, TOMATE, PEPINO, LIMÃO',
-            'preco' => array('pequena' => 'R$ 8,00', 'média' => 'R$ 9,00', 'grande' => 'R$ 10,00')
+            'preco' => array('pequena' => 8.00, 'média' => 9.00, 'grande' => 10.00)
         ),
         'TERÇA FEIRA' => array(
             'descricao' => '1ª OPÇÃO: ARROZ, FEIJÃO, STROGONOFF DE FRANGO, BATATA PALHA<br> 2ª OPÇÃO: ARROZ, FEIJÃO, CARNE COZIDA, LEGUMES REFOGADOS<br> SALADA: ALFACE, TOMATE, CENOURA, AZEITONAS',
-            'preco' => array('pequena' => 'R$ 8,00', 'média' => 'R$ 9,00', 'grande' => 'R$ 10,00')
+            'preco' => array('pequena' => 8.00, 'média' => 9.00, 'grande' => 10.00)
         ),
         'QUARTA FEIRA' => array(
             'descricao' => '1ª OPÇÃO: ARROZ, FEIJÃO TROPEIRO, COUVE, LINGUIÇA<br> 2ª OPÇÃO: ARROZ, FEIJÃO, CHUCHU COM OVOS, BIFE ACEBOLADO<br> SALADA: ALFACE, TOMATE, BETERRABA, AZEITONAS',
-            'preco' => array('pequena' => 'R$ 8,00', 'média' => 'R$ 9,00', 'grande' => 'R$ 10,00')
+            'preco' => array('pequena' => 8.00, 'média' => 9.00, 'grande' => 10.00)
         ),
         'QUINTA FEIRA' => array(
             'descricao' => '1ª OPÇÃO: ARROZ, FEIJÃO, FRANGO, FAROFA<br> 2ª OPÇÃO: ARROZ, FEIJÃO, ABOBRINHA COM BACON, BIFE ACEBOLADO<br> SALADA: ALFACE, MAIONESE',
-            'preco' => array('pequena' => 'R$ 8,00', 'média' => 'R$ 9,00', 'grande' => 'R$ 10,00')
+            'preco' => array('pequena' => 8.00, 'média' => 9.00, 'grande' => 10.00)
         ),
         'SEXTA FEIRA' => array(
             'descricao' => '1ª OPÇÃO: ARROZ, FEIJOADA, COUVE, FAROFA<br> 2ª OPÇÃO: ARROZ, FEIJÃO, PURE DE BATATAS, BIFE ACEBOLADO<br> SALADA: ALFACE, TOMATE, CENOURA, LARANJA',
-            'preco' => array('pequena' => 'R$ 8,00', 'média' => 'R$ 9,00', 'grande' => 'R$ 10,00')
+            'preco' => array('pequena' => 8.00, 'média' => 9.00, 'grande' => 10.00)
         ),
     ),
     'Bebidas' => array(
         'Coca-cola' => array(
             'descricao' => 'Refrigerante cola.',
-            'preco' => array('lata' => 'R$ 3,00', '600 ml' => 'R$ 4.00', '1,5l' => 'R$ 5,00')
+            'preco' => array('lata' => 3.00, '600 ml' => 4.00, '1,5l' => 5.00)
         ),
         'Coca-zero' => array(
             'descricao' => 'Refrigerante cola.',
-            'preco' => array('lata' => 'R$ 3,00', '600 ml' => 'R$ 4.00', '1,5l' => 'R$ 5,00')
+            'preco' => array('lata' => 3.00, '600 ml' => 4.00, '1,5l' => 5.00)
         ),
         'Fanta' => array(
             'descricao' => 'Refrigerante de laranja.',
-            'preco' => array('lata' => 'R$ 3,00', '600 ml' => 'R$ 4.00', '1,5l' => 'R$ 5,00')
+            'preco' => array('lata' => 3.00, '600 ml' => 4.00, '1,5l' => 5.00)
         ),
         'Kuat' => array(
             'descricao' => 'Refrigerante de guaraná.',
-            'preco' => array('lata' => 'R$ 3,00', '600 ml' => 'R$ 4.00', '1,5l' => 'R$ 5,00')
+            'preco' => array('lata' => 3.00, '600 ml' => 4.00, '1,5l' => 5.00)
         ),
         'Sprite' => array(
             'descricao' => 'Refrigerante de limão.',
-            'preco' => array('lata' => 'R$ 3,00', '600 ml' => 'R$ 4.00', '1,5l' => 'R$ 5,00')
+            'preco' => array('lata' => 3.00, '600 ml' => 4.00, '1,5l' => 5.00)
         ),
     ),
 );
 
 $concorrente = array(
-    
+    '04 - X BURGUER CATU E OVO' => array(
+        'empresa' => 'Night Dog',
+        'empresa_id' => 1,
+        'produto' => '06 - X-Egg',
+        'preco' => 'R$ 10,20',
+        'feedback' => '"Muito bom o lanche!" - <strong style="font-size:10px;">Dona Antônia.</strong>'
+    ),
+    'TERÇA FEIRA' => array(
+        'empresa' => 'Bonga Delivery',
+        'empresa_id' => 4,
+        'produto' => 'Marmita de strogonoff',
+        'preco' => 'R$ 9,20',
+        'feedback' => '"Ótima marmita e muita rápida na hora de entrega" - Seu luiz.'
+    ),
 );
 ?>
 <div class="shout-box">
@@ -163,15 +176,15 @@ $concorrente = array(
                     <?php foreach ($item as $nome => $it) { ?>
                         <tr>
                             <td>
-                                <strong class='produto' onclick="exibir_concorrente('<?php echo $tipo; ?>',<?php echo $count; ?>);" title='Clique para comparar com a concorrência' style='cursor: pointer'><?php echo $nome; ?></strong>
+                                <strong class='produto' onclick="adicionar_carrrinho('<?php echo $nome; ?>', '<?php echo (is_array($it['preco']) ? array_shift(array_values($it['preco'])) : $it['preco']); ?>');" title='Clique para adicionar ao carrinho' style='cursor: pointer'><?php echo $nome; ?></strong>
                             </td>
                             <td><?php echo $it['descricao']; ?></td>
                             <td>
                                 <?php if (!is_array($it['preco'])) { ?>
-                                    <?php echo $it['preco']; ?>
+                                    <strong class='produto' onclick="exibir_concorrente('<?php echo $tipo; ?>',<?php echo $count; ?>);" title='Clique para comparar com a concorrência' style='cursor: pointer'><?php echo "R$ ". number_format($it['preco'],2,',','.'); ?></strong>
                                 <?php } else { ?>
                                     <?php foreach ($it['preco'] as $variacao => $var) { ?>
-                                        <?php echo $variacao . " - " . $var . "<br>"; ?>
+                                        <strong class='produto' onclick="exibir_concorrente('<?php echo $tipo; ?>',<?php echo $count; ?>);" title='Clique para comparar com a concorrência' style='cursor: pointer'><?php echo $variacao . " - " . "R$ ". number_format($var,2,',','.') . "<br>"; ?></strong>
                                     <?php } ?>
                                 <?php } ?>
                             </td>
@@ -181,13 +194,7 @@ $concorrente = array(
                                 <label style='float:left;' id='produto_title<?php echo $count; ?>'></label>
                                 <div style='float: right'><a href="javascript:fechar_concorrencia(<?php echo $count; ?>)">fechar</a></div>
                                 <div style='clear:both'></div>
-                                <?php if (isset($empresa['comparacao'])) { ?>
-                                    <div>
-                                        <h5 class="header"><?php echo Yii::app()->session['empresas'][$empresa['concorrentes'][0]]['nome']; ?>
-                                            <img height="30" src="<?php echo Yii::app()->session['empresas'][$empresa['concorrentes'][0]]['img']; ?>" alt="<?php echo Yii::app()->session['empresas'][$empresa['concorrentes'][0]]['nome']; ?>" style='float:right' width="100" height="67"/> 
-                                            <span class="header-line"></span> 
-                                        </h5>
-                                    </div>
+                                <?php if (isset($concorrente[$nome])) { ?>
                                     <table class="table table-striped table-bordered table-hover" >
                                         <thead>
                                             <tr>
@@ -197,28 +204,31 @@ $concorrente = array(
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php foreach ($empresa['comparacao'] as $key_p => $produto) { ?>
-                                                <tr class='<?php echo $key_p; ?> lista' style='display:none;'>
-                                                    <td><?php echo $produto['produto']; ?></td>
-                                                    <td><?php echo $produto['casa_preco']; ?></td>
-                                                    <td><?php echo $produto['concorrente']; ?></td>
-                                                </tr>
-                                            <?php } ?>
+                                            <tr>
+                                                <td><?php echo $concorrente[$nome]['empresa']; ?><?php echo CHtml::button("Comprar da concorrência", array('title' => "Comprar da concorrência", 'style' => 'margin-left:5px;', 'onclick' => 'js:redirecionarRestaurante(' . $concorrente[$nome]['empresa_id'] . ');', 'class' => 'btn btn-success')); ?></td>
+                                                <td><?php echo $concorrente[$nome]['produto']; ?></td>
+                                                <td><?php echo $concorrente[$nome]['preco']; ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">
+                                                    <strong>Último feedback: </strong><?php echo $concorrente[$nome]['feedback']; ?>
+                                                </td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 <?php } else { ?>
                                     <div>
-                                        <h5 class="header">Este restaurante não possui concorrente neste produto.
+                                        <h5 class="header">Este não possui concorrente direto.
                                             <span class="header-line"></span> 
                                         </h5>
                                     </div>
                                 <?php } ?>
                             </td>
                         </tr>
+                        <?php $count++; ?>
                     <?php } ?>
                 </tbody>
             </table>
-            <?php $count++; ?>
         <?php } ?>
         <!--</div>-->
     </div>
@@ -240,6 +250,10 @@ $concorrente = array(
         });
         $('.produto').tooltip();
     });
+    
+    function adicionar_carrinho(nome,preco){
+        
+    }
 
     function exibir_concorrente(produto, id) {
         $(".concorrencia_tr" + id).show();
@@ -275,6 +289,11 @@ $concorrente = array(
         }
         return nova;
     }
+
+    function redirecionarRestaurante(id) {
+        window.location = '<?php echo Yii::app()->homeUrl . '?r=site/page&view=restaurante&id='; ?>' + id;
+    }
+
 
 </script>
 
