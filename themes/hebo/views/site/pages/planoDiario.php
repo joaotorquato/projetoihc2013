@@ -145,6 +145,14 @@ foreach ($empresas as $empresa) {
                             <?php } ?>
                         </td>
                     </tr>
+                    <tr>
+                        <td>Comentários de usuários(<?php echo $empresa['comentarios_total']; ?>)</td>
+                        <td class='comentario_container'>
+                            <?php foreach ($empresa['comentarios'] as $usuario => $comentario) { ?>
+                                <div class='comentario' style="display:none"><i>"<?php echo $comentario; ?></i>"<br><div style='float:right'> - <?php echo $usuario; ?> </div></div>
+                            <?php } ?>
+                        </td>
+                    </tr>
                     <tr id="produto_tr<?php echo $key; ?>">
                         <td>Plano x tamanho da marmita</td>
                         <td>
@@ -152,14 +160,6 @@ foreach ($empresas as $empresa) {
                             <?php foreach ($empresa['tamanho_marmita'] as $tamanho) { ?>
                                 <input type="radio" name="tamanho_<?php echo $key?>" <?php if($count == 0){ ?>checked="checked"<?php } ?>/><strong class='produto'><?php echo ucfirst($tamanho); ?></strong><br/>
                             <?php $count++; ?>
-                            <?php } ?>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Comentários de usuários(<?php echo $empresa['comentarios_total']; ?>)</td>
-                        <td class='comentario_container'>
-                            <?php foreach ($empresa['comentarios'] as $usuario => $comentario) { ?>
-                                <div class='comentario' style="display:none"><i>"<?php echo $comentario; ?></i>"<br><div style='float:right'> - <?php echo $usuario; ?> </div></div>
                             <?php } ?>
                         </td>
                     </tr>
