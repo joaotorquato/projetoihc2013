@@ -66,6 +66,10 @@ $menu = array(
         ),
     ),
 );
+
+$concorrente = array(
+    
+);
 ?>
 <div class="shout-box">
     <div class="shout-text">
@@ -173,23 +177,23 @@ $menu = array(
                             </td>
                         </tr>
                         <tr class="concorrencia_tr<?php echo $count; ?>" style='display:none;'>
-                            <td colspan="2" style='width:100%;'>
+                            <td colspan="3" style='width:100%;'>
                                 <label style='float:left;' id='produto_title<?php echo $count; ?>'></label>
                                 <div style='float: right'><a href="javascript:fechar_concorrencia(<?php echo $count; ?>)">fechar</a></div>
                                 <div style='clear:both'></div>
                                 <?php if (isset($empresa['comparacao'])) { ?>
                                     <div>
-                                        <h5 class="header"><?php echo $empresas[$empresa['concorrentes'][0]]['nome']; ?>
-                                            <img height="30" src="<?php echo $empresas[$empresa['concorrentes'][0]]['img']; ?>" alt="<?php echo $empresas[$empresa['concorrentes'][0]]['nome']; ?>" style='float:right' width="100" height="67"/> 
+                                        <h5 class="header"><?php echo Yii::app()->session['empresas'][$empresa['concorrentes'][0]]['nome']; ?>
+                                            <img height="30" src="<?php echo Yii::app()->session['empresas'][$empresa['concorrentes'][0]]['img']; ?>" alt="<?php echo Yii::app()->session['empresas'][$empresa['concorrentes'][0]]['nome']; ?>" style='float:right' width="100" height="67"/> 
                                             <span class="header-line"></span> 
                                         </h5>
                                     </div>
                                     <table class="table table-striped table-bordered table-hover" >
                                         <thead>
                                             <tr>
-                                                <th style='background-color: #0088CC'>Produto</th>
-                                                <th style='background-color: #0088CC'>Casa</th>
                                                 <th style='background-color: #0088CC'>Concorrente</th>
+                                                <th style='background-color: #0088CC'>Produto</th>
+                                                <th style='background-color: #0088CC'>Preço</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -242,7 +246,7 @@ $menu = array(
         $(".lista").hide();
         $("[class*=" + produto + ']').show();
         console.log(produto);
-        $("#produto_title" + id).html("Principal concorrente em " + produto + ":");
+        $("#produto_title" + id).html("Principal concorrente deste produto:");
     }
 
     function fechar_concorrencia(id) {

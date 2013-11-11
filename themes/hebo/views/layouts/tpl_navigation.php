@@ -17,16 +17,16 @@
                         'encodeLabel' => false,
                         'items' => array(
                             array('label' => 'Início', 'url' => array('/site/index'), 'linkOptions' => array("data-description" => "Página inicial"),),
-                            array('label' => 'Planos de delivery', 'url' => array('/site/page', 'view' => 'pricing-tables'), 'linkOptions' => array("data-description" => "Sua entrega marcada"),),
-                            array('label' => 'Restaurantes <span class="caret"></span>', 'url' => array('/site/page', 'view' => 'columns'), 'itemOptions' => array('class' => 'dropdown', 'tabindex' => "-1"), 'linkOptions' => array('class' => 'dropdown-toggle', 'data-toggle' => "dropdown", "data-description" => "Organizados por categoria"),
-                                'items' => array(
-                                    array('label' => 'Columns', 'url' => array('/site/page', 'view' => 'columns')),
-                                    array('label' => 'Pricing tables', 'url' => array('/site/page', 'view' => 'pricing-tables')),
-                                    array('label' => 'UI Elements', 'url' => array('/site/page', 'view' => 'elements')),
-                                )),
+//                            array('label' => 'Planos de delivery', 'url' => array('/site/page', 'view' => 'pricing-tables'), 'linkOptions' => array("data-description" => "Sua entrega marcada"),),
+//                            array('label' => 'Restaurantes <span class="caret"></span>', 'url' => array('/site/page', 'view' => 'columns'), 'itemOptions' => array('class' => 'dropdown', 'tabindex' => "-1"), 'linkOptions' => array('class' => 'dropdown-toggle', 'data-toggle' => "dropdown", "data-description" => "Organizados por categoria"),
+//                                'items' => array(
+//                                    array('label' => 'Columns', 'url' => array('/site/page', 'view' => 'columns')),
+//                                    array('label' => 'Pricing tables', 'url' => array('/site/page', 'view' => 'pricing-tables')),
+//                                    array('label' => 'UI Elements', 'url' => array('/site/page', 'view' => 'elements')),
+//                                )),
                             array('label' => 'Pratos <span class="caret"></span>', 'url' => array('/site/page', 'view' => 'columns'), 'itemOptions' => array('class' => 'dropdown', 'tabindex' => "-1"), 'linkOptions' => array('class' => 'dropdown-toggle', 'data-toggle' => "dropdown", "data-description" => "Organizados por categoria"),
                                 'items' => array(
-                                    array('label' => 'Marmita', 'url' => array('/site/page', 'view' => 'columns'),'id'=>'marmita'),
+                                    array('label' => 'Marmitex', 'url' => array('/site/page', 'view' => 'columns'), 'id' => 'marmita'),
                                     array('label' => 'Lanches', 'url' => array('/site/page', 'view' => 'pricing-tables')),
                                     array('label' => 'Pizzas', 'url' => array('/site/page', 'view' => 'elements')),
                                     array('label' => 'Massas', 'url' => array('/site/page', 'view' => 'elements')),
@@ -34,6 +34,16 @@
                                     array('label' => 'Doces', 'url' => array('/site/page', 'view' => 'elements')),
                                     array('label' => 'Churrasco', 'url' => array('/site/page', 'view' => 'elements')),
                                 )),
+                            array('label' => 'Restaurantes <span class="caret"></span>', 'url' => array('/site/page', 'view' => 'columns'), 'itemOptions' => array('class' => 'dropdown', 'tabindex' => "-1"), 'linkOptions' => array('class' => 'dropdown-toggle', 'data-toggle' => "dropdown", "data-description" => "Organizados por categoria"),
+                                'items' => array(
+                                    array('label' => 'Ver Restaurantes', 'url' => array('/site/page', 'view' => 'columns')),
+                                )),
+                            array('label' => 'Plano Mensal Marmitex', 'url' => array('/site/page', 'view' => 'pricing-tables'), 'linkOptions' => array("data-description" => "Sua entrega marcada"),
+                                'items' => array(
+                                    array('label' => 'Assinar Plano', 'url' => array('/site/page', 'view' => 'columns')),
+                                    array('label' => 'Meu Plano', 'url' => array('/site/page', 'view' => 'columns')),
+                                )),
+                            array('label' => 'Seja nosso parceiro', 'url' => array('/tabelaParceiro/create', 'view' => 'create'), 'linkOptions' => array("data-description" => "Cadastre sua empresa"),),
                             array('label' => 'Sobre', 'url' => array('/site/page', 'view' => 'about'), 'linkOptions' => array("data-description" => "Quem nós somos"),),
                             array('label' => 'Seja nosso parceiro', 'url' => array('/tabelaParceiro/create', 'view' => 'create'), 'linkOptions' => array("data-description" => "Cadastre sua empresa"),),
 //                            array('label' => 'Entrar', 'url' => array('/site/login'), 'visible' => Yii::app()->user->isGuest, 'linkOptions' => array("data-description" => "Entre na sua conta")),
