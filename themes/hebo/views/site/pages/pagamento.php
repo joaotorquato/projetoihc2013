@@ -103,14 +103,23 @@ foreach ($empresas as $empresa) {
             <h2 class="header"> Descrição
                 <span class="header-line"></span> 
             </h2>
+            <h3><?php echo Yii::app()->session['descricao']; ?></h3>
         </div>
-    </div>
-
-    <div class="row-fluid">
         <div class="span2">
             <h2 class="header"> Valor Total
                 <span class="header-line"></span> 
             </h2>
+            <h3>R$ <?php echo Yii::app()->session['valor_total']; ?></h3>
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span12">
+            <h2 class="header"> Forma de pagamento
+                <span class="header-line"></span> 
+            </h2>
+                <button class="btn btn-large btn-success" style="float: right;" type="button">Finalizar</button>
+                <button class="btn btn-large" style="float: right; margin-right: 5px;" type="button">Voltar</button>
         </div>
     </div>
 
