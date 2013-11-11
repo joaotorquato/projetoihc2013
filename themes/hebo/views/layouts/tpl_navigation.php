@@ -43,14 +43,13 @@
                                     array('label' => 'Assinar Plano', 'url' => array('/site/page', 'view' => 'columns')),
                                     array('label' => 'Meu Plano', 'url' => array('/site/page', 'view' => 'columns')),
                                 )),
-                            array('label' => 'Seja nosso parceiro', 'url' => array('/tabelaParceiro/create', 'view' => 'create'), 'linkOptions' => array("data-description" => "Cadastre sua empresa"),),
                             array('label' => 'Sobre', 'url' => array('/site/page', 'view' => 'about'), 'linkOptions' => array("data-description" => "Quem nós somos"),),
                             array('label' => 'Seja nosso parceiro', 'url' => array('/tabelaParceiro/create', 'view' => 'create'), 'linkOptions' => array("data-description" => "Cadastre sua empresa"),),
 //                            array('label' => 'Entrar', 'url' => array('/site/login'), 'visible' => Yii::app()->user->isGuest, 'linkOptions' => array("data-description" => "Entre na sua conta")),
 //                            array('label' => 'Sair', 'url' => array('/site/logout'), 'visible' => !Yii::app()->user->isGuest, 'linkOptions' => array("data-description" => "Bem vindo,  ". Yii::app()->user->name)),
                         ),
                     ));
-                    
+
                     $carrinho[] = array(
                         'nome' => '04 - X BURGUER CATU E OVO',
                         'total' => 10.90,
@@ -61,25 +60,33 @@
                 </div>
             </div>
             <div class="row-fluid">
-                <?php if (isset(Yii::app()->session['carrinho']) && count(Yii::app()->session['empresas']) > 0) { ?>
+                <?php if (isset(Yii::app()->session['carrinho']) && count(Yii::app()->session['carrinho']) > 0) { ?>
                     <div class="info_carrinho container" style="text-align: center;">
-                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/cart.png">Você possui <?php count(Yii::app()->session['empresas']) > 0 ?> item no seu carrinho. <a href="javascript:visualizar_carrinho()">Clique aqui</a> para visualizar.
+                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/cart.png">Você possui <?php echo count(Yii::app()->session['carrinho']); ?> item(s) no seu carrinho. <a href="javascript:visualizar_carrinho()">Clique aqui</a> para visualizar.
                     </div>
                 <?php } ?>
-                <div class="carrinho_container" style="margin:auto;border: 0.5px solid #0088CC;width: 50%;">
-<!--                    <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/cart32.png" /><strong>Carrinho</strong>-->
+                <div class="carrinho_container" style="margin:auto;width: 50%;display:none;">
+                    <?php
+                    $total_carrinho = 0;
+                    foreach (Yii::app()->session['carrinho'] as $item) {
+                        $total_carrinho += $item['total'];
+                    }
+                    ?>
                     <table class="table table-striped table-bordered table-hover" >
                         <thead>
                             <tr>
-                                <th style='background-color: #0088CC'><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/cart32.png" />Carrinho</th>
-                                <th style='background-color: #0088CC'><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/money.png" />Total</th>
+                                <th style='background-color: #0088CC'><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/cart32.png" />Itens do carrinho</th>
+                                <th style='background-color: #0088CC;width:30%;'><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/money.png" />Total R$ <strong><?php echo number_format($total_carrinho, 2, ',', "."); ?></strong></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <?php foreach(Yii::app()->session['carrinho'] as $item){ ?>
-                                <td colspan="2"></td>
+                                <?php foreach (Yii::app()->session['carrinho'] as $item) { ?>
+                                    <td colspan="2">1 unidade de <?php echo $item['nome']; ?><strong style="float:right;">total deste item: R$ <?php echo number_format($item['total'], 2, ",", "."); ?></strong></td>
                                 <?php } ?>
+                            </tr>
+                            <tr>
+                                <td style='text-align:center;' colspan="2"><?php echo CHtml::button("Finalizar compra", array('title' => "Finalizar compra", 'style' => 'margin:auto', 'onclick' => 'js:finalizarCompra();', 'class' => 'btn')); ?></td>
                             </tr>
                         </tbody>
                     </table>
@@ -88,3 +95,14 @@
         </div>
     </div>
 </section><!-- /#navigation-main -->
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.produto').tooltip();
+    });
+    
+    function visualizar_carrinho(){
+        $(".info_carrinho").hide();
+        $(".carrinho_container").show();
+    }
+</script>
