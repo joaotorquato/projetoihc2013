@@ -18,7 +18,9 @@ $cidades = array(
         <p>Melhores restaurantes e melhores preços.<br>Planos de delivery fácil para seu dia a dia.</p>
     </div>
 </div>    
-<div class="slider-bootstrap"><!-- start slider -->
+<div style="clear:both;"></div>
+
+<div class="slider-bootstrap span5" style="margin-left: 0px;"><!-- start slider -->
     <div class="slider-wrapper theme-default">
         <div id="slider-nivo" class="nivoSlider">
             <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/slider/flickr/s14.jpg" data-thumb="<?php echo Yii::app()->theme->baseUrl; ?>/img/slider/flickr/s11.jpg" alt="" title="" />
@@ -29,17 +31,20 @@ $cidades = array(
     </div>
 </div> <!-- /slider -->
 
-<h2 class="header">Procure por seu cep!
-    <span class="header-line"></span> 
-</h2>
+<div class="span5" style="margin-left:20px;">
+    <h2 class="header">Procure por seu cep!
+        <span class="header-line"></span> 
+    </h2>
 
-<img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/loading.gif" id='loading' style='display:none;' />
-<div id="procurar_cep">
-    <h4>Informe seu CEP e veja todas as novidades de sua cidade!</h4>
-    <?php echo CHtml::textField('cep', '', array('id' => 'cep')); ?>
-    <?php echo CHtml::button("Procurar CEP", array('title' => "Procurar CEP", 'style' => 'margin-left:10px;margin-top:-8px;', 'onclick' => 'js:verificaCep();', 'class' => 'btn')); ?>
+    <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/loading.gif" id='loading' style='display:none;' />
+    <div id="procurar_cep">
+        <h4>Informe seu CEP e veja todas as novidades de sua cidade!</h4>
+        <?php echo CHtml::textField('cep', '', array('id' => 'cep')); ?>
+        <?php echo CHtml::button("Procurar CEP", array('title' => "Procurar CEP", 'style' => 'margin-left:10px;margin-top:-8px;', 'onclick' => 'js:verificaCep();', 'class' => 'btn')); ?>
+    </div>
+
 </div>
-
+<div style="clear:both;"></div>
 <div id="result_cep" style='display:none'><h2>Infelizemente não encontramos a sua cidade. Será que você digitou certo? Se sim, selecione abaixo uma de nossas cidades.</h2></div>
 
 <h3 class="header">Cidades em que atuamos

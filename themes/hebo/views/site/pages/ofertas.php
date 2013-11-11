@@ -130,6 +130,8 @@ $empresas[] = array(
     )
 );
 
+Yii::app()->session['empresas'] = $empresas;
+
 $tipo_produto = array('' => 'Todos');
 foreach ($empresas as $empresa) {
     $tipo_produto = array_merge($tipo_produto, $empresa['produtos']);
@@ -174,8 +176,8 @@ foreach ($empresas as $empresa) {
                     <tr id="produto_tr<?php echo $key; ?>">
                         <td>Produtos</td>
                         <td>
-                            <?php foreach ($empresa['produtos'] as $produto) { ?>
-                                <strong class='produto' onclick="exibir_concorrente('<?php echo $produto; ?>',<?php echo $key; ?>);" title='Clique para comparar com a concorrência' style='cursor: pointer'><?php echo ucfirst(strtolower($produto)); ?></strong>
+                            <?php foreach ($empresa['produtos'] as $key_p => $produto) { ?>
+                                <strong class='produto' onclick="exibir_concorrente('<?php echo $key_p; ?>',<?php echo $key; ?>);" title='Clique para comparar com a concorrência' style='cursor: pointer'><?php echo ucfirst(strtolower($produto)); ?></strong>
                             <?php } ?>
                         </td>
                     </tr>
@@ -184,13 +186,13 @@ foreach ($empresas as $empresa) {
                             <label style='float:left;' id='produto_title<?php echo $key; ?>'></label>
                             <div style='float: right'><a href="javascript:fechar_concorrencia(<?php echo $key; ?>)">fechar</a></div>
                             <div style='clear:both'></div>
-                            <div>
-                                <h5 class="header"><?php echo $empresas[$empresa['concorrentes'][0]]['nome']; ?>
-                                    <img height="30" src="<?php echo $empresas[$empresa['concorrentes'][0]]['img']; ?>" alt="<?php echo $empresas[$empresa['concorrentes'][0]]['nome']; ?>" style='float:right' width="100" height="67"/> 
-                                    <span class="header-line"></span> 
-                                </h5>
-                            </div>
                             <?php if (isset($empresa['comparacao'])) { ?>
+                                <div>
+                                    <h5 class="header"><?php echo $empresas[$empresa['concorrentes'][0]]['nome']; ?>
+                                        <img height="30" src="<?php echo $empresas[$empresa['concorrentes'][0]]['img']; ?>" alt="<?php echo $empresas[$empresa['concorrentes'][0]]['nome']; ?>" style='float:right' width="100" height="67"/> 
+                                        <span class="header-line"></span> 
+                                    </h5>
+                                </div>
                                 <table class="table table-striped table-bordered table-hover" >
                                     <thead>
                                         <tr>
@@ -201,7 +203,7 @@ foreach ($empresas as $empresa) {
                                     </thead>
                                     <tbody>
                                         <?php foreach ($empresa['comparacao'] as $key_p => $produto) { ?>
-                                            <tr class='<?php echo $key_p; ?> lista' style=''>
+                                            <tr class='<?php echo $key_p; ?> lista' style='display:none;'>
                                                 <td><?php echo $produto['produto']; ?></td>
                                                 <td><?php echo $produto['casa_preco']; ?></td>
                                                 <td><?php echo $produto['concorrente']; ?></td>
@@ -209,6 +211,12 @@ foreach ($empresas as $empresa) {
                                         <?php } ?>
                                     </tbody>
                                 </table>
+                            <?php } else { ?>
+                                <div>
+                                    <h5 class="header">Este restaurante não possui concorrente neste produto.
+                                        <span class="header-line"></span> 
+                                    </h5>
+                                </div>
                             <?php } ?>
                         </td>
                     </tr>
@@ -248,7 +256,7 @@ foreach ($empresas as $empresa) {
                         </td>
                     </tr>
                     <tr>
-                        <td style='text-align:center;' colspan="2"><?php echo CHtml::button("Visualizar promoções", array('title' => "Visualizar promoções", 'style' => 'margin:auto', 'onclick' => 'js:verificaCep();', 'class' => 'btn')); ?></td>
+                        <td style='text-align:center;' colspan="2"><?php echo CHtml::button("Visualizar promoções", array('title' => "Visualizar promoções", 'style' => 'margin:auto', 'onclick' => 'js:redirecionarRestaurante(' . $key . ');', 'class' => 'btn')); ?></td>
                     </tr>
                 </tbody>
             </table>
@@ -318,6 +326,9 @@ foreach ($empresas as $empresa) {
 
     function exibir_concorrente(produto, id) {
         $(".concorrencia_tr" + id).show();
+        $(".lista").hide();
+        $("[class*=" + produto + ']').show();
+        console.log(produto);
         $("#produto_title" + id).html("Principal concorrente em " + produto + ":");
     }
 
@@ -380,6 +391,10 @@ foreach ($empresas as $empresa) {
             }
         }
         return nova;
+    }
+
+    function redirecionarRestaurante(id) {
+        window.location = '<?php echo Yii::app()->homeUrl . '?r=site/page&view=restaurante&id='; ?>' + id;
     }
 
 </script>
