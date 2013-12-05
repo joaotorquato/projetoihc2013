@@ -169,6 +169,16 @@ $cidades = array(
                     cidade = unescape(resultadoCEP['cidade']);
                     $("#loading").hide();
                     if (cidade != '') {
+                        $.ajax({
+                            url: '<?php echo Yii::app()->homeUrl . '?r=site/sessionCep'; ?>',
+                            type: 'post',
+                            async: false,
+                            data: {
+                                cep: $('#cep').val(),
+                                cidade: cidade
+                            }
+                        });
+                        
                         $("#result_cep").show();
                         $("#result_cep").html('<h2><div class="loading" style="float:left;"></div>Encontramos sua cidade! Aguarde enquanto é redirecionado.</h2>');
                         window.location = '<?php echo Yii::app()->homeUrl . '?r=site/page&view=ofertas&cidade='; ?>' + caracteres_especias(cidade);

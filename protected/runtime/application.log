@@ -1033,3 +1033,19 @@ Stack trace:
 REQUEST_URI=/projetoihc2013/index.php?r=site/page&view=planoSemanal
 in C:\xampp\htdocs\projetoihc2013\themes\hebo\views\site\pages\planoSemanal.php (170)
 in C:\xampp\htdocs\projetoihc2013\index.php (13)
+2013/12/04 23:11:06 [error] [php] Undefined variable: cidades (C:\xampp\htdocs\projetoihc2013\themes\hebo\views\site\pages\pricing-tables.php:29)
+Stack trace:
+#0 C:\xampp\htdocs\yii_1.4\web\CController.php(869): SiteController->renderFile()
+#1 C:\xampp\htdocs\yii_1.4\web\CController.php(782): SiteController->renderPartial()
+#2 C:\xampp\htdocs\yii_1.4\web\actions\CViewAction.php(140): SiteController->render()
+#3 C:\xampp\htdocs\yii_1.4\web\actions\CAction.php(76): CViewAction->run()
+#4 C:\xampp\htdocs\yii_1.4\web\CController.php(308): CViewAction->runWithParams()
+#5 C:\xampp\htdocs\yii_1.4\web\CController.php(286): SiteController->runAction()
+#6 C:\xampp\htdocs\yii_1.4\web\CController.php(265): SiteController->runActionWithFilters()
+#7 C:\xampp\htdocs\yii_1.4\web\CWebApplication.php(282): SiteController->run()
+#8 C:\xampp\htdocs\yii_1.4\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\yii_1.4\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\projetoihc2013\index.php(13): CWebApplication->run()
+REQUEST_URI=/projetoihc2013/index.php?r=site/page&view=pricing-tables
+in C:\xampp\htdocs\projetoihc2013\themes\hebo\views\site\pages\pricing-tables.php (29)
+in C:\xampp\htdocs\projetoihc2013\index.php (13)

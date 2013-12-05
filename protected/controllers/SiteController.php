@@ -119,4 +119,15 @@ class SiteController extends Controller {
 //        $this->renderPartial('index');
         exit;
     }
+    public function actionSessionCep() {
+        $cidade = $_POST['cidade'];
+        $cep = $_POST['cep'];
+        
+        Yii::app()->session['cep'] = $cep;
+        Yii::app()->session['cidade'] = $cidade;
+        
+        echo true;
+//        $this->renderPartial('index');
+        exit;
+    }
 }

@@ -97,7 +97,7 @@ foreach ($empresas as $empresa) {
     $tipo_produto = array_merge($tipo_produto, $empresa['produtos']);
 }
 ?>
-
+<div id="div_pagamento" <?php if(!isset(Yii::app()->session['logado']) || (isset(Yii::app()->session['logado']) && !Yii::app()->session['logado'])){ echo 'style="display:none"';}?>>
     <div class="row-fluid">
         <div class="span8">
             <h2 class="header"> Descrição
@@ -105,7 +105,7 @@ foreach ($empresas as $empresa) {
             </h2>
             <h3><?php echo Yii::app()->session['descricao']; ?></h3>
         </div>
-        <div class="span2">
+        <div class="span4">
             <h2 class="header"> Valor Total
                 <span class="header-line"></span> 
             </h2>
@@ -122,6 +122,23 @@ foreach ($empresas as $empresa) {
                 <button class="btn btn-large" style="float: right; margin-right: 5px;" type="button">Voltar</button>
         </div>
     </div>
+</div>
+<div id="div_cadastro" <?php if(isset(Yii::app()->session['logado']) && Yii::app()->session['logado']){ echo 'style="display:none"';}?>>
+    <div class="row-fluid">
+        <div class="span6">
+            <h2 class="header"> Já possui cadastro?
+                <span class="header-line"></span> 
+            </h2>
+            <h3><?php echo Yii::app()->session['descricao']; ?></h3>
+        </div>
+        <div class="span6">
+            <h2 class="header"> Cadastrar
+                <span class="header-line"></span> 
+            </h2>
+            <h3>R$ <?php echo Yii::app()->session['valor_total']; ?></h3>
+        </div>
+    </div>
+</div>
 
 <script type="text/javascript">
     $(document).ready(function() {

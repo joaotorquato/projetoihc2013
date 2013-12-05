@@ -10,7 +10,7 @@ $cidades = array(
     'guaira' => 'Guaíra',
     'amparo' => 'Amparo',
 );
-$label_cidade = 'São Paulo';
+$label_cidade = Yii::app()->session['cidade'];
 
 $empresas[] = array(
     'nome' => "Neri Lanches",
