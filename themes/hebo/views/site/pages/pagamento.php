@@ -129,13 +129,61 @@ foreach ($empresas as $empresa) {
             <h2 class="header"> Já possui cadastro?
                 <span class="header-line"></span> 
             </h2>
-            <h3><?php echo Yii::app()->session['descricao']; ?></h3>
+            
+            <div class="row-fluid">
+                <div class="span12">
+                    <label for="username">Usuário</label>
+                    <?php echo CHtml::textField('username', '', array('id' => 'username', 'style' => 'width:50%')); ?>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span12">
+                    <label for="password">Senha</label>
+                    <?php echo CHtml::textField('password', '', array('id' => 'password', 'style' => 'width:50%')); ?>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span12">
+                    <?php echo CHtml::button('Acessar', array('onclick' => 'loginAjax', 'class' => 'btn btn-success')); ?>
+                </div>
+            </div>
+
         </div>
         <div class="span6">
-            <h2 class="header"> Cadastrar
+            <h2 class="header"> Novo cadastro
                 <span class="header-line"></span> 
             </h2>
-            <h3>R$ <?php echo Yii::app()->session['valor_total']; ?></h3>
+            
+            <div class="row-fluid">
+                <div class="span12">
+                    <label for="username">Usuário</label>
+                    <?php echo CHtml::textField('username_novo', '', array('id' => 'username', 'style' => 'width:50%')); ?>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span12">
+                    <label for="password">Senha</label>
+                    <?php echo CHtml::textField('password_novo', '', array('id' => 'password', 'style' => 'width:50%')); ?>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span12">
+                    <label for="password">Repita a Senha</label>
+                    <?php echo CHtml::textField('r_password_novo', '', array('id' => 'password', 'style' => 'width:50%')); ?>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span12">
+                    <label for="password">CEP</label>
+                    <?php echo CHtml::textField('cep', '', array('id' => 'cep', 'style' => 'width:40%')); ?>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span12">
+                    <?php echo CHtml::button('Cadastrar', array('onclick' => 'loginAjax', 'class' => 'btn btn-success')); ?>
+                </div>
+            </div>
+            
         </div>
     </div>
 </div>
@@ -153,6 +201,8 @@ foreach ($empresas as $empresa) {
                     $(val).fadeIn(500);
                 }
             });
+            
+            $("#cep").mask("99999-999");
         });
         $("#produto_busca").change(function() {
             $('.produto_hidden').parent().show();
