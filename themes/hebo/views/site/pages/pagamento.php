@@ -98,6 +98,7 @@ foreach ($empresas as $empresa) {
 }
 ?>
 <div id="div_pagamento" <?php if(!isset(Yii::app()->session['logado']) || (isset(Yii::app()->session['logado']) && !Yii::app()->session['logado'])){ echo 'style="display:none"';}?>>
+    <div id="result_cep_sucesso" style='display:none; color: green;'><h3>Login efetuado com sucesso.</h3></div>
     <div class="row-fluid">
         <div class="span8">
             <h2 class="header"> Descrição
@@ -129,7 +130,7 @@ foreach ($empresas as $empresa) {
             <h2 class="header"> Já possui cadastro?
                 <span class="header-line"></span> 
             </h2>
-            
+            <div id="result_cep" style='display:none; color: red;'><h3>Usuário ou senha incorretos.</h3></div>
             <div class="row-fluid">
                 <div class="span12">
                     <label for="username">Usuário</label>
@@ -139,12 +140,12 @@ foreach ($empresas as $empresa) {
             <div class="row-fluid">
                 <div class="span12">
                     <label for="password">Senha</label>
-                    <?php echo CHtml::textField('password', '', array('id' => 'password', 'style' => 'width:50%')); ?>
+                    <?php echo CHtml::passwordField('password', '', array('id' => 'password', 'style' => 'width:50%')); ?>
                 </div>
             </div>
             <div class="row-fluid">
                 <div class="span12">
-                    <?php echo CHtml::button('Acessar', array('onclick' => 'loginAjax', 'class' => 'btn btn-success')); ?>
+                    <?php echo CHtml::button('Acessar', array('onclick' => 'logarUsuario(); return false;', 'class' => 'btn btn-success')); ?>
                 </div>
             </div>
 
@@ -163,13 +164,13 @@ foreach ($empresas as $empresa) {
             <div class="row-fluid">
                 <div class="span12">
                     <label for="password">Senha</label>
-                    <?php echo CHtml::textField('password_novo', '', array('id' => 'password', 'style' => 'width:50%')); ?>
+                    <?php echo CHtml::passwordField('password_novo', '', array('id' => 'password', 'style' => 'width:50%')); ?>
                 </div>
             </div>
             <div class="row-fluid">
                 <div class="span12">
                     <label for="password">Repita a Senha</label>
-                    <?php echo CHtml::textField('r_password_novo', '', array('id' => 'password', 'style' => 'width:50%')); ?>
+                    <?php echo CHtml::passwordField('r_password_novo', '', array('id' => 'password', 'style' => 'width:50%')); ?>
                 </div>
             </div>
             <div class="row-fluid">
@@ -180,7 +181,7 @@ foreach ($empresas as $empresa) {
             </div>
             <div class="row-fluid">
                 <div class="span12">
-                    <?php echo CHtml::button('Cadastrar', array('onclick' => 'loginAjax', 'class' => 'btn btn-success')); ?>
+                    <?php echo CHtml::button('Cadastrar', array('onclick' => 'loginAjax(); return false;', 'class' => 'btn btn-success')); ?>
                 </div>
             </div>
             
@@ -276,6 +277,31 @@ foreach ($empresas as $empresa) {
         return nova;
     }
 
+    function logarUsuario(){
+        var user = $('#username').val();
+        var password = $('#password').val();
+        
+        $.ajax({
+            url: '<?php echo Yii::app()->homeUrl . '?r=site/loginAjax'; ?>',
+            type: 'post',
+            async: false,
+            data: {
+                username: user,
+                password: password
+            },
+            success: function(data) {
+                if(data == 1){
+                    $('#div_cadastro').slideUp();
+                    $('#div_pagamento').slideDown();
+                    $('#result_cep').hide();
+                    $('#result_cep_sucesso').show();
+                }else{
+                    $('#result_cep').show();
+                    $('#result_cep_sucesso').hide();
+                }
+            }
+	});
+    }
 </script>
 
 <?php
