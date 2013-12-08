@@ -11,7 +11,7 @@ $cidades = array(
     'guaira' => 'Guaíra',
     'amparo' => 'Amparo',
 );
-$label_cidade = $cidades[$_GET['cidade']];
+$label_cidade = isset($cidades[$_GET['cidade']]) ? $cidades[$_GET['cidade']] : Yii::app()->session['cidade'];
 
 $empresas[] = array(
     'nome' => "Neri Lanches",

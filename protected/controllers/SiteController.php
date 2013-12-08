@@ -92,7 +92,12 @@ class SiteController extends Controller {
      * Logs out the current user and redirect to homepage.
      */
     public function actionLogout() {
-        Yii::app()->user->logout();
+        Yii::app()->session['logado'] = false;
+        Yii::app()->session['username'] = '';
+        Yii::app()->session['name'] = '';
+        Yii::app()->session['cidade_index'] = '';
+        Yii::app()->session['cidade'] = '';
+        Yii::app()->session['cep'] = '';
         $this->redirect(Yii::app()->homeUrl);
     }
 
@@ -109,30 +114,75 @@ class SiteController extends Controller {
         $nome = $_POST['nome'];
         $valor = $_POST['valor'];
         $tipo = $_POST['tipo'];
-
-        $descricao = ($tipo != '' ? 'Plano ' . $tipo : '') . ($plano != '' ? ' (tamanho ' . ucfirst($plano) . '): ' : '') . $nome;
-
+        
+        $descricao = 'Plano ' . $tipo . ' (tamanho ' . ucfirst($plano) . '): ' . $nome;
+        
         Yii::app()->session['descricao'] = $descricao;
         Yii::app()->session['valor_total'] = $valor;
-
+        
         echo true;
 //        $this->renderPartial('index');
         exit;
     }
-
-    public function actionCarrinho() {
-
-        $carrinho = Yii::app()->session['carrinho'];
-        $carrinho[] = array(
-            'nome' => $_POST['nome'],
-            'total' => $_POST['preco'],
-            'empresa' => 'Neri Lanches',
+    public function actionSessionCep() {
+        $cidade = $_POST['cidade'];
+        $cep = $_POST['cep'];
+        
+        Yii::app()->session['cep'] = $cep;
+        Yii::app()->session['cidade'] = $cidade;
+        
+        echo true;
+//        $this->renderPartial('index');
+        exit;
+    }
+    
+    public function actionLoginAjax(){
+        $usuarios[0] = array(
+            'name' => 'Pedro Afonso',
+            'username' => 'user1@marmitao.com.br',
+            'password' => '123456',
+            'cidade' => 'São Paulo',
+            'cidade_index' => 'sao_paulo',
+            'cep' => '04543-020'
         );
-        Yii::app()->session['carrinho'] = $carrinho;
-
-        echo true;
-//        $this->renderPartial('index');
-        exit;
+        $usuarios[1] = array(
+            'name' => 'Laura Gabriela',
+            'username' => 'user2@marmitao.com.br',
+            'password' => '123456',
+            'cidade' => 'Sorocaba',
+            'cidade_index' => 'sorocaba',
+            'cep' => '18045-000'
+        );
+        $usuarios[2] = array(
+            'name' => 'Ricardo Alberto',
+            'username' => 'user3@marmitao.com.br',
+            'password' => '123456',
+            'cidade' => 'São Carlos',
+            'cidade_index' => 'sao_carlos',
+            'cep' => '18045-000'
+        );
+        
+        $user = $_POST['username'];
+        $senha = $_POST['password'];
+        
+        Yii::app()->session['logado'] = false;
+        Yii::app()->session['username'] = '';
+        Yii::app()->session['name'] = '';
+        Yii::app()->session['cidade_index'] = '';
+        Yii::app()->session['cidade'] = '';
+        Yii::app()->session['cep'] = '';
+        foreach($usuarios as $u){
+            if($user == $u['username'] && $senha == $u['password']){
+                Yii::app()->session['logado'] = true;
+                Yii::app()->session['username'] = $u['username'];
+                Yii::app()->session['name'] = $u['name'];
+                Yii::app()->session['cidade'] = $u['cidade'];
+                Yii::app()->session['cidade_index'] = $u['cidade_index'];
+                Yii::app()->session['cep'] = $u['cep'];
+                break;
+            }
+        }
+        
+        echo Yii::app()->session['logado'];
     }
-
 }

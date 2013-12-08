@@ -7,8 +7,8 @@
         <div class="span4">
             <div class="social-icons pull-right clearfix">
                 <div class="" style="text-align:right;"> <?php
-                    if (!Yii::app()->user->isGuest) {
-                        echo 'Olá, ' . Yii::app()->user->name . '<a href="' . Yii::app()->homeUrl . '?r=site/logout"/>(sair)</a>';
+                    if (isset(Yii::app()->session['logado']) && Yii::app()->session['logado']) {
+                        echo 'Olá, ' . Yii::app()->session['name']. ' <a href="'.Yii::app()->homeUrl.'?r=site/logout"/>(sair)</a>';
                     } else {
                         echo 'Olá, Visitante. <a href="' . Yii::app()->homeUrl . '?r=site/login"/>(entrar)</a>';
                     }

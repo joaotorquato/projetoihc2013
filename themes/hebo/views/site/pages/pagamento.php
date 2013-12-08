@@ -97,7 +97,8 @@ foreach ($empresas as $empresa) {
     $tipo_produto = array_merge($tipo_produto, $empresa['produtos']);
 }
 ?>
-
+<div id="div_pagamento" <?php if(!isset(Yii::app()->session['logado']) || (isset(Yii::app()->session['logado']) && !Yii::app()->session['logado'])){ echo 'style="display:none"';}?>>
+    <div id="result_cep_sucesso" style='display:none; color: green;'><h3>Login efetuado com sucesso.</h3></div>
     <div class="row-fluid">
         <div class="span8">
             <h2 class="header"> Descrição
@@ -105,7 +106,7 @@ foreach ($empresas as $empresa) {
             </h2>
             <h3><?php echo Yii::app()->session['descricao']; ?></h3>
         </div>
-        <div class="span2">
+        <div class="span4">
             <h2 class="header"> Valor Total
                 <span class="header-line"></span> 
             </h2>
@@ -122,6 +123,71 @@ foreach ($empresas as $empresa) {
                 <button class="btn btn-large" style="float: right; margin-right: 5px;" onclick="javascript:window.history.go(-1)" type="button">Voltar</button>
         </div>
     </div>
+</div>
+<div id="div_cadastro" <?php if(isset(Yii::app()->session['logado']) && Yii::app()->session['logado']){ echo 'style="display:none"';}?>>
+    <div class="row-fluid">
+        <div class="span6">
+            <h2 class="header"> Já possui cadastro?
+                <span class="header-line"></span> 
+            </h2>
+            <div id="result_cep" style='display:none; color: red;'><h3>Usuário ou senha incorretos.</h3></div>
+            <div class="row-fluid">
+                <div class="span12">
+                    <label for="username">Usuário</label>
+                    <?php echo CHtml::textField('username', '', array('id' => 'username', 'style' => 'width:50%')); ?>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span12">
+                    <label for="password">Senha</label>
+                    <?php echo CHtml::passwordField('password', '', array('id' => 'password', 'style' => 'width:50%')); ?>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span12">
+                    <?php echo CHtml::button('Acessar', array('onclick' => 'logarUsuario(); return false;', 'class' => 'btn btn-success')); ?>
+                </div>
+            </div>
+
+        </div>
+        <div class="span6">
+            <h2 class="header"> Novo cadastro
+                <span class="header-line"></span> 
+            </h2>
+            
+            <div class="row-fluid">
+                <div class="span12">
+                    <label for="username">Usuário</label>
+                    <?php echo CHtml::textField('username_novo', '', array('id' => 'username', 'style' => 'width:50%')); ?>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span12">
+                    <label for="password">Senha</label>
+                    <?php echo CHtml::passwordField('password_novo', '', array('id' => 'password', 'style' => 'width:50%')); ?>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span12">
+                    <label for="password">Repita a Senha</label>
+                    <?php echo CHtml::passwordField('r_password_novo', '', array('id' => 'password', 'style' => 'width:50%')); ?>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span12">
+                    <label for="password">CEP</label>
+                    <?php echo CHtml::textField('cep', '', array('id' => 'cep', 'style' => 'width:40%')); ?>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span12">
+                    <?php echo CHtml::button('Cadastrar', array('onclick' => 'loginAjax(); return false;', 'class' => 'btn btn-success')); ?>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
 
 <script type="text/javascript">
     $(document).ready(function() {
@@ -136,6 +202,8 @@ foreach ($empresas as $empresa) {
                     $(val).fadeIn(500);
                 }
             });
+            
+            $("#cep").mask("99999-999");
         });
         $("#produto_busca").change(function() {
             $('.produto_hidden').parent().show();
@@ -209,6 +277,31 @@ foreach ($empresas as $empresa) {
         return nova;
     }
 
+    function logarUsuario(){
+        var user = $('#username').val();
+        var password = $('#password').val();
+        
+        $.ajax({
+            url: '<?php echo Yii::app()->homeUrl . '?r=site/loginAjax'; ?>',
+            type: 'post',
+            async: false,
+            data: {
+                username: user,
+                password: password
+            },
+            success: function(data) {
+                if(data == 1){
+                    $('#div_cadastro').slideUp();
+                    $('#div_pagamento').slideDown();
+                    $('#result_cep').hide();
+                    $('#result_cep_sucesso').show();
+                }else{
+                    $('#result_cep').show();
+                    $('#result_cep_sucesso').hide();
+                }
+            }
+	});
+    }
 </script>
 
 <?php
