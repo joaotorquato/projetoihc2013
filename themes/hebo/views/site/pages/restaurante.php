@@ -1,5 +1,6 @@
 <?php
 //
+date_default_timezone_set('America/Sao_Paulo');
 $empresa = Yii::app()->session['empresas'][$_GET['id']];
 
 $menu = array(
@@ -107,7 +108,7 @@ $concorrente = array(
             <tbody>
                 <tr>
                     <td><img src='http://www.gourmex.com/images/icons/horarioatendimento.png' />Horário de funcionamento</td>
-                    <td><?php echo $empresa['horario_funcionamento']; ?></td>
+                    <td><?php echo $empresa['horario_funcionamento']; ?> - <?php if (isset($empresa['hora']) && $empresa['hora']['inicio'] < date('H:i:s') && $empresa['hora']['fim'] > date('H:i:s')) { ?><strong style="color:green">ABERTO</strong><?php } else { ?><strong style="color:red">FECHADO</strong><?php } ?></td>
                 </tr>
                 <tr>
                     <td>Produtos</td>
@@ -176,15 +177,15 @@ $concorrente = array(
                     <?php foreach ($item as $nome => $it) { ?>
                         <tr>
                             <td>
-                                <strong class='produto' onclick="adicionar_carrrinho('<?php echo $nome; ?>', '<?php echo (is_array($it['preco']) ? array_shift(array_values($it['preco'])) : $it['preco']); ?>');" title='Clique para adicionar ao carrinho' style='cursor: pointer'><?php echo $nome; ?></strong>
+                                <strong class='produto' onclick="adicionar_carrinho('<?php echo $nome; ?>', '<?php echo (is_array($it['preco']) ? array_shift(array_values($it['preco'])) : $it['preco']); ?>');" title='Clique para adicionar ao carrinho' style='cursor: pointer'><?php echo $nome; ?></strong>
                             </td>
                             <td><?php echo $it['descricao']; ?></td>
                             <td>
                                 <?php if (!is_array($it['preco'])) { ?>
-                                    <strong class='produto' onclick="exibir_concorrente('<?php echo $tipo; ?>',<?php echo $count; ?>);" title='Clique para comparar com a concorrência' style='cursor: pointer'><?php echo "R$ ". number_format($it['preco'],2,',','.'); ?></strong>
+                                    <strong class='produto' onclick="exibir_concorrente('<?php echo $tipo; ?>',<?php echo $count; ?>);" title='Clique para comparar com a concorrência' style='cursor: pointer'><?php echo "R$ " . number_format($it['preco'], 2, ',', '.'); ?></strong>
                                 <?php } else { ?>
                                     <?php foreach ($it['preco'] as $variacao => $var) { ?>
-                                        <strong class='produto' onclick="exibir_concorrente('<?php echo $tipo; ?>',<?php echo $count; ?>);" title='Clique para comparar com a concorrência' style='cursor: pointer'><?php echo $variacao . " - " . "R$ ". number_format($var,2,',','.') . "<br>"; ?></strong>
+                                        <strong class='produto' onclick="exibir_concorrente('<?php echo $tipo; ?>',<?php echo $count; ?>);" title='Clique para comparar com a concorrência' style='cursor: pointer'><?php echo $variacao . " - " . "R$ " . number_format($var, 2, ',', '.') . "<br>"; ?></strong>
                                     <?php } ?>
                                 <?php } ?>
                             </td>
@@ -250,9 +251,22 @@ $concorrente = array(
         });
         $('.produto').tooltip();
     });
-    
-    function adicionar_carrinho(nome,preco){
-        
+
+    function adicionar_carrinho(nome, preco) {
+        $.ajax({
+            url: <?php echo "'" . Yii::app()->homeUrl . "?r=site/carrinho'"; ?>,
+            type: 'post',
+            data: {
+                nome: nome,
+                preco: preco
+            },
+            success: function(data) {
+                if (data)
+                    window.location = '#';
+                else
+                    alert('Ocorreu algum erro na escolha do plano, por favor tente novamente.');
+            }
+        });
     }
 
     function exibir_concorrente(produto, id) {

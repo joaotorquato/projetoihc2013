@@ -47,8 +47,7 @@ $empresas[] = array(
             'concorrente' => 'R$7,20',
         ),
     ),
-        'hora' => array('inicio'=> date('11:00:00'),'fim' => date('00:00:00'))
-
+    'hora' => array('inicio' => date('11:00:00'), 'fim' => date('23:59:59'))
 );
 
 $empresas[] = array(
@@ -65,7 +64,7 @@ $empresas[] = array(
     'comentarios' => array('Felipe Brina' => 'Como la direto, melhor que tem!', 'Vinícius Campos' => 'Sempre como com meu brother lá, é top!'),
     'produtos' => array('lanche' => 'Lanches', 'beirute' => 'Beirutes', 'refrigerante' => 'Refrigerantes', 'suco' => 'Sucos', 'porcao' => 'Porções'),
     'concorrentes' => array('0', '5'),
-        'hora' => array('inicio'=> date('18:30:00'),'fim' => date('23:30:00'))
+    'hora' => array('inicio' => date('18:30:00'), 'fim' => date('23:30:00'))
 );
 
 $empresas[] = array(
@@ -81,7 +80,7 @@ $empresas[] = array(
     'comentarios' => array('Arthur Mazer' => 'Melhor pizzaria de Sorocaba! Peço sempre lá', 'Creuza da Silva' => 'A pizza de gorgonzola é show! Recomendo!!!'),
     'produtos' => array('pizza' => 'Pizzas', 'pizza doce' => 'Pizzas doces', 'refrigerante' => 'Refrigerantes', 'cerveja' => 'Cervejas', 'vinho' => 'Vinhos'),
     'concorrentes' => array('3'),
-        'hora' => array('inicio'=> date('18:30:00'),'fim' => date('23:00:00'))
+    'hora' => array('inicio' => date('18:30:00'), 'fim' => date('23:00:00'))
 );
 
 $empresas[] = array(
@@ -95,7 +94,7 @@ $empresas[] = array(
     'comentarios' => array('Bruno Gianelli' => 'Melhor pizzaria de Sorocaba! Peço sempre lá', 'Daniel Castilho' => 'A pizza de gorgonzola é show! Recomendo!!!'),
     'produtos' => array('pizza' => 'Pizzas', 'pizza doce' => 'Pizzas doces', 'refrigerante' => 'Refrigerantes', 'massa' => 'Massas', 'batata' => 'Batatas'),
     'concorrentes' => array('2'),
-        'hora' => array('inicio'=> date('18:00:00'),'fim' => date('23:00:00'))
+    'hora' => array('inicio' => date('18:00:00'), 'fim' => date('23:00:00'))
 );
 
 $empresas[] = array(
@@ -109,7 +108,7 @@ $empresas[] = array(
     'comentarios' => array('Fellipe Leão' => 'Peço sempre nesse lugar, muito boa a marmita!', 'Marcel Popolim' => 'A marmita de sexta é sucesso! Recomendo!!!'),
     'produtos' => array('lanche' => 'Lanches', 'marmita' => 'Marmitas', 'refrigerante' => 'Refrigerantes', 'suco' => 'Sucos'),
     'concorrentes' => array('5'),
-        'hora' => array('inicio'=> date('18:30:00'),'fim' => date('23:00:00'))
+    'hora' => array('inicio' => date('18:30:00'), 'fim' => date('23:00:00'))
 );
 
 $empresas[] = array(
@@ -135,7 +134,7 @@ $empresas[] = array(
             'concorrente' => 'R$8,50',
         ),
     ),
-    'hora' => array('inicio'=> date('18:30:00'),'fim' => date('23:00:00'))
+    'hora' => array('inicio' => date('18:30:00'), 'fim' => date('23:00:00'))
 );
 
 Yii::app()->session['empresas'] = $empresas;
@@ -179,7 +178,7 @@ foreach ($empresas as $empresa) {
                 <tbody>
                     <tr>
                         <td><img src='http://www.gourmex.com/images/icons/horarioatendimento.png' />Horário de funcionamento</td>
-                        <td><?php echo $empresa['horario_funcionamento']; ?> - <?php if(isset($empresa['hora']) && $empresa['hora']['inicio'] > date('H:i:s') && $empresa['hora']['fim'] < date('H:i:s')){ ?><strong style="color:green">ABERTO</strong><?php }else{?><strong style="color:red">FECHADO</strong><?php }?></td>
+                        <td><?php echo $empresa['horario_funcionamento']; ?> - <?php if (isset($empresa['hora']) && $empresa['hora']['inicio'] < date('H:i:s') && $empresa['hora']['fim'] > date('H:i:s')) { ?><strong style="color:green">ABERTO</strong><?php } else { ?><strong style="color:red">FECHADO</strong><?php } ?></td>
                     </tr>
                     <tr id="produto_tr<?php echo $key; ?>">
                         <td>Produtos</td>

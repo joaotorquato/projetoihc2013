@@ -72,6 +72,7 @@
                         $total_carrinho += $item['total'];
                     }
                     ?>
+                    <a href="javascript:esconder_carrinho()" class="esconder" >esconder carrinho</a>
                     <table class="table table-striped table-bordered table-hover" >
                         <thead>
                             <tr>
@@ -82,11 +83,11 @@
                         <tbody>
                             <tr>
                                 <?php foreach (Yii::app()->session['carrinho'] as $item) { ?>
-                                    <td colspan="2">1 unidade de <?php echo $item['nome']; ?><strong style="float:right;">total deste item: R$ <?php echo number_format($item['total'], 2, ",", "."); ?></strong></td>
+                                    <td colspan="2"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/delete.png" /> 1 unidade de <?php echo $item['nome']; ?><strong style="float:right;">total deste item: R$ <?php echo number_format($item['total'], 2, ",", "."); ?></strong></td>
                                 <?php } ?>
                             </tr>
                             <tr>
-                                <td style='text-align:center;' colspan="2"><?php echo CHtml::button("Finalizar compra", array('title' => "Finalizar compra", 'style' => 'margin:auto', 'onclick' => 'js:finalizarCompra();', 'class' => 'btn')); ?></td>
+                                <td style='text-align:center;' colspan="2" class="finalizar_carrinho"><?php echo CHtml::button("Finalizar compra", array('title' => "Finalizar compra", 'style' => 'margin:auto', 'onclick' => 'js:finalizar_compra();', 'class' => 'btn')); ?></td>
                             </tr>
                         </tbody>
                     </table>
@@ -99,10 +100,47 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $('.produto').tooltip();
+<?php if (isset($_GET['view'])) { ?>
+            if ('<?php echo $_GET['view']; ?>' == 'restaurante') {
+                $(".info_carrinho").hide();
+    //            $(".esconder").hide();
+                $(".carrinho_container").show();
+            } else if ('<?php echo $_GET['view']; ?>' == 'pagamento') {
+                $(".info_carrinho").hide();
+    //            $(".esconder").hide();
+                $(".finalizar_carrinho").hide();
+                $(".carrinho_container").show();
+            }
+<?php } ?>
     });
-    
-    function visualizar_carrinho(){
+
+    function visualizar_carrinho() {
         $(".info_carrinho").hide();
         $(".carrinho_container").show();
     }
+
+    function esconder_carrinho() {
+        $(".info_carrinho").show();
+        $(".carrinho_container").hide();
+    }
+
+    function finalizar_compra() {
+        $.ajax({
+            url: '<?php echo Yii::app()->homeUrl . '?r=site/session'; ?>',
+            type: 'post',
+            data: {
+                nome: '01 unidade de 04 - X BURGUER CATU E OVO',
+                valor: '10,90',
+                plano: '',
+                tipo: ''
+            },
+            success: function(data) {
+                if (data)
+                    window.location = '<?php echo Yii::app()->homeUrl . '?r=site/page&view=pagamento'; ?>';
+                else
+                    alert('Ocorreu algum erro na escolha do plano, por favor tente novamente.');
+            }
+        });
+    }
+
 </script>

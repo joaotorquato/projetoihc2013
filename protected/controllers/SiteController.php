@@ -109,14 +109,30 @@ class SiteController extends Controller {
         $nome = $_POST['nome'];
         $valor = $_POST['valor'];
         $tipo = $_POST['tipo'];
-        
-        $descricao = 'Plano ' . $tipo . ' (tamanho ' . ucfirst($plano) . '): ' . $nome;
-        
+
+        $descricao = ($tipo != '' ? 'Plano ' . $tipo : '') . ($plano != '' ? ' (tamanho ' . ucfirst($plano) . '): ' : '') . $nome;
+
         Yii::app()->session['descricao'] = $descricao;
         Yii::app()->session['valor_total'] = $valor;
-        
+
         echo true;
 //        $this->renderPartial('index');
         exit;
     }
+
+    public function actionCarrinho() {
+
+        $carrinho = Yii::app()->session['carrinho'];
+        $carrinho[] = array(
+            'nome' => $_POST['nome'],
+            'total' => $_POST['preco'],
+            'empresa' => 'Neri Lanches',
+        );
+        Yii::app()->session['carrinho'] = $carrinho;
+
+        echo true;
+//        $this->renderPartial('index');
+        exit;
+    }
+
 }

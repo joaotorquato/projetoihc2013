@@ -119,7 +119,7 @@ foreach ($empresas as $empresa) {
                 <span class="header-line"></span> 
             </h2>
                 <button class="btn btn-large btn-success" style="float: right;" type="button">Finalizar</button>
-                <button class="btn btn-large" style="float: right; margin-right: 5px;" type="button">Voltar</button>
+                <button class="btn btn-large" style="float: right; margin-right: 5px;" onclick="javascript:window.history.go(-1)" type="button">Voltar</button>
         </div>
     </div>
 
