@@ -11,15 +11,19 @@ $cidades = array(
     'guaira' => 'Guaíra',
     'amparo' => 'Amparo',
 );
-$label_cidade = isset($cidades[$_GET['cidade']]) ? $cidades[$_GET['cidade']] : Yii::app()->session['cidade'];
+
+if (!isset($_GET['cidade']) && (!isset(Yii::app()->session['cidade']) || Yii::app()->session['cidade'] == '')){
+    $label_cidade = 'nosso sistema';
+}else{
+    $label_cidade = isset($_GET['cidade']) && isset($cidades[$_GET['cidade']]) ? $cidades[$_GET['cidade']] : Yii::app()->session['cidade'];
+}
 
 $empresas[] = array(
     'nome' => "Neri Lanches",
     'img' => "http://d12v6yim1t2ckp.cloudfront.net/arquivos/9c9da3324/img/restaurante/104_mini.jpg",
     'horario_funcionamento' => "Dia 11:00 às 15:00 Noite 18:00 às 00:00",
     'feedback_nota' => 3,
-    'forma_pagamento' => '<img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/111_mini.jpg" title="AMEX Crédito ou Débito - Maquineta">
-                                            <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/93_mini.jpg" title="Diners Crédito ou Débito - Maquineta">
+    'forma_pagamento' => '<img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/93_mini.jpg" title="Diners Crédito ou Débito - Maquineta">
                                             <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/83_mini.jpg" title="Dinheiro">
                                             <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/85_mini.jpg" title="MasterCard Crédito ou Débito - Maquineta">
                                             <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/109_mini.jpg" title="Ticket Restaurante">

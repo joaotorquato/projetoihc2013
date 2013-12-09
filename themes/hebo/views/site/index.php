@@ -122,8 +122,8 @@ $cidades = array(
     </div>
 
     <div class="span3" style="text-align:center;">
-        <h3 class="text-error">O que você está esperando?</h3>
-        <button class="btn btn-large btn-danger" type="button">Cadastre-se agora!</button>
+        <h3 class="text-success">O que você está esperando?</h3>
+        <button class="btn btn-large btn-success" type="button">Cadastre-se agora!</button>
         <p> <small>* leia nosso termo de uso</small></p>
     </div>
 </div>
