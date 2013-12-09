@@ -12,9 +12,8 @@ $cidades = array(
 );
 ?>
 
-<?php if(!isset(Yii::app()->session['cidade']) || (isset(Yii::app()->session['cidade']) && Yii::app()->session['cidade'] == '')){ ?>
 <div class="page-header">
-    <h1>Nossos planos <span style="display: none;" id="nome_cidade">em São Paulo</span><small> escolha a melhor opção para você.</small></h1>
+    <h1>Nossos planos <span <?php if (Yii::app()->session['cidade'] == '') echo 'style="display: none;"'; ?> id="nome_cidade"><?php echo 'em ' . Yii::app()->session['cidade']; ?></span><small> escolha a melhor opção para você.</small></h1>
 </div>
 <div class="span10" id="div_cep" style="margin: 0px; margin-bottom: 10px;">
     <div class="span4" style="margin-left: 0px;">
@@ -43,11 +42,6 @@ $cidades = array(
         ?>
     </div>
 </div>
-    <?php }else{ ?>
-<div class="page-header">
-    <h1>Nossos planos em <?php echo Yii::app()->session['cidade']; ?><small> escolha a melhor opção para você.</small></h1>
-</div>
-    <?php } ?>
 <div style="clear:both;"></div>
 
 <div id="div_planos" <?php if(!isset(Yii::app()->session['cidade']) || (isset(Yii::app()->session['cidade']) && Yii::app()->session['cidade'] == '')){ echo 'style="display:none"';}?>>
@@ -97,7 +91,7 @@ $cidades = array(
     $("#cep").mask("99999-999");
     
     function registraCidade(cidade){
-        $('#div_cep').slideUp();
+//        $('#div_cep').slideUp();
         $('#div_planos').slideDown();
         $('#nome_cidade').html('em ' + cidade);
         $('#nome_cidade').show();
@@ -108,7 +102,8 @@ $cidades = array(
             async: false,
             data: {
                 cep: $('#cep').val(),
-                cidade: cidade
+                cidade: cidade,
+                cidade_index: caracteres_especias(cidade)
             }
         });
     }
@@ -137,5 +132,27 @@ $cidades = array(
             });
         }
 
+    }
+    
+    function caracteres_especias(string) {
+        for (i = 0; i < string.length; i++) {
+            string = string.replace('/[`~!@#$%^&*()_|+\-=?;:",.<>\{\}\[\]\\\/]', '');
+            string = string.replace(' ', '_');
+        }
+        return removeAcento(string.toLowerCase());
+    }
+
+    function removeAcento(strToReplace) {
+        str_acento = "áàãâäéèêëíìîïóòõôöúùûüçÁÀÃÂÄÉÈÊËÍÌÎÏÓÒÕÖÔÚÙÛÜÇ";
+        str_sem_acento = "aaaaaeeeeiiiiooooouuuucAAAAAEEEEIIIIOOOOOUUUUC";
+        var nova = "";
+        for (var i = 0; i < strToReplace.length; i++) {
+            if (str_acento.indexOf(strToReplace.charAt(i)) != -1) {
+                nova += str_sem_acento.substr(str_acento.search(strToReplace.substr(i, 1)), 1);
+            } else {
+                nova += strToReplace.substr(i, 1);
+            }
+        }
+        return nova;
     }
 </script>

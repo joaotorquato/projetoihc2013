@@ -126,10 +126,12 @@ class SiteController extends Controller {
     }
     public function actionSessionCep() {
         $cidade = $_POST['cidade'];
+        $cidade_index = $_POST['cidade_index'];
         $cep = $_POST['cep'];
         
         Yii::app()->session['cep'] = $cep;
         Yii::app()->session['cidade'] = $cidade;
+        Yii::app()->session['cidade_index'] = $cidade_index;
         
         echo true;
 //        $this->renderPartial('index');
