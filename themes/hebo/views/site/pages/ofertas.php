@@ -10,9 +10,10 @@ $cidades = array(
     'guaira' => 'Guaíra',
     'amparo' => 'Amparo',
 );
+$cidade_index = isset($_GET['cidade']) ? $_GET['cidade'] : Yii::app()->session['cidade_index'];
 $label_cidade = isset($cidades[$_GET['cidade']]) ? $cidades[$_GET['cidade']] : Yii::app()->session['cidade'];
 
-$empresas[] = array(
+$empresas['sorocaba'][] = array(
     'nome' => "Neri Lanches",
     'img' => "http://d12v6yim1t2ckp.cloudfront.net/arquivos/9c9da3324/img/restaurante/104_mini.jpg",
     'horario_funcionamento' => "Dia 11:00 às 15:00 Noite 18:00 às 00:00",
@@ -48,7 +49,7 @@ $empresas[] = array(
     )
 );
 
-$empresas[] = array(
+$empresas['sorocaba'][] = array(
     'nome' => "Nigth Dog",
     'img' => "http://d12v6yim1t2ckp.cloudfront.net/arquivos/a49e97b8a/img/restaurante/244_mini.jpg",
     'horario_funcionamento' => "Das 18:30 as 23:30h",
@@ -64,7 +65,7 @@ $empresas[] = array(
     'concorrentes' => array('0', '5'),
 );
 
-$empresas[] = array(
+$empresas['sorocaba'][] = array(
     'nome' => "Vivitália Pizza Delivery",
     'img' => "http://d12v6yim1t2ckp.cloudfront.net/arquivos/c53092137/img/restaurante/220_mini.jpg",
     'horario_funcionamento' => "Terça a Domingo das 18h30 às 23h",
@@ -79,7 +80,7 @@ $empresas[] = array(
     'concorrentes' => array('3'),
 );
 
-$empresas[] = array(
+$empresas['sorocaba'][] = array(
     'nome' => "Pizzeria La Taverna",
     'img' => "http://d12v6yim1t2ckp.cloudfront.net/arquivos/fac19986a/img/restaurante/9_mini.jpg",
     'horario_funcionamento' => "Domingo a Quinta das 18h as 23h Sexta e Sábado das 18h as 23h",
@@ -92,7 +93,7 @@ $empresas[] = array(
     'concorrentes' => array('2'),
 );
 
-$empresas[] = array(
+$empresas['sorocaba'][] = array(
     'nome' => "Bonga Delivery",
     'img' => "http://d12v6yim1t2ckp.cloudfront.net/arquivos/cb7a29fb0/img/restaurante/195_mini.jpg",
     'horario_funcionamento' => "Domingo a Quinta das 18h30 as 23hSexta e Sábado das 18h30 as 23h",
@@ -105,7 +106,7 @@ $empresas[] = array(
     'concorrentes' => array('5'),
 );
 
-$empresas[] = array(
+$empresas['sorocaba'][] = array(
     'nome' => "Cozinha Brasileira 2 Irmãos",
     'img' => "http://www.osascofacil.com.br/guia/fotos/1_75201321010logo.jpg",
     'horario_funcionamento' => "Domingo a Quinta das 18h30 as 23hSexta e Sábado das 18h30 as 23h",
@@ -130,10 +131,836 @@ $empresas[] = array(
     )
 );
 
+//SP
+$empresas['sao_paulo'][] = array(
+    'nome' => "Frango com Tudo",
+    'img' => "http://www.biroska.com.br/frango/img/dummies/03.jpg?1386545762384",
+    'horario_funcionamento' => "Dia 11:00 às 15:00 Noite 18:00 às 01:00",
+    'feedback_nota' => 3,
+    'forma_pagamento' => '<img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/111_mini.jpg" title="AMEX Crédito ou Débito - Maquineta">
+                                            <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/93_mini.jpg" title="Diners Crédito ou Débito - Maquineta">
+                                            <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/83_mini.jpg" title="Dinheiro">
+                                            <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/85_mini.jpg" title="MasterCard Crédito ou Débito - Maquineta">
+                                            <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/86_mini.jpg" title="Visa Crédito ou Débito - Maquineta">',
+    'comentarios_total' => 72,
+    'plano' => true,
+    'comentarios' => array('Almir Kazunari' => 'Excelente, vale a pena!', 'Paulo Ricardo' => 'Atendimento bom, pede o lanche e já chega, demais!'),
+    'produtos' => array('marmita' => 'Marmitas', 'refrigerante' => 'Refrigerantes', 'suco' => 'sucos', 'porcao' => 'Porcões', 'sobremesa' => 'Sobremesas', 'bebidas' => 'Bebidas'),
+    'concorrentes' => array('1', '2'),
+    'comparacao' => array(
+        'prato' => array(
+            'produto' => 'Parmegiana de Frango com Fritas',
+            'casa_preco' => 'R$30,00',
+            'concorrente' => 'R$22,50',
+        ),
+        'prato' => array(
+            'produto' => 'x-egg',
+            'casa_preco' => 'R$10,50',
+            'concorrente' => 'R$8,50',
+        ),
+        'suco' => array(
+            'produto' => 'Suco',
+            'casa_preco' => 'R$7,50',
+            'concorrente' => 'R$8,00',
+        ),
+    )
+);
+
+$empresas['sao_paulo'][] = array(
+    'nome' => "Siga La Vaca",
+    'img' => "http://www.biroska.com.br/sigalavaca/img/dummies/03.jpg?1386546263608",
+    'horario_funcionamento' => "Das 18:30 as 23:30h",
+    'feedback_nota' => 4,
+    'forma_pagamento' => '<img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/83_mini.jpg" title="Dinheiro">
+                                 <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/85_mini.jpg" title="MasterCard Crédito ou Débito - Maquineta">
+                                 <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/79_mini.jpg" title="Vale Alimentação - Papel">
+                                 <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/78_mini.jpg" title="Vale Refeição - Papel">',
+    'comentarios_total' => 89,
+    'plano' => false,
+    'comentarios' => array('Felipe Brina' => 'Como la direto, melhor que tem!', 'Vinícius Campos' => 'Sempre como com meu brother lá, é top!'),
+    'produtos' => array('lanche' => 'Lanches', 'beirute' => 'Beirutes', 'refrigerante' => 'Refrigerantes', 'suco' => 'Sucos', 'porcao' => 'Porções'),
+    'concorrentes' => array('0', '5'),
+);
+
+$empresas['sao_paulo'][] = array(
+    'nome' => "Sweet Tomatoes",
+    'img' => "http://pic.kekanto.com/pics/282/221282mg.jpg",
+    'horario_funcionamento' => "Terça a Domingo das 18h30 às 23h",
+    'feedback_nota' => 4,
+    'forma_pagamento' => '<img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/83_mini.jpg" title="Dinheiro">
+                         <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/85_mini.jpg" title="MasterCard Crédito ou Débito - Maquineta">
+                         <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/86_mini.jpg" title="Visa Crédito ou Débito - Maquineta">',
+    'comentarios_total' => 100,
+    'plano' => false,
+    'comentarios' => array('Arthur Mazer' => 'Melhor pizzaria de Sorocaba! Peço sempre lá', 'Creuza da Silva' => 'A pizza de gorgonzola é show! Recomendo!!!'),
+    'produtos' => array('pizza' => 'Pizzas', 'pizza doce' => 'Pizzas doces', 'refrigerante' => 'Refrigerantes', 'cerveja' => 'Cervejas', 'vinho' => 'Vinhos'),
+    'concorrentes' => array('3'),
+);
+
+$empresas['sao_paulo'][] = array(
+    'nome' => "Carlitos Pizzeria",
+    'img' => "http://pizzariacarlitos.com.br/img_carlitos/logo.jpg",
+    'horario_funcionamento' => "Domingo a Quinta das 18h as 23h Sexta e Sábado das 18h as 23h",
+    'feedback_nota' => 5,
+    'forma_pagamento' => '<img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/83_mini.jpg" title="Dinheiro">',
+    'comentarios_total' => 90,
+    'plano' => false,
+    'comentarios' => array('Bruno Gianelli' => 'Melhor pizzaria de Sorocaba! Peço sempre lá', 'Daniel Castilho' => 'A pizza de gorgonzola é show! Recomendo!!!'),
+    'produtos' => array('pizza' => 'Pizzas', 'pizza doce' => 'Pizzas doces', 'refrigerante' => 'Refrigerantes', 'massa' => 'Massas', 'batata' => 'Batatas'),
+    'concorrentes' => array('2'),
+);
+
+$empresas['sao_paulo'][] = array(
+    'nome' => "Toca do Coelho",
+    'img' => "http://cacheimg.guiamais.com.br/14591232/5.gif",
+    'horario_funcionamento' => "Domingo a Quinta das 18h30 as 23hSexta e Sábado das 18h30 as 23h",
+    'feedback_nota' => 3,
+    'forma_pagamento' => '<img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/83_mini.jpg" title="Dinheiro">',
+    'comentarios_total' => 27,
+    'plano' => true,
+    'comentarios' => array('Fellipe Leão' => 'Peço sempre nesse lugar, muito boa a marmita!', 'Marcel Popolim' => 'A marmita de sexta é sucesso! Recomendo!!!'),
+    'produtos' => array('lanche' => 'Lanches', 'marmita' => 'Marmitas', 'refrigerante' => 'Refrigerantes', 'suco' => 'Sucos'),
+    'concorrentes' => array('5'),
+);
+
+$empresas['sao_paulo'][] = array(
+    'nome' => "Grill 2000",
+    'img' => "http://cacheimg.guiamais.com.br/14547341/68.gif",
+    'horario_funcionamento' => "Domingo a Quinta das 18h30 as 23hSexta e Sábado das 18h30 as 23h",
+    'feedback_nota' => 3,
+    'forma_pagamento' => '<img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/83_mini.jpg" title="Dinheiro">',
+    'comentarios_total' => 27,
+    'plano' => true,
+    'comentarios' => array('Jacinto Pereira' => 'A marmita chega quentinha e na hora que a gente pede!', 'Clodoaldo de Souza' => 'Melhor dia é de sexta, pode pedir que boa!'),
+    'produtos' => array('marmita' => 'Marmitas', 'refrigerante' => 'Refrigerantes', 'suco' => 'Sucos', 'sobremesa' => 'Sobremesas'),
+    'concorrentes' => array('4'),
+    'comparacao' => array(
+        'lanche' => array(
+            'produto' => 'Bauru',
+            'casa_preco' => 'R$12,50',
+            'concorrente' => 'R$13,50',
+        ),
+        'lanche' => array(
+            'produto' => 'x-egg',
+            'casa_preco' => 'R$10,50',
+            'concorrente' => 'R$8,50',
+        ),
+    )
+);
+
+//OSASCO
+$empresas['osasco'][] = array(
+    'nome' => "Rincão Gaúcho Grill",
+    'img' => "http://www.rincaogauchogrill.com.br/wp-content/uploads/2013/07/LOGO.10-1.jpg",
+    'horario_funcionamento' => "Dia 11:00 às 15:00 Noite 18:00 às 01:00",
+    'feedback_nota' => 3,
+    'forma_pagamento' => '<img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/111_mini.jpg" title="AMEX Crédito ou Débito - Maquineta">
+                                            <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/93_mini.jpg" title="Diners Crédito ou Débito - Maquineta">
+                                            <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/83_mini.jpg" title="Dinheiro">
+                                            <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/85_mini.jpg" title="MasterCard Crédito ou Débito - Maquineta">
+                                            <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/86_mini.jpg" title="Visa Crédito ou Débito - Maquineta">',
+    'comentarios_total' => 72,
+    'plano' => true,
+    'comentarios' => array('Almir Kazunari' => 'Excelente, vale a pena!', 'Paulo Ricardo' => 'Atendimento bom, pede o lanche e já chega, demais!'),
+    'produtos' => array('marmita' => 'Marmitas', 'refrigerante' => 'Refrigerantes', 'suco' => 'sucos', 'porcao' => 'Porcões', 'sobremesa' => 'Sobremesas', 'bebidas' => 'Bebidas'),
+    'concorrentes' => array('1', '2'),
+    'comparacao' => array(
+        'prato' => array(
+            'produto' => 'Parmegiana de Frango com Fritas',
+            'casa_preco' => 'R$30,00',
+            'concorrente' => 'R$22,50',
+        ),
+        'prato' => array(
+            'produto' => 'x-egg',
+            'casa_preco' => 'R$10,50',
+            'concorrente' => 'R$8,50',
+        ),
+        'suco' => array(
+            'produto' => 'Suco',
+            'casa_preco' => 'R$7,50',
+            'concorrente' => 'R$8,00',
+        ),
+    )
+);
+
+$empresas['osasco'][] = array(
+    'nome' => "Embaixada Nordestina",
+    'img' => "http://www.embaixadanordestina.com.br/img/embaixada_nordestina.png",
+    'horario_funcionamento' => "Das 18:30 as 23:30h",
+    'feedback_nota' => 4,
+    'forma_pagamento' => '<img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/83_mini.jpg" title="Dinheiro">
+                                 <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/85_mini.jpg" title="MasterCard Crédito ou Débito - Maquineta">
+                                 <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/79_mini.jpg" title="Vale Alimentação - Papel">
+                                 <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/78_mini.jpg" title="Vale Refeição - Papel">',
+    'comentarios_total' => 89,
+    'plano' => false,
+    'comentarios' => array('Felipe Brina' => 'Como la direto, melhor que tem!', 'Vinícius Campos' => 'Sempre como com meu brother lá, é top!'),
+    'produtos' => array('lanche' => 'Lanches', 'beirute' => 'Beirutes', 'refrigerante' => 'Refrigerantes', 'suco' => 'Sucos', 'porcao' => 'Porções'),
+    'concorrentes' => array('0', '5'),
+);
+
+$empresas['osasco'][] = array(
+    'nome' => "São Martinho Padaria e Pizzaria",
+    'img' => "http://www.saomartinhopizzas.com.br/imagens/arte.jpg",
+    'horario_funcionamento' => "Terça a Domingo das 18h30 às 23h",
+    'feedback_nota' => 4,
+    'forma_pagamento' => '<img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/83_mini.jpg" title="Dinheiro">
+                         <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/85_mini.jpg" title="MasterCard Crédito ou Débito - Maquineta">
+                         <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/86_mini.jpg" title="Visa Crédito ou Débito - Maquineta">',
+    'comentarios_total' => 100,
+    'plano' => false,
+    'comentarios' => array('Arthur Mazer' => 'Melhor pizzaria de Sorocaba! Peço sempre lá', 'Creuza da Silva' => 'A pizza de gorgonzola é show! Recomendo!!!'),
+    'produtos' => array('pizza' => 'Pizzas', 'pizza doce' => 'Pizzas doces', 'refrigerante' => 'Refrigerantes', 'cerveja' => 'Cervejas', 'vinho' => 'Vinhos'),
+    'concorrentes' => array('3'),
+);
+
+$empresas['osasco'][] = array(
+    'nome' => "Pizzaria Paladares",
+    'img' => "http://paladarespizzaria.com.br/images/logo.gif",
+    'horario_funcionamento' => "Terça a Domingo das 18h as 23h Sexta e Sábado das 18h as 23h",
+    'feedback_nota' => 5,
+    'forma_pagamento' => '<img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/83_mini.jpg" title="Dinheiro">',
+    'comentarios_total' => 90,
+    'plano' => false,
+    'comentarios' => array('Bruno Gianelli' => 'Melhor pizzaria de Sorocaba! Peço sempre lá', 'Daniel Castilho' => 'A pizza de gorgonzola é show! Recomendo!!!'),
+    'produtos' => array('pizza' => 'Pizzas', 'pizza doce' => 'Pizzas doces', 'refrigerante' => 'Refrigerantes', 'massa' => 'Massas', 'batata' => 'Batatas'),
+    'concorrentes' => array('2'),
+);
+
+$empresas['osasco'][] = array(
+    'nome' => "China da Serra",
+    'img' => "http://www.chinadaserra.com.br/images/header_china.jpg",
+    'horario_funcionamento' => "Domingo a Quinta das 18h30 as 23hSexta e Sábado das 18h30 as 23h",
+    'feedback_nota' => 3,
+    'forma_pagamento' => '<img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/83_mini.jpg" title="Dinheiro">',
+    'comentarios_total' => 27,
+    'plano' => true,
+    'comentarios' => array('Fellipe Leão' => 'Peço sempre nesse lugar, muito boa a marmita!', 'Marcel Popolim' => 'A marmita de sexta é sucesso! Recomendo!!!'),
+    'produtos' => array('lanche' => 'Lanches', 'marmita' => 'Marmitas', 'refrigerante' => 'Refrigerantes', 'suco' => 'Sucos'),
+    'concorrentes' => array('5'),
+);
+
+$empresas['osasco'][] = array(
+    'nome' => "Estância Churrascaria",
+    'img' => "http://www.estanciachurrascaria.com.br/images/logo_estancia.jpg",
+    'horario_funcionamento' => "Domingo a Quinta das 18h30 as 23hSexta e Sábado das 18h30 as 23h",
+    'feedback_nota' => 3,
+    'forma_pagamento' => '<img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/83_mini.jpg" title="Dinheiro">',
+    'comentarios_total' => 27,
+    'plano' => true,
+    'comentarios' => array('Jacinto Pereira' => 'A marmita chega quentinha e na hora que a gente pede!', 'Clodoaldo de Souza' => 'Melhor dia é de sexta, pode pedir que boa!'),
+    'produtos' => array('marmita' => 'Marmitas', 'refrigerante' => 'Refrigerantes', 'suco' => 'Sucos', 'sobremesa' => 'Sobremesas'),
+    'concorrentes' => array('4'),
+    'comparacao' => array(
+        'lanche' => array(
+            'produto' => 'Bauru',
+            'casa_preco' => 'R$12,50',
+            'concorrente' => 'R$13,50',
+        ),
+        'lanche' => array(
+            'produto' => 'x-egg',
+            'casa_preco' => 'R$10,50',
+            'concorrente' => 'R$8,50',
+        ),
+    )
+);
+
+//RIBEIRÃO PRETO
+$empresas['riberao_preto'][] = array(
+    'nome' => "Pizzaria Zio Totó",
+    'img' => "http://www.ribeiraopretoonline.com.br/thumb.php?caminho=/listao/fotos/ziototomarechal.jpg&altura=250&largura=200",
+    'horario_funcionamento' => "Dia 11:00 às 15:00 Noite 18:00 às 01:00",
+    'feedback_nota' => 3,
+    'forma_pagamento' => '<img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/111_mini.jpg" title="AMEX Crédito ou Débito - Maquineta">
+                                            <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/93_mini.jpg" title="Diners Crédito ou Débito - Maquineta">
+                                            <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/83_mini.jpg" title="Dinheiro">
+                                            <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/85_mini.jpg" title="MasterCard Crédito ou Débito - Maquineta">
+                                            <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/86_mini.jpg" title="Visa Crédito ou Débito - Maquineta">',
+    'comentarios_total' => 72,
+    'plano' => true,
+    'comentarios' => array('Almir Kazunari' => 'Excelente, vale a pena!', 'Paulo Ricardo' => 'Atendimento bom, pede o lanche e já chega, demais!'),
+    'produtos' => array('marmita' => 'Marmitas', 'refrigerante' => 'Refrigerantes', 'suco' => 'sucos', 'porcao' => 'Porcões', 'sobremesa' => 'Sobremesas', 'bebidas' => 'Bebidas'),
+    'concorrentes' => array('1', '2'),
+    'comparacao' => array(
+        'prato' => array(
+            'produto' => 'Parmegiana de Frango com Fritas',
+            'casa_preco' => 'R$30,00',
+            'concorrente' => 'R$22,50',
+        ),
+        'prato' => array(
+            'produto' => 'x-egg',
+            'casa_preco' => 'R$10,50',
+            'concorrente' => 'R$8,50',
+        ),
+        'suco' => array(
+            'produto' => 'Suco',
+            'casa_preco' => 'R$7,50',
+            'concorrente' => 'R$8,00',
+        ),
+    )
+);
+
+$empresas['riberao_preto'][] = array(
+    'nome' => "Rancho Grill Chopperia",
+    'img' => "http://www.ribeiraopretoonline.com.br/thumb.php?caminho=/listao/fotos/rachogrillchoperia.JPG&altura=250&largura=200",
+    'horario_funcionamento' => "Das 18:30 as 23:30h",
+    'feedback_nota' => 4,
+    'forma_pagamento' => '<img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/83_mini.jpg" title="Dinheiro">
+                                 <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/85_mini.jpg" title="MasterCard Crédito ou Débito - Maquineta">
+                                 <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/79_mini.jpg" title="Vale Alimentação - Papel">
+                                 <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/78_mini.jpg" title="Vale Refeição - Papel">',
+    'comentarios_total' => 89,
+    'plano' => false,
+    'comentarios' => array('Felipe Brina' => 'Como la direto, melhor que tem!', 'Vinícius Campos' => 'Sempre como com meu brother lá, é top!'),
+    'produtos' => array('lanche' => 'Lanches', 'beirute' => 'Beirutes', 'refrigerante' => 'Refrigerantes', 'suco' => 'Sucos', 'porcao' => 'Porções'),
+    'concorrentes' => array('0', '5'),
+);
+
+$empresas['riberao_preto'][] = array(
+    'nome' => "Churrascaria Rodízio Gaúcho",
+    'img' => "http://www.ribeiraopretoonline.com.br/thumb.php?caminho=/listao/fotos/rodiziogaucho.jpg&altura=250&largura=200",
+    'horario_funcionamento' => "Terça a Domingo das 18h30 às 23h",
+    'feedback_nota' => 4,
+    'forma_pagamento' => '<img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/83_mini.jpg" title="Dinheiro">
+                         <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/85_mini.jpg" title="MasterCard Crédito ou Débito - Maquineta">
+                         <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/86_mini.jpg" title="Visa Crédito ou Débito - Maquineta">',
+    'comentarios_total' => 100,
+    'plano' => false,
+    'comentarios' => array('Arthur Mazer' => 'Melhor pizzaria de Sorocaba! Peço sempre lá', 'Creuza da Silva' => 'A pizza de gorgonzola é show! Recomendo!!!'),
+    'produtos' => array('pizza' => 'Pizzas', 'pizza doce' => 'Pizzas doces', 'refrigerante' => 'Refrigerantes', 'cerveja' => 'Cervejas', 'vinho' => 'Vinhos'),
+    'concorrentes' => array('3'),
+);
+
+$empresas['riberao_preto'][] = array(
+    'nome' => "Cascata Pizza",
+    'img' => "http://www.ribeiraopretoonline.com.br/thumb.php?caminho=/listao/fotos/Cascata___Vila_Virginia.JPG&altura=250&largura=200",
+    'horario_funcionamento' => "Terça a Domingo das 18h as 23h Sexta e Sábado das 18h as 23h",
+    'feedback_nota' => 5,
+    'forma_pagamento' => '<img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/83_mini.jpg" title="Dinheiro">',
+    'comentarios_total' => 90,
+    'plano' => false,
+    'comentarios' => array('Bruno Gianelli' => 'Melhor pizzaria de Sorocaba! Peço sempre lá', 'Daniel Castilho' => 'A pizza de gorgonzola é show! Recomendo!!!'),
+    'produtos' => array('pizza' => 'Pizzas', 'pizza doce' => 'Pizzas doces', 'refrigerante' => 'Refrigerantes', 'massa' => 'Massas', 'batata' => 'Batatas'),
+    'concorrentes' => array('2'),
+);
+
+//SÃO CARLOS
+$empresas['sao_carlos'][] = array(
+    'nome' => "Trem Bão Burger & Grill",
+    'img' => "http://www.trembao.com.br/web-imgs/logo-top.png",
+    'horario_funcionamento' => "Dia 11:00 às 15:00 Noite 18:00 às 01:00",
+    'feedback_nota' => 3,
+    'forma_pagamento' => '<img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/111_mini.jpg" title="AMEX Crédito ou Débito - Maquineta">
+                                            <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/93_mini.jpg" title="Diners Crédito ou Débito - Maquineta">
+                                            <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/83_mini.jpg" title="Dinheiro">
+                                            <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/85_mini.jpg" title="MasterCard Crédito ou Débito - Maquineta">
+                                            <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/86_mini.jpg" title="Visa Crédito ou Débito - Maquineta">',
+    'comentarios_total' => 72,
+    'plano' => true,
+    'comentarios' => array('Almir Kazunari' => 'Excelente, vale a pena!', 'Paulo Ricardo' => 'Atendimento bom, pede o lanche e já chega, demais!'),
+    'produtos' => array('marmita' => 'Marmitas', 'refrigerante' => 'Refrigerantes', 'suco' => 'sucos', 'porcao' => 'Porcões', 'sobremesa' => 'Sobremesas', 'bebidas' => 'Bebidas'),
+    'concorrentes' => array('1', '2'),
+    'comparacao' => array(
+        'prato' => array(
+            'produto' => 'Parmegiana de Frango com Fritas',
+            'casa_preco' => 'R$30,00',
+            'concorrente' => 'R$22,50',
+        ),
+        'prato' => array(
+            'produto' => 'x-egg',
+            'casa_preco' => 'R$10,50',
+            'concorrente' => 'R$8,50',
+        ),
+        'suco' => array(
+            'produto' => 'Suco',
+            'casa_preco' => 'R$7,50',
+            'concorrente' => 'R$8,00',
+        ),
+    )
+);
+
+$empresas['sao_carlos'][] = array(
+    'nome' => "Só Pasta Delivery",
+    'img' => "http://www.sopastadelivery.com.br/Imagens/MenuTop/MenuTop_r3_c1.png",
+    'horario_funcionamento' => "Das 18:30 as 23:30h",
+    'feedback_nota' => 4,
+    'forma_pagamento' => '<img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/83_mini.jpg" title="Dinheiro">
+                                 <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/85_mini.jpg" title="MasterCard Crédito ou Débito - Maquineta">
+                                 <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/79_mini.jpg" title="Vale Alimentação - Papel">
+                                 <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/78_mini.jpg" title="Vale Refeição - Papel">',
+    'comentarios_total' => 89,
+    'plano' => false,
+    'comentarios' => array('Felipe Brina' => 'Como la direto, melhor que tem!', 'Vinícius Campos' => 'Sempre como com meu brother lá, é top!'),
+    'produtos' => array('lanche' => 'Lanches', 'beirute' => 'Beirutes', 'refrigerante' => 'Refrigerantes', 'suco' => 'Sucos', 'porcao' => 'Porções'),
+    'concorrentes' => array('0', '5'),
+);
+
+$empresas['sao_carlos'][] = array(
+    'nome' => "Fast Pizza Delivery",
+    'img' => "http://fastpizza-delivery.com/imagens/fastpizza_logo.png",
+    'horario_funcionamento' => "Terça a Domingo das 18h30 às 23h",
+    'feedback_nota' => 4,
+    'forma_pagamento' => '<img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/83_mini.jpg" title="Dinheiro">
+                         <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/85_mini.jpg" title="MasterCard Crédito ou Débito - Maquineta">
+                         <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/86_mini.jpg" title="Visa Crédito ou Débito - Maquineta">',
+    'comentarios_total' => 100,
+    'plano' => false,
+    'comentarios' => array('Arthur Mazer' => 'Melhor pizzaria de Sorocaba! Peço sempre lá', 'Creuza da Silva' => 'A pizza de gorgonzola é show! Recomendo!!!'),
+    'produtos' => array('pizza' => 'Pizzas', 'pizza doce' => 'Pizzas doces', 'refrigerante' => 'Refrigerantes', 'cerveja' => 'Cervejas', 'vinho' => 'Vinhos'),
+    'concorrentes' => array('3'),
+);
+
+$empresas['sao_carlos'][] = array(
+    'nome' => "Pizza Express Delivery",
+    'img' => "http://deliverymuch.com.br/media/pizza.jpg",
+    'horario_funcionamento' => "Terça a Domingo das 18h as 23h Sexta e Sábado das 18h as 23h",
+    'feedback_nota' => 5,
+    'forma_pagamento' => '<img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/83_mini.jpg" title="Dinheiro">',
+    'comentarios_total' => 90,
+    'plano' => false,
+    'comentarios' => array('Bruno Gianelli' => 'Melhor pizzaria de Sorocaba! Peço sempre lá', 'Daniel Castilho' => 'A pizza de gorgonzola é show! Recomendo!!!'),
+    'produtos' => array('pizza' => 'Pizzas', 'pizza doce' => 'Pizzas doces', 'refrigerante' => 'Refrigerantes', 'massa' => 'Massas', 'batata' => 'Batatas'),
+    'concorrentes' => array('2'),
+);
+
+//JUNDIAÍ
+$empresas['jundiai'][] = array(
+    'nome' => "Sal da Terra Restaurante",
+    'img' => "http://saldaterrarestaurante.com.br/media/imagens/topo/topo-1.jpg?1294925047",
+    'horario_funcionamento' => "Dia 11:00 às 15:00 Noite 18:00 às 01:00",
+    'feedback_nota' => 3,
+    'forma_pagamento' => '<img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/111_mini.jpg" title="AMEX Crédito ou Débito - Maquineta">
+                                            <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/93_mini.jpg" title="Diners Crédito ou Débito - Maquineta">
+                                            <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/83_mini.jpg" title="Dinheiro">
+                                            <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/85_mini.jpg" title="MasterCard Crédito ou Débito - Maquineta">
+                                            <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/86_mini.jpg" title="Visa Crédito ou Débito - Maquineta">',
+    'comentarios_total' => 72,
+    'plano' => true,
+    'comentarios' => array('Almir Kazunari' => 'Excelente, vale a pena!', 'Paulo Ricardo' => 'Atendimento bom, pede o lanche e já chega, demais!'),
+    'produtos' => array('marmita' => 'Marmitas', 'refrigerante' => 'Refrigerantes', 'suco' => 'sucos', 'porcao' => 'Porcões', 'sobremesa' => 'Sobremesas', 'bebidas' => 'Bebidas'),
+    'concorrentes' => array('1', '2'),
+    'comparacao' => array(
+        'prato' => array(
+            'produto' => 'Parmegiana de Frango com Fritas',
+            'casa_preco' => 'R$30,00',
+            'concorrente' => 'R$22,50',
+        ),
+        'prato' => array(
+            'produto' => 'x-egg',
+            'casa_preco' => 'R$10,50',
+            'concorrente' => 'R$8,50',
+        ),
+        'suco' => array(
+            'produto' => 'Suco',
+            'casa_preco' => 'R$7,50',
+            'concorrente' => 'R$8,00',
+        ),
+    )
+);
+
+$empresas['jundiai'][] = array(
+    'nome' => "Restaurante Brunholi",
+    'img' => "https://s3-sa-east-1.amazonaws.com/carvajal-r2-dms/dms/83/55/4/45583.gif",
+    'horario_funcionamento' => "Das 18:30 as 23:30h",
+    'feedback_nota' => 4,
+    'forma_pagamento' => '<img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/83_mini.jpg" title="Dinheiro">
+                                 <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/85_mini.jpg" title="MasterCard Crédito ou Débito - Maquineta">
+                                 <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/79_mini.jpg" title="Vale Alimentação - Papel">
+                                 <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/78_mini.jpg" title="Vale Refeição - Papel">',
+    'comentarios_total' => 89,
+    'plano' => false,
+    'comentarios' => array('Felipe Brina' => 'Como la direto, melhor que tem!', 'Vinícius Campos' => 'Sempre como com meu brother lá, é top!'),
+    'produtos' => array('lanche' => 'Lanches', 'beirute' => 'Beirutes', 'refrigerante' => 'Refrigerantes', 'suco' => 'Sucos', 'porcao' => 'Porções'),
+    'concorrentes' => array('0', '5'),
+);
+
+$empresas['jundiai'][] = array(
+    'nome' => "Marmitaria du Cheff",
+    'img' => "https://s3-sa-east-1.amazonaws.com/carvajal-r2-dms/dms/83/20/6/62083.JPG",
+    'horario_funcionamento' => "Terça a Domingo das 18h30 às 23h",
+    'feedback_nota' => 4,
+    'forma_pagamento' => '<img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/83_mini.jpg" title="Dinheiro">
+                         <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/85_mini.jpg" title="MasterCard Crédito ou Débito - Maquineta">
+                         <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/86_mini.jpg" title="Visa Crédito ou Débito - Maquineta">',
+    'comentarios_total' => 100,
+    'plano' => false,
+    'comentarios' => array('Arthur Mazer' => 'Melhor pizzaria de Sorocaba! Peço sempre lá', 'Creuza da Silva' => 'A pizza de gorgonzola é show! Recomendo!!!'),
+    'produtos' => array('pizza' => 'Pizzas', 'pizza doce' => 'Pizzas doces', 'refrigerante' => 'Refrigerantes', 'cerveja' => 'Cervejas', 'vinho' => 'Vinhos'),
+    'concorrentes' => array('3'),
+);
+
+$empresas['jundiai'][] = array(
+    'nome' => "Yakissoba Brasil",
+    'img' => "https://s3-sa-east-1.amazonaws.com/carvajal-r2-dms/dms/29/17/6/61729.png",
+    'horario_funcionamento' => "Terça a Domingo das 18h as 23h Sexta e Sábado das 18h as 23h",
+    'feedback_nota' => 5,
+    'forma_pagamento' => '<img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/83_mini.jpg" title="Dinheiro">',
+    'comentarios_total' => 90,
+    'plano' => false,
+    'comentarios' => array('Bruno Gianelli' => 'Melhor pizzaria de Sorocaba! Peço sempre lá', 'Daniel Castilho' => 'A pizza de gorgonzola é show! Recomendo!!!'),
+    'produtos' => array('pizza' => 'Pizzas', 'pizza doce' => 'Pizzas doces', 'refrigerante' => 'Refrigerantes', 'massa' => 'Massas', 'batata' => 'Batatas'),
+    'concorrentes' => array('2'),
+);
+
+//CAMPINAS
+$empresas['campinas'][] = array(
+    'nome' => "Rincão Gaúcho Grill",
+    'img' => "http://www.rincaogauchogrill.com.br/wp-content/uploads/2013/07/LOGO.10-1.jpg",
+    'horario_funcionamento' => "Dia 11:00 às 15:00 Noite 18:00 às 01:00",
+    'feedback_nota' => 3,
+    'forma_pagamento' => '<img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/111_mini.jpg" title="AMEX Crédito ou Débito - Maquineta">
+                                            <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/93_mini.jpg" title="Diners Crédito ou Débito - Maquineta">
+                                            <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/83_mini.jpg" title="Dinheiro">
+                                            <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/85_mini.jpg" title="MasterCard Crédito ou Débito - Maquineta">
+                                            <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/86_mini.jpg" title="Visa Crédito ou Débito - Maquineta">',
+    'comentarios_total' => 72,
+    'plano' => true,
+    'comentarios' => array('Almir Kazunari' => 'Excelente, vale a pena!', 'Paulo Ricardo' => 'Atendimento bom, pede o lanche e já chega, demais!'),
+    'produtos' => array('marmita' => 'Marmitas', 'refrigerante' => 'Refrigerantes', 'suco' => 'sucos', 'porcao' => 'Porcões', 'sobremesa' => 'Sobremesas', 'bebidas' => 'Bebidas'),
+    'concorrentes' => array('1', '2'),
+    'comparacao' => array(
+        'prato' => array(
+            'produto' => 'Parmegiana de Frango com Fritas',
+            'casa_preco' => 'R$30,00',
+            'concorrente' => 'R$22,50',
+        ),
+        'prato' => array(
+            'produto' => 'x-egg',
+            'casa_preco' => 'R$10,50',
+            'concorrente' => 'R$8,50',
+        ),
+        'suco' => array(
+            'produto' => 'Suco',
+            'casa_preco' => 'R$7,50',
+            'concorrente' => 'R$8,00',
+        ),
+    )
+);
+
+$empresas['campinas'][] = array(
+    'nome' => "Pizzaria Paladares",
+    'img' => "http://paladarespizzaria.com.br/images/logo.gif",
+    'horario_funcionamento' => "Terça a Domingo das 18h as 23h Sexta e Sábado das 18h as 23h",
+    'feedback_nota' => 5,
+    'forma_pagamento' => '<img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/83_mini.jpg" title="Dinheiro">',
+    'comentarios_total' => 90,
+    'plano' => false,
+    'comentarios' => array('Bruno Gianelli' => 'Melhor pizzaria de Sorocaba! Peço sempre lá', 'Daniel Castilho' => 'A pizza de gorgonzola é show! Recomendo!!!'),
+    'produtos' => array('pizza' => 'Pizzas', 'pizza doce' => 'Pizzas doces', 'refrigerante' => 'Refrigerantes', 'massa' => 'Massas', 'batata' => 'Batatas'),
+    'concorrentes' => array('2'),
+);
+
+$empresas['campinas'][] = array(
+    'nome' => "Pizzaria Zio Totó",
+    'img' => "http://www.ribeiraopretoonline.com.br/thumb.php?caminho=/listao/fotos/ziototomarechal.jpg&altura=250&largura=200",
+    'horario_funcionamento' => "Dia 11:00 às 15:00 Noite 18:00 às 01:00",
+    'feedback_nota' => 3,
+    'forma_pagamento' => '<img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/111_mini.jpg" title="AMEX Crédito ou Débito - Maquineta">
+                                            <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/93_mini.jpg" title="Diners Crédito ou Débito - Maquineta">
+                                            <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/83_mini.jpg" title="Dinheiro">
+                                            <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/85_mini.jpg" title="MasterCard Crédito ou Débito - Maquineta">
+                                            <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/86_mini.jpg" title="Visa Crédito ou Débito - Maquineta">',
+    'comentarios_total' => 72,
+    'plano' => true,
+    'comentarios' => array('Almir Kazunari' => 'Excelente, vale a pena!', 'Paulo Ricardo' => 'Atendimento bom, pede o lanche e já chega, demais!'),
+    'produtos' => array('marmita' => 'Marmitas', 'refrigerante' => 'Refrigerantes', 'suco' => 'sucos', 'porcao' => 'Porcões', 'sobremesa' => 'Sobremesas', 'bebidas' => 'Bebidas'),
+    'concorrentes' => array('1', '2'),
+    'comparacao' => array(
+        'prato' => array(
+            'produto' => 'Parmegiana de Frango com Fritas',
+            'casa_preco' => 'R$30,00',
+            'concorrente' => 'R$22,50',
+        ),
+        'prato' => array(
+            'produto' => 'x-egg',
+            'casa_preco' => 'R$10,50',
+            'concorrente' => 'R$8,50',
+        ),
+        'suco' => array(
+            'produto' => 'Suco',
+            'casa_preco' => 'R$7,50',
+            'concorrente' => 'R$8,00',
+        ),
+    )
+);
+
+$empresas['campinas'][] = array(
+    'nome' => "Cascata Pizza",
+    'img' => "http://www.ribeiraopretoonline.com.br/thumb.php?caminho=/listao/fotos/Cascata___Vila_Virginia.JPG&altura=250&largura=200",
+    'horario_funcionamento' => "Terça a Domingo das 18h as 23h Sexta e Sábado das 18h as 23h",
+    'feedback_nota' => 5,
+    'forma_pagamento' => '<img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/83_mini.jpg" title="Dinheiro">',
+    'comentarios_total' => 90,
+    'plano' => false,
+    'comentarios' => array('Bruno Gianelli' => 'Melhor pizzaria de Sorocaba! Peço sempre lá', 'Daniel Castilho' => 'A pizza de gorgonzola é show! Recomendo!!!'),
+    'produtos' => array('pizza' => 'Pizzas', 'pizza doce' => 'Pizzas doces', 'refrigerante' => 'Refrigerantes', 'massa' => 'Massas', 'batata' => 'Batatas'),
+    'concorrentes' => array('2'),
+);
+
+$empresas['campinas'][] = array(
+    'nome' => "Fast Pizza Delivery",
+    'img' => "http://fastpizza-delivery.com/imagens/fastpizza_logo.png",
+    'horario_funcionamento' => "Terça a Domingo das 18h30 às 23h",
+    'feedback_nota' => 4,
+    'forma_pagamento' => '<img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/83_mini.jpg" title="Dinheiro">
+                         <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/85_mini.jpg" title="MasterCard Crédito ou Débito - Maquineta">
+                         <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/86_mini.jpg" title="Visa Crédito ou Débito - Maquineta">',
+    'comentarios_total' => 100,
+    'plano' => false,
+    'comentarios' => array('Arthur Mazer' => 'Melhor pizzaria de Sorocaba! Peço sempre lá', 'Creuza da Silva' => 'A pizza de gorgonzola é show! Recomendo!!!'),
+    'produtos' => array('pizza' => 'Pizzas', 'pizza doce' => 'Pizzas doces', 'refrigerante' => 'Refrigerantes', 'cerveja' => 'Cervejas', 'vinho' => 'Vinhos'),
+    'concorrentes' => array('3'),
+);
+
+$empresas['campinas'][] = array(
+    'nome' => "Restaurante Brunholi",
+    'img' => "https://s3-sa-east-1.amazonaws.com/carvajal-r2-dms/dms/83/55/4/45583.gif",
+    'horario_funcionamento' => "Das 18:30 as 23:30h",
+    'feedback_nota' => 4,
+    'forma_pagamento' => '<img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/83_mini.jpg" title="Dinheiro">
+                                 <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/85_mini.jpg" title="MasterCard Crédito ou Débito - Maquineta">
+                                 <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/79_mini.jpg" title="Vale Alimentação - Papel">
+                                 <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/78_mini.jpg" title="Vale Refeição - Papel">',
+    'comentarios_total' => 89,
+    'plano' => false,
+    'comentarios' => array('Felipe Brina' => 'Como la direto, melhor que tem!', 'Vinícius Campos' => 'Sempre como com meu brother lá, é top!'),
+    'produtos' => array('lanche' => 'Lanches', 'beirute' => 'Beirutes', 'refrigerante' => 'Refrigerantes', 'suco' => 'Sucos', 'porcao' => 'Porções'),
+    'concorrentes' => array('0', '5'),
+);
+
+//GUAÍRA
+$empresas['guaira'][] = array(
+    'nome' => "Embaixada Nordestina",
+    'img' => "http://www.embaixadanordestina.com.br/img/embaixada_nordestina.png",
+    'horario_funcionamento' => "Das 18:30 as 23:30h",
+    'feedback_nota' => 4,
+    'forma_pagamento' => '<img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/83_mini.jpg" title="Dinheiro">
+                                 <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/85_mini.jpg" title="MasterCard Crédito ou Débito - Maquineta">
+                                 <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/79_mini.jpg" title="Vale Alimentação - Papel">
+                                 <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/78_mini.jpg" title="Vale Refeição - Papel">',
+    'comentarios_total' => 89,
+    'plano' => false,
+    'comentarios' => array('Felipe Brina' => 'Como la direto, melhor que tem!', 'Vinícius Campos' => 'Sempre como com meu brother lá, é top!'),
+    'produtos' => array('lanche' => 'Lanches', 'beirute' => 'Beirutes', 'refrigerante' => 'Refrigerantes', 'suco' => 'Sucos', 'porcao' => 'Porções'),
+    'concorrentes' => array('0', '5'),
+);
+
+$empresas['guaira'][] = array(
+    'nome' => "China da Serra",
+    'img' => "http://www.chinadaserra.com.br/images/header_china.jpg",
+    'horario_funcionamento' => "Domingo a Quinta das 18h30 as 23hSexta e Sábado das 18h30 as 23h",
+    'feedback_nota' => 3,
+    'forma_pagamento' => '<img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/83_mini.jpg" title="Dinheiro">',
+    'comentarios_total' => 27,
+    'plano' => true,
+    'comentarios' => array('Fellipe Leão' => 'Peço sempre nesse lugar, muito boa a marmita!', 'Marcel Popolim' => 'A marmita de sexta é sucesso! Recomendo!!!'),
+    'produtos' => array('lanche' => 'Lanches', 'marmita' => 'Marmitas', 'refrigerante' => 'Refrigerantes', 'suco' => 'Sucos'),
+    'concorrentes' => array('5'),
+);
+
+$empresas['guaira'][] = array(
+    'nome' => "Rancho Grill Chopperia",
+    'img' => "http://www.ribeiraopretoonline.com.br/thumb.php?caminho=/listao/fotos/rachogrillchoperia.JPG&altura=250&largura=200",
+    'horario_funcionamento' => "Das 18:30 as 23:30h",
+    'feedback_nota' => 4,
+    'forma_pagamento' => '<img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/83_mini.jpg" title="Dinheiro">
+                                 <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/85_mini.jpg" title="MasterCard Crédito ou Débito - Maquineta">
+                                 <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/79_mini.jpg" title="Vale Alimentação - Papel">
+                                 <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/78_mini.jpg" title="Vale Refeição - Papel">',
+    'comentarios_total' => 89,
+    'plano' => false,
+    'comentarios' => array('Felipe Brina' => 'Como la direto, melhor que tem!', 'Vinícius Campos' => 'Sempre como com meu brother lá, é top!'),
+    'produtos' => array('lanche' => 'Lanches', 'beirute' => 'Beirutes', 'refrigerante' => 'Refrigerantes', 'suco' => 'Sucos', 'porcao' => 'Porções'),
+    'concorrentes' => array('0', '5'),
+);
+
+$empresas['guaira'][] = array(
+    'nome' => "Trem Bão Burger & Grill",
+    'img' => "http://www.trembao.com.br/web-imgs/logo-top.png",
+    'horario_funcionamento' => "Dia 11:00 às 15:00 Noite 18:00 às 01:00",
+    'feedback_nota' => 3,
+    'forma_pagamento' => '<img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/111_mini.jpg" title="AMEX Crédito ou Débito - Maquineta">
+                                            <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/93_mini.jpg" title="Diners Crédito ou Débito - Maquineta">
+                                            <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/83_mini.jpg" title="Dinheiro">
+                                            <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/85_mini.jpg" title="MasterCard Crédito ou Débito - Maquineta">
+                                            <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/86_mini.jpg" title="Visa Crédito ou Débito - Maquineta">',
+    'comentarios_total' => 72,
+    'plano' => true,
+    'comentarios' => array('Almir Kazunari' => 'Excelente, vale a pena!', 'Paulo Ricardo' => 'Atendimento bom, pede o lanche e já chega, demais!'),
+    'produtos' => array('marmita' => 'Marmitas', 'refrigerante' => 'Refrigerantes', 'suco' => 'sucos', 'porcao' => 'Porcões', 'sobremesa' => 'Sobremesas', 'bebidas' => 'Bebidas'),
+    'concorrentes' => array('1', '2'),
+    'comparacao' => array(
+        'prato' => array(
+            'produto' => 'Parmegiana de Frango com Fritas',
+            'casa_preco' => 'R$30,00',
+            'concorrente' => 'R$22,50',
+        ),
+        'prato' => array(
+            'produto' => 'x-egg',
+            'casa_preco' => 'R$10,50',
+            'concorrente' => 'R$8,50',
+        ),
+        'suco' => array(
+            'produto' => 'Suco',
+            'casa_preco' => 'R$7,50',
+            'concorrente' => 'R$8,00',
+        ),
+    )
+);
+
+$empresas['guaira'][] = array(
+    'nome' => "Pizza Express Delivery",
+    'img' => "http://deliverymuch.com.br/media/pizza.jpg",
+    'horario_funcionamento' => "Terça a Domingo das 18h as 23h Sexta e Sábado das 18h as 23h",
+    'feedback_nota' => 5,
+    'forma_pagamento' => '<img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/83_mini.jpg" title="Dinheiro">',
+    'comentarios_total' => 90,
+    'plano' => false,
+    'comentarios' => array('Bruno Gianelli' => 'Melhor pizzaria de Sorocaba! Peço sempre lá', 'Daniel Castilho' => 'A pizza de gorgonzola é show! Recomendo!!!'),
+    'produtos' => array('pizza' => 'Pizzas', 'pizza doce' => 'Pizzas doces', 'refrigerante' => 'Refrigerantes', 'massa' => 'Massas', 'batata' => 'Batatas'),
+    'concorrentes' => array('2'),
+);
+
+$empresas['guaira'][] = array(
+    'nome' => "Marmitaria du Cheff",
+    'img' => "https://s3-sa-east-1.amazonaws.com/carvajal-r2-dms/dms/83/20/6/62083.JPG",
+    'horario_funcionamento' => "Terça a Domingo das 18h30 às 23h",
+    'feedback_nota' => 4,
+    'forma_pagamento' => '<img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/83_mini.jpg" title="Dinheiro">
+                         <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/85_mini.jpg" title="MasterCard Crédito ou Débito - Maquineta">
+                         <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/86_mini.jpg" title="Visa Crédito ou Débito - Maquineta">',
+    'comentarios_total' => 100,
+    'plano' => false,
+    'comentarios' => array('Arthur Mazer' => 'Melhor pizzaria de Sorocaba! Peço sempre lá', 'Creuza da Silva' => 'A pizza de gorgonzola é show! Recomendo!!!'),
+    'produtos' => array('pizza' => 'Pizzas', 'pizza doce' => 'Pizzas doces', 'refrigerante' => 'Refrigerantes', 'cerveja' => 'Cervejas', 'vinho' => 'Vinhos'),
+    'concorrentes' => array('3'),
+);
+
+//AMPARO
+$empresas['amparo'][] = array(
+    'nome' => "São Martinho Padaria e Pizzaria",
+    'img' => "http://www.saomartinhopizzas.com.br/imagens/arte.jpg",
+    'horario_funcionamento' => "Terça a Domingo das 18h30 às 23h",
+    'feedback_nota' => 4,
+    'forma_pagamento' => '<img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/83_mini.jpg" title="Dinheiro">
+                         <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/85_mini.jpg" title="MasterCard Crédito ou Débito - Maquineta">
+                         <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/86_mini.jpg" title="Visa Crédito ou Débito - Maquineta">',
+    'comentarios_total' => 100,
+    'plano' => false,
+    'comentarios' => array('Arthur Mazer' => 'Melhor pizzaria de Sorocaba! Peço sempre lá', 'Creuza da Silva' => 'A pizza de gorgonzola é show! Recomendo!!!'),
+    'produtos' => array('pizza' => 'Pizzas', 'pizza doce' => 'Pizzas doces', 'refrigerante' => 'Refrigerantes', 'cerveja' => 'Cervejas', 'vinho' => 'Vinhos'),
+    'concorrentes' => array('3'),
+);
+
+
+$empresas['amparo'][] = array(
+    'nome' => "Estância Churrascaria",
+    'img' => "http://www.estanciachurrascaria.com.br/images/logo_estancia.jpg",
+    'horario_funcionamento' => "Domingo a Quinta das 18h30 as 23hSexta e Sábado das 18h30 as 23h",
+    'feedback_nota' => 3,
+    'forma_pagamento' => '<img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/83_mini.jpg" title="Dinheiro">',
+    'comentarios_total' => 27,
+    'plano' => true,
+    'comentarios' => array('Jacinto Pereira' => 'A marmita chega quentinha e na hora que a gente pede!', 'Clodoaldo de Souza' => 'Melhor dia é de sexta, pode pedir que boa!'),
+    'produtos' => array('marmita' => 'Marmitas', 'refrigerante' => 'Refrigerantes', 'suco' => 'Sucos', 'sobremesa' => 'Sobremesas'),
+    'concorrentes' => array('4'),
+    'comparacao' => array(
+        'lanche' => array(
+            'produto' => 'Bauru',
+            'casa_preco' => 'R$12,50',
+            'concorrente' => 'R$13,50',
+        ),
+        'lanche' => array(
+            'produto' => 'x-egg',
+            'casa_preco' => 'R$10,50',
+            'concorrente' => 'R$8,50',
+        ),
+    )
+);
+
+$empresas['amparo'][] = array(
+    'nome' => "Churrascaria Rodízio Gaúcho",
+    'img' => "http://www.ribeiraopretoonline.com.br/thumb.php?caminho=/listao/fotos/rodiziogaucho.jpg&altura=250&largura=200",
+    'horario_funcionamento' => "Terça a Domingo das 18h30 às 23h",
+    'feedback_nota' => 4,
+    'forma_pagamento' => '<img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/83_mini.jpg" title="Dinheiro">
+                         <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/85_mini.jpg" title="MasterCard Crédito ou Débito - Maquineta">
+                         <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/86_mini.jpg" title="Visa Crédito ou Débito - Maquineta">',
+    'comentarios_total' => 100,
+    'plano' => false,
+    'comentarios' => array('Arthur Mazer' => 'Melhor pizzaria de Sorocaba! Peço sempre lá', 'Creuza da Silva' => 'A pizza de gorgonzola é show! Recomendo!!!'),
+    'produtos' => array('pizza' => 'Pizzas', 'pizza doce' => 'Pizzas doces', 'refrigerante' => 'Refrigerantes', 'cerveja' => 'Cervejas', 'vinho' => 'Vinhos'),
+    'concorrentes' => array('3'),
+);
+
+$empresas['amparo'][] = array(
+    'nome' => "Só Pasta Delivery",
+    'img' => "http://www.sopastadelivery.com.br/Imagens/MenuTop/MenuTop_r3_c1.png",
+    'horario_funcionamento' => "Das 18:30 as 23:30h",
+    'feedback_nota' => 4,
+    'forma_pagamento' => '<img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/83_mini.jpg" title="Dinheiro">
+                                 <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/85_mini.jpg" title="MasterCard Crédito ou Débito - Maquineta">
+                                 <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/79_mini.jpg" title="Vale Alimentação - Papel">
+                                 <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/78_mini.jpg" title="Vale Refeição - Papel">',
+    'comentarios_total' => 89,
+    'plano' => false,
+    'comentarios' => array('Felipe Brina' => 'Como la direto, melhor que tem!', 'Vinícius Campos' => 'Sempre como com meu brother lá, é top!'),
+    'produtos' => array('lanche' => 'Lanches', 'beirute' => 'Beirutes', 'refrigerante' => 'Refrigerantes', 'suco' => 'Sucos', 'porcao' => 'Porções'),
+    'concorrentes' => array('0', '5'),
+);
+
+$empresas['amparo'][] = array(
+    'nome' => "Sal da Terra Restaurante",
+    'img' => "http://saldaterrarestaurante.com.br/media/imagens/topo/topo-1.jpg?1294925047",
+    'horario_funcionamento' => "Dia 11:00 às 15:00 Noite 18:00 às 01:00",
+    'feedback_nota' => 3,
+    'forma_pagamento' => '<img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/111_mini.jpg" title="AMEX Crédito ou Débito - Maquineta">
+                                            <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/93_mini.jpg" title="Diners Crédito ou Débito - Maquineta">
+                                            <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/83_mini.jpg" title="Dinheiro">
+                                            <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/85_mini.jpg" title="MasterCard Crédito ou Débito - Maquineta">
+                                            <img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/86_mini.jpg" title="Visa Crédito ou Débito - Maquineta">',
+    'comentarios_total' => 72,
+    'plano' => true,
+    'comentarios' => array('Almir Kazunari' => 'Excelente, vale a pena!', 'Paulo Ricardo' => 'Atendimento bom, pede o lanche e já chega, demais!'),
+    'produtos' => array('marmita' => 'Marmitas', 'refrigerante' => 'Refrigerantes', 'suco' => 'sucos', 'porcao' => 'Porcões', 'sobremesa' => 'Sobremesas', 'bebidas' => 'Bebidas'),
+    'concorrentes' => array('1', '2'),
+    'comparacao' => array(
+        'prato' => array(
+            'produto' => 'Parmegiana de Frango com Fritas',
+            'casa_preco' => 'R$30,00',
+            'concorrente' => 'R$22,50',
+        ),
+        'prato' => array(
+            'produto' => 'x-egg',
+            'casa_preco' => 'R$10,50',
+            'concorrente' => 'R$8,50',
+        ),
+        'suco' => array(
+            'produto' => 'Suco',
+            'casa_preco' => 'R$7,50',
+            'concorrente' => 'R$8,00',
+        ),
+    )
+);
+
+$empresas['amparo'][] = array(
+    'nome' => "Yakissoba Brasil",
+    'img' => "https://s3-sa-east-1.amazonaws.com/carvajal-r2-dms/dms/29/17/6/61729.png",
+    'horario_funcionamento' => "Terça a Domingo das 18h as 23h Sexta e Sábado das 18h as 23h",
+    'feedback_nota' => 5,
+    'forma_pagamento' => '<img src="http://d12v6yim1t2ckp.cloudfront.net/img/fotosFormasPagamento/83_mini.jpg" title="Dinheiro">',
+    'comentarios_total' => 90,
+    'plano' => false,
+    'comentarios' => array('Bruno Gianelli' => 'Melhor pizzaria de Sorocaba! Peço sempre lá', 'Daniel Castilho' => 'A pizza de gorgonzola é show! Recomendo!!!'),
+    'produtos' => array('pizza' => 'Pizzas', 'pizza doce' => 'Pizzas doces', 'refrigerante' => 'Refrigerantes', 'massa' => 'Massas', 'batata' => 'Batatas'),
+    'concorrentes' => array('2'),
+);
+
+
 Yii::app()->session['empresas'] = $empresas;
 
 $tipo_produto = array('' => 'Todos');
-foreach ($empresas as $empresa) {
+foreach ($empresas[$cidade_index] as $empresa) {
     $tipo_produto = array_merge($tipo_produto, $empresa['produtos']);
 }
 ?>
@@ -151,7 +978,7 @@ foreach ($empresas as $empresa) {
     <?php echo CHtml::button("Buscar", array('title' => "Buscar", 'style' => 'margin-left:10px;margin-top:-8px;', 'onclick' => 'js:buscarNome();', 'class' => 'btn')); ?>
 </div>
 
-<?php foreach ($empresas as $key => $empresa) { ?>
+<?php foreach ($empresas[$cidade_index] as $key => $empresa) { ?>
     <?php if ($key % 2 == 0) { ?>
         <div class="row-fluid">
         <?php } ?>
@@ -188,8 +1015,8 @@ foreach ($empresas as $empresa) {
                             <div style='clear:both'></div>
                             <?php if (isset($empresa['comparacao'])) { ?>
                                 <div>
-                                    <h5 class="header"><?php echo $empresas[$empresa['concorrentes'][0]]['nome']; ?>
-                                        <img height="30" src="<?php echo $empresas[$empresa['concorrentes'][0]]['img']; ?>" alt="<?php echo $empresas[$empresa['concorrentes'][0]]['nome']; ?>" style='float:right' width="100" height="67"/> 
+                                    <h5 class="header"><?php echo $empresas[$cidade_index][$empresa['concorrentes'][0]]['nome']; ?>
+                                        <img height="30" src="<?php echo $empresas[$cidade_index][$empresa['concorrentes'][0]]['img']; ?>" alt="<?php echo $empresas[$cidade_index][$empresa['concorrentes'][0]]['nome']; ?>" style='float:right' width="100" height="67"/> 
                                         <span class="header-line"></span> 
                                     </h5>
                                 </div>
@@ -270,7 +1097,7 @@ foreach ($empresas as $empresa) {
         </div>
     <?php } ?>
 <?php } ?>
-<?php if (count($empresas) % 2 != 0) { ?>
+<?php if (count($empresas[$cidade_index]) % 2 != 0) { ?>
     </div>
 <?php } ?>
 
@@ -280,7 +1107,7 @@ foreach ($empresas as $empresa) {
 
 <div class="row-fluid">
     <div class="span9 comentario_container">
-        <?php foreach ($empresas as $key => $empresa) { ?>
+        <?php foreach ($empresas[$cidade_index] as $key => $empresa) { ?>
             <?php foreach ($empresa['comentarios'] as $usuario => $comentario) { ?>
                 <blockquote class='comentario' style='display:none;'>
                     <h2 ><?php echo $comentario; ?></h2>
