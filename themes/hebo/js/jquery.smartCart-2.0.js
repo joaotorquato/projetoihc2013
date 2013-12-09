@@ -30,31 +30,31 @@
                 var attrCategoryName = "pcategory";
                 
                 // Labels & Messages              
-                var labelCartMenuName = 'My Cart (_COUNT_)';  // _COUNT_ will be replaced with cart count
-                var labelCartMenuNameTooltip = "Cart | Total Products: _PRODUCTCOUNT_ | Total Quantity: _ITEMCOUNT_";
-                var labelProductMenuName = 'Products';
-                var labelSearchButton = "Search";
-                var labelSearchText = "Search";
-                var labelCategoryText = "Category";
-                var labelClearButton = "Clear";
-                var labelAddToCartButton = "Add to Cart"; 
-                var labelQuantityText = "Quantity";
-                var labelProducts = 'Products';
-                var labelPrice = 'Price';
+                var labelCartMenuName = 'Meu carrinho (_COUNT_)';  // _COUNT_ will be replaced with cart count
+                var labelCartMenuNameTooltip = "Carrinho | Total Produtos: _PRODUCTCOUNT_ | Total quantidade: _ITEMCOUNT_";
+                var labelProductMenuName = 'Produtos';
+                var labelSearchButton = "Buscar";
+                var labelSearchText = "Buscar";
+                var labelCategoryText = "Categoria";
+                var labelClearButton = "Limpar";
+                var labelAddToCartButton = "Adicionar"; 
+                var labelQuantityText = "Qtde";
+                var labelProducts = 'Produtos';
+                var labelPrice = 'Preço';
                 var labelSubtotal = 'Subtotal';
                 var labelTotal = 'Total';
-                var labelRemove = 'Remove';
-                var labelCheckout = 'Checkout';
+                var labelRemove = 'Remover';
+                var labelCheckout = 'Finalizar';
                 
-                var messageConfirmRemove = 'Do you want to remove "_PRODUCTNAME_" from cart?'; //  _PRODUCTNAME_ will be replaced with actula product name
-                var messageCartEmpty = "Your cart is empty";
-                var messageProductEmpty = "No products to display";
-                var messageProductAddError = "Product cannot add";
-                var messageItemAdded = 'Product added to the cart';
-                var messageItemRemoved = 'Product removed from the cart';
-                var messageQuantityUpdated = 'Product quantity updated';
-                var messageQuantityErrorAdd = 'Invalid quantity. Product cannot add';
-                var messageQuantityErrorUpdate = 'Invalid quantity. Quantity cannot update';
+                var messageConfirmRemove = 'Você deseja remover "_PRODUCTNAME_" do carrinho?'; //  _PRODUCTNAME_ will be replaced with actula product name
+                var messageCartEmpty = "Seu carrinho está vazio";
+                var messageProductEmpty = "Nenhum produto disponível";
+                var messageProductAddError = "Produto não pode ser adicionado";
+                var messageItemAdded = 'Produto adicionado no carrinho';
+                var messageItemRemoved = 'Produto removido do carrinho';
+                var messageQuantityUpdated = 'Quantidade do carrinho atulizada';
+                var messageQuantityErrorAdd = 'Quantidade inválida. Produto não pode ser adicionado';
+                var messageQuantityErrorUpdate = 'Quantidade inválida. Quantidade não pode ser atualizada';
                 
                 //Create Main Menu
                 cartMenu = labelCartMenuName.replace('_COUNT_','0'); // display default
@@ -423,7 +423,7 @@
                 
                 function fillCategory(){
                    var catCount = 0;
-                   var catItem = $('<option></option>').attr("value",'').attr('selected', true).html('All');
+                   var catItem = $('<option></option>').attr("value",'').attr('selected', true).html('Todos');
                    elmCategory.prepend(catItem);                   
                    $(products).each(function(i,n){
                         var pCategory = $(this).attr(attrCategoryName);
@@ -588,7 +588,7 @@
                 
                 // Get the money formatted for display
                 function getMoneyFormatted(val){
-                  return val.toFixed(2);
+                  return moeda(val.toFixed(2),2,',','.');
                 }
                 // Trims the blankspace
                 function trim(s){
@@ -611,6 +611,10 @@
                       if(valRep == null || valRep == 'undefined'){
                          valRep = '';
                       }
+                      console.log(valRef);
+                      if(valRef == 'pprice'){
+                          valRep = moeda(valRep,2,',','.');
+                      }
                       tmpStr = tmpStr.replace(valRef+'%>',valRep);
                       finalStr += tmpStr;
                     }else{
@@ -631,7 +635,7 @@
           enableImageTooltip: true,
           enableSearch: true,
           enableCategoryFilter: true,
-          productItemTemplate:'<strong><%=pname%></strong><br />Category: <%=pcategory%><br /><small><%=pdesc%></small><br /><strong>Price: <%=pprice%></strong>',
+          productItemTemplate:'<strong><%=pname%></strong><br />Categoria: <%=pcategory%><br /><small><%=pdesc%></small><br /><strong>Preço: <%=pprice%></strong>',
           cartItemTemplate:'<strong><%=pname%></strong>',
           // Events
           onAdd: null,      // function(pObj,quantity){ return true; }
@@ -650,3 +654,38 @@
     };
     
 })(jQuery);
+
+function moeda(valor, casas, separdor_decimal, separador_milhar){ 
+ 
+ var valor_total = parseInt(valor * (Math.pow(10,casas)));
+ var inteiros =  parseInt(parseInt(valor * (Math.pow(10,casas))) / parseFloat(Math.pow(10,casas)));
+ var centavos = parseInt(parseInt(valor * (Math.pow(10,casas))) % parseFloat(Math.pow(10,casas)));
+ 
+  
+ if(centavos%10 == 0 && centavos+"".length<2 ){
+  centavos = centavos+"0";
+ }else if(centavos<10){
+  centavos = "0"+centavos;
+ }
+  
+ var milhares = parseInt(inteiros/1000);
+ inteiros = inteiros % 1000; 
+ 
+ var retorno = "";
+ 
+ if(milhares>0){
+  retorno = milhares+""+separador_milhar+""+retorno
+  if(inteiros == 0){
+   inteiros = "000";
+  } else if(inteiros < 10){
+   inteiros = "00"+inteiros; 
+  } else if(inteiros < 100){
+   inteiros = "0"+inteiros; 
+  }
+ }
+  retorno += inteiros+""+separdor_decimal+""+centavos;
+ 
+ 
+ return retorno;
+ 
+}

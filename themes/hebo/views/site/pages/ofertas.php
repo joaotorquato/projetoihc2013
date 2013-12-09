@@ -13,9 +13,9 @@ $cidades = array(
 );
 
 if (!isset($_GET['cidade']) && (!isset(Yii::app()->session['cidade']) || Yii::app()->session['cidade'] == '')){
-    $label_cidade = 'nosso sistema';
+    $label_cidade = 'Veja nossos restaurantes parceiros';
 }else{
-    $label_cidade = isset($_GET['cidade']) && isset($cidades[$_GET['cidade']]) ? $cidades[$_GET['cidade']] : Yii::app()->session['cidade'];
+    $label_cidade = "Veja os restaurantes em " . (isset($_GET['cidade']) && isset($cidades[$_GET['cidade']]) ? $cidades[$_GET['cidade']] : Yii::app()->session['cidade']);
 }
 
 $empresas[] = array(
@@ -151,7 +151,7 @@ foreach ($empresas as $empresa) {
 
 <div class="shout-box">
     <div class="shout-text">
-        <h1>Veja os restaurantes em <?php echo $label_cidade; ?>!</h1>
+        <h1><?php echo $label_cidade; ?>!</h1>
     </div>
 </div> 
 

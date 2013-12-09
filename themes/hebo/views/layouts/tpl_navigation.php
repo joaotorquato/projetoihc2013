@@ -47,13 +47,35 @@
                         ),
                     ));
 
-//                    $carrinho[] = array(
-//                        'nome' => '04 - X BURGUER CATU E OVO',
-//                        'total' => 10.90,
-//                        'empresa' => 'Neri Lanches',
-//                    );
-//                    Yii::app()->session['carrinho'] = $carrinho;
+                    $carrinho[] = array(
+                        'nome' => '04 - X BURGUER CATU E OVO',
+                        'total' => 10.90,
+                        'empresa' => 'Neri Lanches',
+                    );
+                    Yii::app()->session['carrinho'] = $carrinho;
                     ?>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <?php if (isset(Yii::app()->session['carrinho']) && count(Yii::app()->session['carrinho']) > 0) { ?>
+                    <div class="info_carrinho container" style="text-align: center;">
+                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/img/cart.png">Você possui <?php echo count(Yii::app()->session['carrinho']); ?> item(s) no seu carrinho. <a href="javascript:visualizar_carrinho()">Clique aqui</a> para visualizar.
+                    </div>
+                <?php } ?>
+                <div class="carrinho_container" style="margin:auto;width: 50%;display:none;">
+                    <div id="SmartCart" class="scMain">
+                        <input type="hidden" pimage="<?php echo Yii::app()->theme->baseUrl; ?>/img/marmita.jpg" pprice="11.99"
+                               pdesc="" pcategory="Marmita"
+                               pname="Marmita média" pid="100">
+
+                        <input type="hidden" pimage="<?php echo Yii::app()->theme->baseUrl; ?>/img/marmita.jpg" pprice="9.50"
+                               pdesc=""  pcategory="Marmita"
+                               pname="Marmita pequena"
+                               pid="101"> 
+                    </div>
+                    <div style="text-align: center;">
+                        <a href="javascript:esconder_carrinho()">Esconder carrinho</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -66,22 +88,24 @@
 <?php if (isset($_GET['view'])) { ?>
             if ('<?php echo $_GET['view']; ?>' == 'restaurante') {
                 $(".info_carrinho").hide();
-    //            $(".esconder").hide();
+                //            $(".esconder").hide();
                 $(".carrinho_container").show();
             } else if ('<?php echo $_GET['view']; ?>' == 'pagamento') {
                 $(".info_carrinho").hide();
-    //            $(".esconder").hide();
+                //            $(".esconder").hide();
                 $(".finalizar_carrinho").hide();
                 $(".carrinho_container").show();
             }
 <?php } ?>
+        $('#SmartCart').smartCart();
+        $('#sproducts').hide();
     });
 
     function visualizar_carrinho() {
         $(".info_carrinho").hide();
         $(".carrinho_container").show();
     }
-
+    
     function esconder_carrinho() {
         $(".info_carrinho").show();
         $(".carrinho_container").hide();
