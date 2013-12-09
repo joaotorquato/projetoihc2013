@@ -2,13 +2,13 @@
     <div class="container bottom"> 
     	<div class="row-fluid ">
             <div class="span3">
-            	<h5>Sobre nós</h5>
+            	<h3>Sobre nós</h3>
                 <p>Marmitão é uma iniciativa de Estudantes da Universidade Federal de São Carlos Sorocaba para facilitar o acesso de todos ao acervo de cardápios em suas respectivas cidades.</p>
                 
             </div><!-- /span3-->
             
             <div class="span3">
-            	<h5>Adiocione-nos no facebooks</h5>
+            	<h3>Adiocione-nos no Facebook</h3>
             	<ul class="list-blog-roll">
                     <li>
                     	<a href="#" title="Example blog article">Arthur Mazer</a>	
@@ -27,7 +27,7 @@
             </div><!-- /span3-->
 
             <div class="span3">
-            	<h5>Contate-nos</h5>
+            	<h3>Contate-nos</h3>
                 <p>
                     Av.General Carneiro, 237<br/>
                     Sorocaba, SP<br/>
@@ -36,12 +36,15 @@
                 
                 </p>
                 <br>
-                <h5>Siga-nos</h5>
+                
+            </div><!-- /span3-->
+            <div class="span3">
+                <h3>Siga-nos</h3>
                 <ul>
                     <li><a href="#">Twitter</a></li>
                 
                 </ul>
-            </div><!-- /span3-->
+            </div>
         </div><!-- /row-fluid -->
         </div><!-- /container-->
 </section><!-- /bottom-->
@@ -49,7 +52,7 @@
 <footer>
     <div class="footer">
         <div class="container">
-        	Copyright &copy; 2012. Designed by webapplicationthemes.com - High quality HTML Theme
+        	Copyright &copy; Marmitão
         </div>
 	</div>
 </footer>

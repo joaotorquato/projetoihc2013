@@ -97,7 +97,11 @@ foreach ($empresas as $empresa) {
     $tipo_produto = array_merge($tipo_produto, $empresa['produtos']);
 }
 ?>
-<div id="div_pagamento" <?php if(!isset(Yii::app()->session['logado']) || (isset(Yii::app()->session['logado']) && !Yii::app()->session['logado'])){ echo 'style="display:none"';}?>>
+<div id="div_pagamento" <?php
+if (!isset(Yii::app()->session['logado']) || (isset(Yii::app()->session['logado']) && !Yii::app()->session['logado'])) {
+    echo 'style="display:none"';
+}
+?>>
     <div id="result_cep_sucesso" style='display:none; color: green;'><h3>Login efetuado com sucesso.</h3></div>
     <div class="row-fluid">
         <div class="span8">
@@ -119,12 +123,103 @@ foreach ($empresas as $empresa) {
             <h2 class="header"> Forma de pagamento
                 <span class="header-line"></span> 
             </h2>
-                <button class="btn btn-large btn-success" style="float: right;" type="button">Finalizar</button>
-                <button class="btn btn-large" style="float: right; margin-right: 5px;" onclick="javascript:window.history.go(-1)" type="button">Voltar</button>
+            <div class="span3">
+                <div class="radio">
+                    <input type="radio" name="forma" value="cartao_mundipagg" class="obrigatorio" />Cartão de crédito
+                </div>
+                <div class="cartao">
+                    <select name="cartao[parcelas]" id="parcelas" style="width: 95%;" class="obrigatorio">
+                        <option value="">Selecione o nº de parcelas</option>
+                        <option value="">1</option>
+                        <option value="">2</option>
+                        <option value="">3</option>
+                        <option value="">4</option>
+                        <option value="">5</option>
+                        <option value="">6</option>
+                        <option value="">7</option>
+                        <option value="">8</option>
+                        <option value="">9</option>
+                        <option value="">10</option>
+                    </select>
+                    <p><img src="https://enhaut.com.br/estilos/loja/loja_front_enhaut/img/visa.png" width="32" height="32" alt="Bandeiras Cartões de Crédito" select-card='visa'>
+                        <img src="https://enhaut.com.br/estilos/loja/loja_front_enhaut/img/mastercard.png" width="32" height="32" alt="Bandeiras Cartões de Crédito" select-card='mastercard'>
+                        <!--<img src="https://enhaut.com.br/estilos/loja/loja_front_enhaut/img/american_express.png" width="32" height="32" alt="Bandeiras Cartões de Crédito" select-card='amex'>-->
+                        <img src="https://enhaut.com.br/estilos/loja/loja_front_enhaut/img/diners_club.png" width="32" height="32" alt="Bandeiras Cartões de Crédito" select-card='dinersclub'></p>
+                    <label for="number">Número do cartão</label>
+                    <input type="text" placeholder="Número do Cartão" class="full cartao_credito" name="cartao[numero]" />
+
+                    <label for="holder">Nome como escrito no cartão</label>
+                    <input type="text" id="holder" placeholder="Nome gravado no cartão" class="full obrigatorio" name="cartao[nome]" />
+
+                    <select class="half obrigatorio mes" name="cartao[mes]" id="mes" style="width: 48%">
+                        <option value="">Mês</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
+                    <select class="half ano" name="cartao[ano]" id="ano" style="width: 49%">
+                        <option value="">Ano</option>
+                        <option value="2013">2013</option>
+                        <option value="2014">2014</option>
+                        <option value="2015">2015</option>
+                        <option value="2016">2016</option>
+                        <option value="2017">2017</option>
+                        <option value="2018">2018</option>
+                        <option value="2019">2019</option>
+                        <option value="2020">2020</option>
+                        <option value="2021">2021</option>
+                        <option value="2022">2022</option>
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>
+                        <option value="2026">2026</option>
+                        <option value="2027">2027</option>
+                        <option value="2028">2028</option>
+                    </select>
+                    <label for="ssc">Código de Segurança</label>
+                    <input type="text" id="cvv" placeholder="Código de Segurança" class="full cvv" name="cartao[cvv]" maxlength="4" />
+                    <input type="hidden" name="cartao[bandeira]" id="bandeira">
+                </div>
+                <div class="radio">
+                    <input type="radio" name="forma" value="paypal" /><img src="https://enhaut.com.br/estilos/loja/loja_front_enhaut/img/paypal.png" width="65" height="22" alt="Paypal"><br />
+                    <div class="paypal" style="height:50px;">
+                        <span class="small">Ao finalizar seu pedido você será redirecionado ao PayPal</span>
+                    </div>
+                </div>
+                <div class="radio">
+                    <input type="radio" name="forma" value="pagseguro" /><img style="margin-top: -8px;" src="https://enhaut.com.br/estilos/loja/loja_front_enhaut/img/pagseguro.png" width="125" height="42" alt="Pagseguro"><br />
+                    <div class="pagseguro">
+                        <span class="small">Ao finalizar seu pedido você será redirecionado ao PagSeguro</span>
+                    </div>
+                </div>
+
+                <div class="radio">
+                    <input type="radio" name="forma" value="boleto_mundipagg" class="obrigatorio" />Boleto Bancário
+                    <div class="boleto">
+                        <p><img src="https://enhaut.com.br/estilos/loja/loja_front_enhaut/img/boleto.png" width="182" height="22" alt="Boleto"></p>
+                        <p class="aviso_boleto">Atenção: O processamento do boleto pode levar até 72 horas a partir de quando for efetuado o pagamento</p>
+                    </div>
+                </div>
+            </div>
         </div>
+            <button class="btn btn-large btn-success" style="float: right;" type="button">Finalizar</button>
+            <button class="btn btn-large" style="float: right; margin-right: 5px;" onclick="javascript:window.history.go(-1)" type="button">Voltar</button>
     </div>
 </div>
-<div id="div_cadastro" <?php if(isset(Yii::app()->session['logado']) && Yii::app()->session['logado']){ echo 'style="display:none"';}?>>
+<div id="div_cadastro" <?php
+     if (isset(Yii::app()->session['logado']) && Yii::app()->session['logado']) {
+         echo 'style="display:none"';
+     }
+?>>
     <div class="row-fluid">
         <div class="span6">
             <h2 class="header"> Já possui cadastro?
@@ -154,7 +249,7 @@ foreach ($empresas as $empresa) {
             <h2 class="header"> Novo cadastro
                 <span class="header-line"></span> 
             </h2>
-            
+
             <div class="row-fluid">
                 <div class="span12">
                     <label for="username">Usuário</label>
@@ -184,13 +279,43 @@ foreach ($empresas as $empresa) {
                     <?php echo CHtml::button('Cadastrar', array('onclick' => 'loginAjax(); return false;', 'class' => 'btn btn-success')); ?>
                 </div>
             </div>
-            
+
         </div>
     </div>
 </div>
 
 <script type="text/javascript">
+    $('input[name=forma]').change(function() {
+        if ($('input[name=forma]:radio:checked').val() == 'cartao_mundipagg') {
+            $('.cartao').slideToggle();
+            $('.paypal').hide();
+            $('.pagseguro').hide();
+            $('.boleto').hide();
+        }
+        if ($('input[name=forma]:radio:checked').val() == 'paypal') {
+            $('.cartao').hide();
+            $('.paypal').slideToggle();
+            $('.pagseguro').hide();
+            $('.boleto').hide();
+        }
+        if ($('input[name=forma]:radio:checked').val() == 'pagseguro') {
+            $('.cartao').hide();
+            $('.paypal').hide();
+            $('.pagseguro').slideToggle();
+            $('.boleto').hide();
+        }
+        if ($('input[name=forma]:radio:checked').val() == 'boleto_mundipagg') {
+            $('.cartao').hide();
+            $('.paypal').hide();
+            $('.pagseguro').hide();
+            $('.boleto').slideToggle();
+        }
+    });
     $(document).ready(function() {
+        $('.paypal').hide();
+        $('.pagseguro').hide();
+        $('.boleto').hide();
+        $('.cartao').hide();
         $.each($('.comentario_container'), function(y, container) {
             $.each($(container).find('.comentario'), function(i, val) {
                 if (i > 0) {
@@ -300,10 +425,8 @@ foreach ($empresas as $empresa) {
                     $('#result_cep_sucesso').hide();
                 }
             }
-	});
+        });
     }
 </script>
 
-<?php
-
-?>
+<?php ?>
