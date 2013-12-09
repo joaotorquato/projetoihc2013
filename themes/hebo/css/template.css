@@ -62,6 +62,9 @@ p.texto{
     display: block;
     font-size:12px;
     margin-top:-2px;
+    opacity: 0.8;
+    text-transform: none;
+    font-family: Arial
 }
 
 .dropdown-menu li > a:hover,
@@ -141,7 +144,7 @@ h1 small {
     margin-bottom:0;
 }
 
-.shout-text h1{ font-size:38px;}
+.shout-text h1{ font-size:33px;text-transform: uppercase;}
 .shout-box .shout-text{
     text-align:center;
     margin: 0 ;
@@ -191,6 +194,7 @@ ul.list-icon li{
 .bottom a, .bottom,.footer{
     text-decoration:none;
     font-size:12px;
+    color: rgb(206, 204, 204);
 
 }
 
